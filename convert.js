@@ -40,12 +40,11 @@ async function parseVlessConfig(link, index) {
         const host = workerDomain;
         const fp = params.get('fp') || 'chrome';
 
-        // Remark: untouched – no flags, no modifications
         let originalRemark = parsed.hash ? parsed.hash.slice(1).trim() : '';
         if (!originalRemark) originalRemark = params.get('remark') || `vpn-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        const tag = originalRemark; // no flag appended
+        const tag = originalRemark; // untouched
 
         const outboundObj = {
             "tag": tag,
@@ -82,10 +81,7 @@ async function parseVlessConfig(link, index) {
             outboundObj.domain_resolver = "dns-direct";
         }
 
-        // Do NOT modify the original link – leave hash as is
-        const updatedLink = link; // keep original
-
-        return { tag, outboundObj, link: updatedLink, host, sni, fp, address, port, uuid, path };
+        return { tag, outboundObj, link, host, sni, fp, address, port, uuid, path };
     } catch (e) {
         console.error(`خطا در پردازش لینک شماره ${index + 1}:`, e.message);
         return null;
@@ -314,7 +310,6 @@ async function main() {
                 singboxOutbounds.push(result.outboundObj);
                 xrayConfigs.push(buildXrayConfig(result));
 
-                // ---- Clash proxy (full Clash Meta format) ----
                 const clashProxy = {
                     name: result.tag,
                     type: "vless",
@@ -355,13 +350,13 @@ async function main() {
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // 2. vpn.json (Xray)
+    // 2. vpn.json
     fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
 
-    // 3. vpn.yml – full Clash Meta config (as JSON)
+    // 3. vpn.yml – Clash with Persian group names
     const proxyNames = clashProxies.map(p => p.name);
-    const selectorName = "✅ Selector";
-    const urlTestName = "💦 Best Ping 🚀";
+    const selectorName = "انتخاب دستی";
+    const urlTestName = "بهترین پینگ";
 
     const clashConfig = {
         "mixed-port": 7890,
@@ -397,7 +392,7 @@ async function main() {
                 "rule-set:category-ads-all": "rcode://refused"
             },
             "nameserver": [
-                "https://8.8.8.8/dns-query#✅ Selector"
+                `https://8.8.8.8/dns-query#${selectorName}`
             ],
             "proxy-server-nameserver": [
                 "8.8.8.8#DIRECT"
@@ -485,7 +480,7 @@ async function main() {
             "RULE-SET,category-ads-all,REJECT",
             "RULE-SET,ir,DIRECT",
             "RULE-SET,ir-cidr,DIRECT",
-            "MATCH,✅ Selector"
+            `MATCH,${selectorName}`
         ],
         "ntp": {
             "enable": true,
@@ -497,7 +492,7 @@ async function main() {
 
     fs.writeFileSync('vpn.yml', JSON.stringify(clashConfig, null, 4), 'utf8');
 
-    // 4. vpns.json (Sing‑box) – unchanged, already has Iran/AdBlock rules
+    // 4. vpns.json (Sing‑box) – unchanged
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
 
