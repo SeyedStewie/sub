@@ -1,5 +1,4 @@
 const fs = require('fs');
-const url = require('url');
 
 if (!fs.existsSync('vpn.txt')) {
     console.error('فایل vpn.txt پیدا نشد!');
@@ -14,6 +13,13 @@ if (lines.length === 0) {
     process.exit(1);
 }
 
+// تابع تشخیص آی‌پی (برای جلوگیری از ارسال آی‌پی به domain_resolver)
+const isIpAddress = (ip) => {
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+    const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+    return ipv4Regex.test(ip) || ipv6Regex.test(ip);
+};
+
 function parseVlessConfig(link, index) {
     try {
         const parsed = new URL(link);
@@ -22,12 +28,12 @@ function parseVlessConfig(link, index) {
 
         const address = parsed.hostname;
         const port = parseInt(parsed.port) || 443;
-        const uuid = parsed.username;
+        const uuid = parsed.username || parsed.pathname.replace(/^\/\/?/, '');
         const params = parsed.searchParams;
 
         const path = params.get('path') || '/';
-        const host = params.get('host'] || parsed.hostname;
-        const sni = params.get('sni'] || host || address;
+        const host = params.get('host') || address;
+        const sni = params.get('sni') || host || address;
         const fp = params.get('fp') || 'chrome';
 
         const tag = `💦 ${index + 1} - VLESS - ${rawRemarks}`;
@@ -62,29 +68,15 @@ function parseVlessConfig(link, index) {
                 "headers": {
                     "Host": host
                 }
-            },
-            "domain_resolver": "dns-direct"
-        };
-
-        const clashObj = {
-            name: tag,
-            type: 'vless',
-            server: address,
-            port: port,
-            uuid: uuid,
-            cipher: 'none',
-            tls: true,
-            servername: sni,
-            'client-fingerprint': fp,
-            network: 'ws',
-            ws: true,
-            'ws-opts': {
-                path: path,
-                headers: { Host: host }
             }
         };
 
-        return { tag, outboundObj, clashObj, link };
+        // نکته حیاتی: اضافه کردن domain_resolver فقط برای دامنه‌ها
+        if (!isIpAddress(address)) {
+            outboundObj.domain_resolver = "dns-direct";
+        }
+
+        return { tag, outboundObj, link };
     } catch (e) {
         console.error(`خطا در پردازش لینک شماره ${index + 1}:`, e.message);
         return null;
@@ -92,9 +84,8 @@ function parseVlessConfig(link, index) {
 }
 
 const singboxOutbounds = [];
-const clashProxies = [];
-const validLinks = [];
 const outboundTags = [];
+const validLinks = [];
 
 lines.forEach((line, index) => {
     if (line.startsWith('vless://')) {
@@ -103,7 +94,6 @@ lines.forEach((line, index) => {
             validLinks.push(result.link);
             outboundTags.push(result.tag);
             singboxOutbounds.push(result.outboundObj);
-            clashProxies.push(result.clashObj);
         }
     }
 });
@@ -313,59 +303,6 @@ const singboxFullConfig = {
     }
 };
 
-fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 2), 'utf8');
+fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-// ساخت فایل Clash YAML
-let clashYaml = "port: 7890\n";
-clashYaml += "socks-port: 7891\n";
-clashYaml += "allow-lan: true\n";
-clashYaml += "mode: rule\n";
-clashYaml += "log-level: info\n";
-clashYaml += "external-controller: '127.0.0.1:9090'\n\n";
-
-clashYaml += "proxies:\n";
-clashProxies.forEach(p => {
-    clashYaml += `  - name: "${p.name}"\n`;
-    clashYaml += `    type: ${p.type}\n`;
-    clashYaml += `    server: ${p.server}\n`;
-    clashYaml += `    port: ${p.port}\n`;
-    clashYaml += `    uuid: ${p.uuid}\n`;
-    clashYaml += `    cipher: ${p.cipher}\n`;
-    clashYaml += `    tls: ${p.tls}\n`;
-    clashYaml += `    servername: ${p.servername}\n`;
-    clashYaml += `    client-fingerprint: ${p['client-fingerprint']}\n`;
-    clashYaml += `    network: ${p.network}\n`;
-    clashYaml += `    ws: true\n`;
-    clashYaml += `    ws-opts:\n`;
-    clashYaml += `      path: "${p['ws-opts'].path}"\n`;
-    clashYaml += `      headers:\n        Host: ${p['ws-opts'].headers.Host}\n`;
-});
-
-clashYaml += "\nproxy-groups:\n";
-clashYaml += `  - name: "${selectorTag}"\n`;
-clashYaml += "    type: select\n";
-clashYaml += "    proxies:\n";
-clashYaml += `      - "${urlTestTag}"\n`;
-clashProxies.forEach(p => {
-    clashYaml += `      - "${p.name}"\n`;
-});
-
-clashYaml += `  - name: "${urlTestTag}"\n`;
-clashYaml += "    type: url-test\n";
-clashYaml += "    proxies:\n";
-clashProxies.forEach(p => {
-    clashYaml += `      - "${p.name}"\n`;
-});
-clashYaml += "    url: 'http://www.gstatic.com/generate_204'\n";
-clashYaml += "    interval: 300\n";
-clashYaml += "    tolerance: 50\n";
-
-clashYaml += "\nrules:\n";
-clashYaml += `  - MATCH,${selectorTag}\n`;
-
-fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
-
-const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
-fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
-
-console.log('فایل خروجی سینگ‌باکس با موفقیت و تطابق ۱۰۰٪ با ساختار سالم ساخته شد[span_1](start_span)[span_1](end_span)!');
+console.log('فایل vpns.json دقیقاً مطابق با ساختار اصلی ساخته شد!');
