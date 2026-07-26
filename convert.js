@@ -30,11 +30,21 @@ function getRealCountryFlag(address) {
     }
 
     try {
-        const response = execSync(`curl -s --max-time 3 "http://ip-api.com/json/${address}?fields=status,countryCode"`, { encoding: 'utf8' });
+        // خواندن Token از متغیر محیطی گیت‌هاب سیکرت
+        const token = process.env.GEO_API_KEY || '';
+        let apiUrl = `https://ipinfo.io/${address}/json`;
+        
+        if (token) {
+            apiUrl += `?token=${token}`;
+        }
+
+        const response = execSync(`curl -s --max-time 4 "${apiUrl}"`, { encoding: 'utf8' });
         const data = JSON.parse(response);
         
-        if (data.status === 'success' && data.countryCode) {
-            return countryCodeToFlag(data.countryCode);
+        // در ipinfo.io کد کشور در فیلد country قرار دارد (مثلاً DE)
+        const countryCode = data.country;
+        if (countryCode) {
+            return countryCodeToFlag(countryCode);
         }
     } catch (e) {
         console.warn(`خطا در استعلام GeoIP برای ${address}:`, e.message);
@@ -53,7 +63,7 @@ function parseVless(link) {
         let rawRemarks = decodeURIComponent(parsed.hash.replace('#', '')).trim();
         if (!rawRemarks) rawRemarks = 'VPN Config';
 
-        console.log(`در حال بررسی لوکیشن واقعی برای: ${address}`);
+        console.log(`در حال بررسی لوکیشن با ipinfo برای: ${address}`);
         const flag = getRealCountryFlag(address);
         
         const cleanRemarks = rawRemarks.replace(/[\uD83C[\uDDE6-\uDDFF]{2}|🌍|☁️/g, '').trim();
@@ -74,7 +84,6 @@ function parseVless(link) {
     }
 }
 
-// ساخت یک آبجکت کامل کانفیگ برای هر لینک
 const jsonConfigs = [];
 
 lines.forEach((line) => {
@@ -202,6 +211,5 @@ if (jsonConfigs.length === 0) {
     process.exit(1);
 }
 
-// ذخیره به صورت آرایه ای از JSONها در فایل نهایی
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 console.log(`فایل vpn.json شامل ${jsonConfigs.length} کانفیگ با موفقیت ساخته شد!`);
