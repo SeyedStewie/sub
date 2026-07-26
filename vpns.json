@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPN.SeyEdDeX.WORKeRs.Dev",
+                "server_name": "Mqjc-08Df4-ewk8I1tjaFBqTBC2bRRhO.seYednG1.wOrkeRs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -100,7 +100,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv"
                 }
             }
         },
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "VPn.sEYEDdeX.woRKerS.DEv",
+                "server_name": "POLISHeD-BlocK-d011.seyeDDEX-339.WoRkerS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -132,7 +132,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv"
                 }
             }
         },
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Vpn.seyeDdex.WOrkeRS.Dev",
+                "server_name": "WiThEred-kIng-1433.HanNAHoWO.woRkErs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -164,7 +164,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV"
                 }
             }
         },
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "VPn.SEYEDdEX.worKers.Dev",
+                "server_name": "BlaCk-treE-34c2.MIhaNikA69.woRkERs.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -196,7 +196,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev"
                 }
             }
         },
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "VpN.seyEDDeX.WoRKeRS.DEV",
+                "server_name": "SpRiNG-dIsK-81D3.meSeyEdnG.WOrkerS.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -228,7 +228,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv"
                 }
             }
         },
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "VPN.SEyEdDEx.wOrKers.dev",
+                "server_name": "sNOWy-wood-A9fd.seYeDEx.wOrKERS.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -260,7 +260,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev"
                 }
             }
         },
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPN.SeYeDdeX.wORkerS.dev",
+                "server_name": "LIVely-MaTh-a2A1.mILfetTA.wOrkERS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -292,7 +292,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "livelY-MATH-A2a1.milfEttA.woRKErs.dEV"
                 }
             }
         },
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vpn.SeYEddeX.wORkerS.DEV",
+                "server_name": "SupER-UNiOn-7d52.sEyeDdEx-fbD.WoRKers.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -324,7 +324,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV"
                 }
             }
         },
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPn.sEYEdDeX.WORkeRS.deV",
+                "server_name": "Vpn.sEYEddex.WorKeRS.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -356,7 +356,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "vpn.SeYEddEx.woRKERs.DeV"
                 }
             }
         },
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vpn.seYeddex.woRKerS.DEv",
+                "server_name": "LoNg-dust-93e6.sEyedhOSeIn.wORkErs.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -388,7 +388,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv"
                 }
             }
         },
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "VpN.SEYeDdex.wORkers.dEV",
+                "server_name": "CoOl-SHApe-4720.SeYedNg.WoRkerS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -420,7 +420,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv"
                 }
             }
         },
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vpN.SeyeddeX.WOrkERS.dEv",
+                "server_name": "sPrINg-sOUNd-2369.StEwiENg.WorKErS.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -452,7 +452,7 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "vpn.seyeddex.workers.dev"
+                    "Host": "SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV"
                 }
             }
         },
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "OraNGe-cLOuD-60C4.sEYedStEWIEATOMIC.WorKERs.dEV",
+                "server_name": "oRange-cLOuD-60c4.seYeDstewieaToMIc.wOrKERs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
