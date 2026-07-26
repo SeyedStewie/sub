@@ -190,8 +190,24 @@ proxies:
         Host: oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV
 
 proxy-groups:
-  - name: "🚀 Load-Balance"
-    type: load-balance
+  - name: "انتخاب دستی"
+    type: select
+    proxies:
+      - "🦋🇨🇦🇨🇦"
+      - "🦊🇺🇲🇫🇮"
+      - "🦅🇺🇲🇺🇸"
+      - "🐠🇺🇲🇺🇸"
+      - "🦔🇺🇲🇺🇸"
+      - "🐏🇺🇲🇺🇸"
+      - "🦆🇩🇪🇺🇸"
+      - "🦩🇩🇪🇰🇿"
+      - "🦢🇩🇪🇦🇹"
+      - "🐈🇩🇪🇺🇸"
+      - "🐧🇳🇱🇳🇱"
+      - "🐿️🇩🇪🇺🇸"
+      - "🦨🇩🇪🇺🇸"
+  - name: "بهترین پینگ"
+    type: url-test
     proxies:
       - "🦋🇨🇦🇨🇦"
       - "🦊🇺🇲🇫🇮"
@@ -208,6 +224,7 @@ proxy-groups:
       - "🦨🇩🇪🇺🇸"
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
+    tolerance: 50
 
 rules:
-  - MATCH,🚀 Load-Balance
+  - MATCH,انتخاب دستی
