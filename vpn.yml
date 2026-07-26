@@ -34,7 +34,7 @@
             "rule-set:category-ads-all": "rcode://refused"
         },
         "nameserver": [
-            "https://8.8.8.8/dns-query#✅ Selector"
+            "https://8.8.8.8/dns-query#انتخاب دستی"
         ],
         "proxy-server-nameserver": [
             "8.8.8.8#DIRECT"
@@ -101,7 +101,7 @@
             "uuid": "83addb25-9876-47a3-9f18-0756fb477099",
             "packet-encoding": "",
             "tls": true,
-            "servername": "MQjc-08DF4-EWk8I1TJAfbQTBC2bRrho.seyEDnG1.wORkeRS.DEV",
+            "servername": "mqJc-08df4-EwK8i1tJAFBqtbc2BrRho.SeyedNg1.woRKErS.DEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -128,7 +128,7 @@
             "uuid": "4e667592-a9bf-4b89-bbe2-f4656be6a9d6",
             "packet-encoding": "",
             "tls": true,
-            "servername": "PoLisHED-BLOCK-d011.SEYEddeX-339.WorKERs.Dev",
+            "servername": "PoLisHed-BLOcK-D011.SEyeddEX-339.WoRkerS.deV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -155,7 +155,7 @@
             "uuid": "22df3e50-40d6-4003-8623-917ef4385fcb",
             "packet-encoding": "",
             "tls": true,
-            "servername": "WithErED-kIng-1433.HanNaHOWo.WorkErs.dev",
+            "servername": "WITHEREd-KInG-1433.HANnAhoWo.wOrkers.dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -182,7 +182,7 @@
             "uuid": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
             "packet-encoding": "",
             "tls": true,
-            "servername": "bLACk-treE-34c2.MihanIkA69.wOrkERS.Dev",
+            "servername": "bLaCK-tReE-34c2.MIHAnIKa69.wORkerS.DeV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -209,7 +209,7 @@
             "uuid": "7c778f01-c667-4fba-8580-849b966b18a9",
             "packet-encoding": "",
             "tls": true,
-            "servername": "sPrING-disk-81D3.mEseYednG.WOrKErS.DEv",
+            "servername": "spriNg-DisK-81D3.MeSEyEDng.wORKeRs.dEV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -236,7 +236,7 @@
             "uuid": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
             "packet-encoding": "",
             "tls": true,
-            "servername": "sNOwY-Wood-A9Fd.sEyeDEx.WorKeRs.dEv",
+            "servername": "sNOWY-WOOD-A9FD.SEyedEX.WorkerS.DEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -263,7 +263,7 @@
             "uuid": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
             "packet-encoding": "",
             "tls": true,
-            "servername": "LIVelY-mATh-a2A1.MIlFeTtA.wORKers.DEv",
+            "servername": "LIVELY-MAth-a2a1.mILFETta.wOrKerS.dEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -290,7 +290,7 @@
             "uuid": "f48f054a-20cb-4dfc-821a-42d9655515a9",
             "packet-encoding": "",
             "tls": true,
-            "servername": "SUPeR-uniOn-7d52.seyeddeX-FBD.workers.DEV",
+            "servername": "supEr-uNIoN-7d52.seyeDdEx-fBd.wOrKErS.dEV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -317,7 +317,7 @@
             "uuid": "190f85d0-72ef-4aec-bfd8-401ac90c4d43",
             "packet-encoding": "",
             "tls": true,
-            "servername": "VPn.SeYEDDex.workErs.DEv",
+            "servername": "VPN.seYEdDEx.WOrKeRs.DEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -344,7 +344,7 @@
             "uuid": "726eeafa-e8c2-46e7-81ec-57058d552b45",
             "packet-encoding": "",
             "tls": true,
-            "servername": "LONg-DUsT-93E6.seyedhosEin.WORkERS.DeV",
+            "servername": "LONg-DUST-93e6.seyEDHosEIn.WoRkers.DEV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -371,7 +371,7 @@
             "uuid": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
             "packet-encoding": "",
             "tls": true,
-            "servername": "coOl-sHaPE-4720.sEyEDNg.WorkerS.dev",
+            "servername": "COol-shApe-4720.seyEDnG.wOrKErS.dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -398,7 +398,7 @@
             "uuid": "c8805c30-a8a5-410f-abed-2ef17574cff1",
             "packet-encoding": "",
             "tls": true,
-            "servername": "SPRiNg-sOuNd-2369.steWiENG.wORkERs.Dev",
+            "servername": "sPring-SoUnD-2369.SteWIeNg.wORKeRs.Dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -425,7 +425,7 @@
             "uuid": "2ee79869-5abe-4a3a-b654-77b525ec99c7",
             "packet-encoding": "",
             "tls": true,
-            "servername": "OrAnGe-ClOud-60C4.sEYeDsTewieAToMiC.WORKerS.dEv",
+            "servername": "oRAnGE-Cloud-60C4.seYeDSteWIEAtomic.worKeRs.dEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -444,10 +444,10 @@
     ],
     "proxy-groups": [
         {
-            "name": "✅ Selector",
+            "name": "انتخاب دستی",
             "type": "select",
             "proxies": [
-                "💦 Best Ping 🚀",
+                "بهترین پینگ",
                 "🦋🇨🇦",
                 "🦊🇺🇲",
                 "🦅🇺🇲",
@@ -464,7 +464,7 @@
             ]
         },
         {
-            "name": "💦 Best Ping 🚀",
+            "name": "بهترین پینگ",
             "type": "url-test",
             "proxies": [
                 "🦋🇨🇦",
@@ -518,7 +518,7 @@
         "RULE-SET,category-ads-all,REJECT",
         "RULE-SET,ir,DIRECT",
         "RULE-SET,ir-cidr,DIRECT",
-        "MATCH,✅ Selector"
+        "MATCH,انتخاب دستی"
     ],
     "ntp": {
         "enable": true,
