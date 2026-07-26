@@ -131,7 +131,6 @@ lines.forEach((line, index) => {
         "tcp_fast_open": false,
         "uuid": config.uuid,
         "packet_encoding": "",
-        "network": config.net,
         ...(config.security === 'tls' && {
             "tls": {
                 "enabled": true,
@@ -446,4 +445,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('فایل‌ها با نام‌گذاری‌های جدید بروزرسانی شدند!');
+console.log('اسکریپت با موفقیت اجرا شد و فایل‌ها بدون خطا ساخته شدند!');
