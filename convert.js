@@ -32,11 +32,10 @@ function parseVlessConfig(link, index) {
         const uuid = parsed.username || parsed.pathname.replace(/^\/\/?/, '');
         const params = parsed.searchParams;
 
-        // استخراج ایمن Path و بازگردانی علامت‌های + که به فاصله تبدیل شده‌اند
+        // --- FIX 1: پاک کردن Query String از مسیر WebSocket ---
         let path = params.get('path') || '/';
-        if (path.includes(' ')) {
-            path = path.replace(/ /g, '+');
-        }
+        path = path.split('?')[0];                 // حذف ?ed=... و غیره
+        if (!path.startsWith('/')) path = '/' + path;
 
         // استخراج دامنه ورکر (اگر موجود نبود، مقدار پیش‌فرض فایل شما جایگذاری می‌شود)
         let workerDomain = params.get('host') || params.get('sni') || 'vpn.seyeddex.workers.dev';
@@ -83,7 +82,7 @@ function parseVlessConfig(link, index) {
             }
         };
 
-        // اعمال domain_resolver منحصراً برای دامنه‌ها
+        // --- FIX 2: افزودن domain_resolver برای سرورهای دامنه‌ای ---
         if (!isIpAddress(address)) {
             outboundObj.domain_resolver = "dns-direct";
         }
@@ -255,4 +254,4 @@ const singboxFullConfig = {
 };
 
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
-console.log('فایل vpns.json با پاکسازی کامل کاراکترهای مخرب ساخته شد!');
+console.log('✅ فایل vpns.json با اصلاحات کامل ساخته شد!');
