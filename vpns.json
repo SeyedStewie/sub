@@ -1,4 +1,35 @@
 {
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxydns",
+        "address": "tls://8.8.8.8"
+      },
+      {
+        "tag": "localdns",
+        "address": "local",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "proxydns"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10808
+    }
+  ],
   "outbounds": [
     {
       "type": "vless",
@@ -298,6 +329,23 @@
           "Host": "oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV"
         }
       }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
     }
-  ]
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      }
+    ],
+    "auto_detect_interface": true
+  }
 }
