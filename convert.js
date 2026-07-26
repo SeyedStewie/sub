@@ -27,17 +27,17 @@ const randomizeCase = (str) => {
 function parseVlessConfig(link, index) {
     try {
         const parsed = new URL(link);
-        const address = parsed.hostname.replace(/\[|\]/g, ''); // پاکسازی براکت‌های IPv6
+        const address = parsed.hostname.replace(/\[|\]/g, '');
         const port = parseInt(parsed.port) || 443;
         const uuid = parsed.username || parsed.pathname.replace(/^\/\/?/, '');
         const params = parsed.searchParams;
 
-        // --- FIX 1: پاک کردن Query String از مسیر WebSocket ---
+        // --- پاک کردن Query String از مسیر WebSocket ---
         let path = params.get('path') || '/';
-        path = path.split('?')[0];                 // حذف ?ed=... و غیره
+        path = path.split('?')[0];
         if (!path.startsWith('/')) path = '/' + path;
 
-        // استخراج دامنه ورکر (اگر موجود نبود، مقدار پیش‌فرض فایل شما جایگذاری می‌شود)
+        // استخراج دامنه ورکر
         let workerDomain = params.get('host') || params.get('sni') || 'vpn.seyeddex.workers.dev';
         workerDomain = workerDomain.trim();
 
@@ -45,11 +45,22 @@ function parseVlessConfig(link, index) {
         const host = workerDomain;
         const fp = params.get('fp') || 'chrome';
 
+        // --- استخراج Remark از بخش # ---
+        let remark = parsed.hash ? parsed.hash.slice(1).trim() : '';
+        // اگر remark خالی بود، از پارامتر 'remark' در query استفاده کن (بعضی لینک‌ها اینطور هستند)
+        if (!remark) remark = params.get('remark') || '';
+
         let tagType = "Clean IP";
         if (address === host) tagType = "Domain";
         else if (isIpAddress(address)) tagType = "IPv4";
 
-        const tag = `💦 ${index + 1} - VLESS - ${tagType} : ${port}`;
+        // تعیین تگ نهایی: اگر remark داشت، از آن استفاده کن، در غیر این صورت یک تگ خودکار بساز
+        let tag;
+        if (remark) {
+            tag = remark;
+        } else {
+            tag = `vpn`;
+        }
 
         const outboundObj = {
             "tag": tag,
@@ -82,7 +93,7 @@ function parseVlessConfig(link, index) {
             }
         };
 
-        // --- FIX 2: افزودن domain_resolver برای سرورهای دامنه‌ای ---
+        // --- افزودن domain_resolver برای سرورهای دامنه‌ای ---
         if (!isIpAddress(address)) {
             outboundObj.domain_resolver = "dns-direct";
         }
@@ -115,8 +126,9 @@ if (validLinks.length === 0) {
     process.exit(1);
 }
 
-const selectorTag = "✅ Selector";
-const urlTestTag = "💦 Best Ping 🚀";
+// --- تغییر نام‌های اصلی به فارسی ---
+const selectorTag = "انتخاب دستی";
+const urlTestTag = "بهترین پینگ";
 
 const singboxFullConfig = {
     "log": {
@@ -254,4 +266,4 @@ const singboxFullConfig = {
 };
 
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
-console.log('✅ فایل vpns.json با اصلاحات کامل ساخته شد!');
+console.log('✅ فایل vpns.json با نام‌های فارسی و Remark ساخته شد!');
