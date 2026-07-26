@@ -61,7 +61,7 @@ async function parseVlessConfig(link, index) {
 
         const locationInfo = await getIpLocation(address);
         
-        // --- چسباندن پرچم بدون فاصله به انتهای ریمارک ---
+        // چسباندن پرچم بدون فاصله به انتهای ریمارک
         let tag = `${originalRemark}${locationInfo.flag}`;
 
         const outboundObj = {
@@ -131,15 +131,15 @@ async function main() {
         process.exit(1);
     }
 
-    // ۱. تولید فایل vpn64.txt
+    // ۱. تولید فایل vpn64.txt (به‌روزرسانی شده)
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // ۲. تولید فایل vpn.json
+    // ۲. تولید فایل vpn.json (به‌روزرسانی شده با آرایه لینک‌های جدید)
     fs.writeFileSync('vpn.json', JSON.stringify(validLinks, null, 4), 'utf8');
 
-    // ۳. تولید فایل vpn.yml
+    // ۳. تولید فایل vpn.yml (به‌روزرسانی شده)
     let ymlContent = "proxies:\n";
     validLinks.forEach((link, idx) => {
         ymlContent += `  - name: "${outboundTags[idx]}"\n    type: vless\n    url: "${link}"\n`;
@@ -246,7 +246,7 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    console.log('✅ ۴ فایل خروجی بدون فاصله و با چسبیدن پرچم به انتهای ریمارک ساخته شدند!');
+    console.log('✅ همه ۴ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
