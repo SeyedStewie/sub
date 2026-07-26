@@ -41,7 +41,7 @@ function getRealCountryFlag(address) {
             return countryCodeToFlag(data.country);
         }
     } catch (e) {
-        console.warn(`خطا در استعلام GeoIP برای ${address}:`, e.message);
+        // Fallback
     }
 
     return '🌍';
@@ -109,11 +109,42 @@ const validLinks = [];
 const outboundTags = [];
 
 lines.forEach((line, index) => {
-    const config = parseConfig(line);
+    let config = parseConfig(line);
+    
+    // حالت فالبک در صورت عدم‌پارس دقیق URL
+    if (!config && line.startsWith('vless://')) {
+        try {
+            const parsed = new URL(line);
+            let rawRemarks = decodeURIComponent(parsed.hash.replace('#', '')).trim();
+            if (!rawRemarks) rawRemarks = `VLESS Config ${index + 1}`;
+            
+            const address = parsed.hostname;
+            const flag = getRealCountryFlag(address);
+            const remarks = `${rawRemarks} ${flag}`;
+            const params = parsed.searchParams;
+
+            config = {
+                protocol: 'vless',
+                remarks,
+                address,
+                port: parseInt(parsed.port) || 443,
+                uuid: parsed.username,
+                path: params.get('path') || '/',
+                security: params.get('security') || 'tls',
+                sni: params.get('sni') || address,
+                fp: params.get('fp') || 'chrome',
+                alpn: params.get('alpn') ? params.get('alpn').split(',') : ['http/1.1'],
+                net: params.get('type') || 'ws'
+            };
+        } catch (err) {
+            // ignore
+        }
+    }
+
     if (!config) return;
 
     validLinks.push(line);
-    const tag = `💦 ${index + 1} - ${config.protocol.toUpperCase()} - ${config.remarks}`;
+    const tag = `${config.remarks}`;
     outboundTags.push(tag);
 
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
@@ -123,6 +154,7 @@ lines.forEach((line, index) => {
         });
     }
 
+    // ساختار دقیق بر اساس فایل الگو[span_2](start_span)[span_2](end_span)
     const outboundObj = {
         "tag": tag,
         "type": config.protocol,
@@ -149,7 +181,7 @@ lines.forEach((line, index) => {
         };
     }
 
-    if (config.net === 'ws') {
+    if (config.net === 'ws' || config.path) {
         outboundObj.transport = {
             "type": "ws",
             "path": config.path || "/",
@@ -456,4 +488,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('اسکریپت با نام‌های جدید «انتخاب دستی» و «بهترین پینگ» با موفقیت اجرا شد!');
+console.log('اسکریپت با الگوبرداری کامل از فایل مرجع اجرا شد و خروجی‌ها ایجاد شدند!');
