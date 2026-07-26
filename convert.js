@@ -5,7 +5,8 @@ if (!fs.existsSync('vpn.txt')) {
     process.exit(1);
 }
 
-const txtContent = fs.readFileSync('vpn.txt', 'utf8').trim();
+// حذف کامل کاراکترهای نامرئی \r که باعث خرابی هدرها می‌شوند
+const txtContent = fs.readFileSync('vpn.txt', 'utf8').replace(/\r/g, '').trim();
 const lines = txtContent.split('\n').filter(line => line.trim() !== '');
 
 if (lines.length === 0) {
@@ -13,14 +14,12 @@ if (lines.length === 0) {
     process.exit(1);
 }
 
-// تشخیص آی‌پی برای تنظیمات Resolver
-const isIpAddress = (ip) => {
-    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
-    const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
-    return ipv4Regex.test(ip) || ipv6Regex.test(ip);
+// تشخیص دقیق IPv4 و IPv6 (آی‌پی‌ها نباید domain_resolver داشته باشند)
+const isIpAddress = (str) => {
+    return /^(\d{1,3}\.){3}\d{1,3}$/.test(str) || str.includes(':') || str.includes('[');
 };
 
-// تابع ایجاد حروف تصادفی برای SNI جهت بایپس DPI
+// تابع ایجاد حروف تصادفی برای SNI جهت دور زدن DPI
 const randomizeCase = (str) => {
     return str.split('').map(c => Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()).join('');
 };
@@ -28,19 +27,25 @@ const randomizeCase = (str) => {
 function parseVlessConfig(link, index) {
     try {
         const parsed = new URL(link);
-        const address = parsed.hostname;
+        const address = parsed.hostname.replace(/\[|\]/g, ''); // پاکسازی براکت‌های IPv6
         const port = parseInt(parsed.port) || 443;
         const uuid = parsed.username || parsed.pathname.replace(/^\/\/?/, '');
         const params = parsed.searchParams;
 
-        const path = params.get('path') || '/';
-        // در کانفیگ ورکر، هدر Host باید همون دامنه اصلی باشه
-        const host = params.get('host') || 'vpn.seyeddex.workers.dev';
-        // اعمال حروف تصادفی روی SNI
-        const sni = randomizeCase(host);
+        // استخراج ایمن Path و بازگردانی علامت‌های + که به فاصله تبدیل شده‌اند
+        let path = params.get('path') || '/';
+        if (path.includes(' ')) {
+            path = path.replace(/ /g, '+');
+        }
+
+        // استخراج دامنه ورکر (اگر موجود نبود، مقدار پیش‌فرض فایل شما جایگذاری می‌شود)
+        let workerDomain = params.get('host') || params.get('sni') || 'vpn.seyeddex.workers.dev';
+        workerDomain = workerDomain.trim();
+
+        const sni = randomizeCase(workerDomain);
+        const host = workerDomain;
         const fp = params.get('fp') || 'chrome';
 
-        // تنظیم اسم تگ مشابه فایل سالم
         let tagType = "Clean IP";
         if (address === host) tagType = "Domain";
         else if (isIpAddress(address)) tagType = "IPv4";
@@ -58,7 +63,7 @@ function parseVlessConfig(link, index) {
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": sni, // نامنظم شده
+                "server_name": sni,
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": ["http/1.1"],
@@ -73,12 +78,12 @@ function parseVlessConfig(link, index) {
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": host // فیکس شده روی دامنه
+                    "Host": host
                 }
             }
         };
 
-        // اعمال domain_resolver فقط برای دامنه‌ها
+        // اعمال domain_resolver منحصراً برای دامنه‌ها
         if (!isIpAddress(address)) {
             outboundObj.domain_resolver = "dns-direct";
         }
@@ -95,6 +100,7 @@ const outboundTags = [];
 const validLinks = [];
 
 lines.forEach((line, index) => {
+    line = line.trim();
     if (line.startsWith('vless://')) {
         const result = parseVlessConfig(line, index);
         if (result) {
@@ -249,4 +255,4 @@ const singboxFullConfig = {
 };
 
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
-console.log('فایل vpns.json با ساختار دقیق ورکرز ساخته شد!');
+console.log('فایل vpns.json با پاکسازی کامل کاراکترهای مخرب ساخته شد!');
