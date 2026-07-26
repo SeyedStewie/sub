@@ -211,7 +211,6 @@ lines.forEach((line) => {
               { "network": "udp", "outboundTag": "block", "type": "field" },
               { "domain": ["geosite:category-ads-all", "geosite:category-ads-ir"], "outboundTag": "block", "type": "field" },
               { "domain": ["geosite:category-ir"], "outboundTag": "direct", "type": "field" },
-              { "ip": ["geoip:ir"], "outboundTag": "direct", "type": "field" },
               { "network": "tcp", "outboundTag": "proxy", "type": "field" }
             ]
           },
@@ -223,7 +222,7 @@ lines.forEach((line) => {
         });
     }
 
-    // ۲. خروجی Sing-box برای vpns.json (سازگار با نسخه‌های جدید)
+    // ۲. خروجی Sing-box برای vpns.json
     singboxOutbounds.push({
         "type": config.protocol,
         "tag": config.remarks,
@@ -283,17 +282,18 @@ if (validLinks.length === 0) {
 // ذخیره vpn.json (Xray)
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 
-// ذخیره ساختار کامل و به‌روز Sing-box برای vpns.json
+// ذخیره ساختار کاملاً مدرن و استاندارد Sing-box (سازگار با نسخه 1.12 و بالاتر) بدون خطای Deprecated
 const singboxFullConfig = {
     "log": { "level": "warn", "timestamp": true },
     "dns": {
         "servers": [
             { "tag": "proxydns", "address": "tls://8.8.8.8" },
-            { "tag": "localdns", "address": "local", "detour": "direct" }
+            { "tag": "localdns", "address": "local" }
         ],
         "rules": [
-            { "outbound": "any", "server": "proxydns" }
-        ]
+            { "rule_set": [], "server": "proxydns" }
+        ],
+        "final": "proxydns"
     },
     "inbounds": [
         {
@@ -309,9 +309,7 @@ const singboxFullConfig = {
         { "type": "block", "tag": "block" }
     ],
     "route": {
-        "rules": [
-            { "protocol": "dns", "outbound": "dns-out" }
-        ],
+        "final": "direct",
         "auto_detect_interface": true
     }
 };
@@ -376,4 +374,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('تمامی فایل‌های خروجی با موفقیت و رفع ایرادات بروزرسانی شدند!');
+console.log('تمامی فایل‌ها با موفقیت و بر اساس استانداردهای جدید سینگ‌باکس بروزرسانی شدند!');
