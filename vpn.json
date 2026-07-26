@@ -1,6 +1,227 @@
 [
     {
-        "remarks": "🦋🇨🇦",
+        "remarks": "🐆🇮🇷🇺🇸",
+        "version": {
+            "min": "26.2.6"
+        },
+        "log": {
+            "loglevel": "none"
+        },
+        "dns": {
+            "hosts": {
+                "geosite:category-ads-all": "#3",
+                "geosite:category-ads-ir": "#3"
+            },
+            "servers": [
+                {
+                    "address": "https://8.8.8.8/dns-query",
+                    "tag": "remote-dns"
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "geosite:category-ir"
+                    ],
+                    "expectIPs": [
+                        "geoip:ir"
+                    ],
+                    "skipFallback": true
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "full:8.6.112.75"
+                    ],
+                    "skipFallback": true
+                }
+            ],
+            "queryStrategy": "UseIP",
+            "tag": "dns"
+        },
+        "inbounds": [
+            {
+                "listen": "127.0.0.1",
+                "port": 10808,
+                "protocol": "mixed",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true
+                },
+                "sniffing": {
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ],
+                    "enabled": true,
+                    "routeOnly": true
+                },
+                "tag": "mixed-in"
+            },
+            {
+                "listen": "127.0.0.1",
+                "port": 10853,
+                "protocol": "dokodemo-door",
+                "settings": {
+                    "address": "1.1.1.1",
+                    "network": "tcp,udp",
+                    "port": 53
+                },
+                "tag": "dns-in"
+            }
+        ],
+        "outbounds": [
+            {
+                "protocol": "wireguard",
+                "settings": {
+                    "secretKey": "",
+                    "address": [
+                        "172.16.0.2/32"
+                    ],
+                    "dns": [],
+                    "peers": [
+                        {
+                            "endpoint": "8.6.112.75:500",
+                            "publicKey": "AOByDc418sWfLTtPOufhihT2hgBEcxQvHdJgS5kpjVk%3D",
+                            "allowedIPs": [
+                                "0.0.0.0/0"
+                            ]
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "raw"
+                },
+                "sockopt": {
+                    "domainStrategy": "UseIP"
+                },
+                "tag": "proxy"
+            },
+            {
+                "protocol": "dns",
+                "settings": {
+                    "rules": [
+                        {
+                            "action": "hijack"
+                        }
+                    ]
+                },
+                "tag": "dns-out"
+            },
+            {
+                "protocol": "freedom",
+                "settings": {
+                    "domainStrategy": "UseIP"
+                },
+                "tag": "direct"
+            },
+            {
+                "protocol": "blackhole",
+                "settings": {
+                    "response": {
+                        "type": "http"
+                    }
+                },
+                "tag": "block"
+            }
+        ],
+        "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [
+                {
+                    "inboundTag": [
+                        "mixed-in"
+                    ],
+                    "port": 53,
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "dns-in"
+                    ],
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "remote-dns"
+                    ],
+                    "outboundTag": "proxy",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "dns"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:private"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [
+                        "geoip:private"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "udp",
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:category-ads-all",
+                        "geosite:category-ads-ir"
+                    ],
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:category-ir"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [
+                        "geoip:ir"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "tcp",
+                    "outboundTag": "proxy",
+                    "type": "field"
+                }
+            ]
+        },
+        "policy": {
+            "levels": {
+                "0": {
+                    "connIdle": 300,
+                    "handshake": 4,
+                    "uplinkOnly": 1,
+                    "downlinkOnly": 1
+                }
+            },
+            "system": {
+                "statsOutboundUplink": true,
+                "statsOutboundDownlink": true
+            }
+        },
+        "stats": {}
+    },
+    {
+        "remarks": "🦋🇨🇦🇨🇦",
         "version": {
             "min": "26.2.6"
         },
@@ -80,7 +301,8 @@
                             "users": [
                                 {
                                     "id": "83addb25-9876-47a3-9f18-0756fb477099",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -94,7 +316,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "mqJc-08df4-EwK8i1tJAFBqtbc2BrRho.SeyedNg1.woRKErS.DEv",
+                        "serverName": "mqjC-08df4-EWK8I1TjAfBQtBc2BRRHO.sEyEdng1.WorKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -237,7 +459,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦊🇺🇲",
+        "remarks": "🦊🇺🇲🇫🇮",
         "version": {
             "min": "26.2.6"
         },
@@ -317,7 +539,8 @@
                             "users": [
                                 {
                                     "id": "4e667592-a9bf-4b89-bbe2-f4656be6a9d6",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -331,7 +554,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "PoLisHed-BLOcK-D011.SEyeddEX-339.WoRkerS.deV",
+                        "serverName": "PolIsheD-bloCK-D011.SeyeDDex-339.WORkers.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -474,7 +697,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦅🇺🇲",
+        "remarks": "🦅🇺🇲🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -554,7 +777,8 @@
                             "users": [
                                 {
                                     "id": "22df3e50-40d6-4003-8623-917ef4385fcb",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -568,7 +792,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WITHEREd-KInG-1433.HANnAhoWo.wOrkers.dev",
+                        "serverName": "WiTHeRED-KIng-1433.HANNahowO.workErS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -711,7 +935,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐠🇺🇲",
+        "remarks": "🐠🇺🇲🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -791,7 +1015,8 @@
                             "users": [
                                 {
                                     "id": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -805,7 +1030,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "bLaCK-tReE-34c2.MIHAnIKa69.wORkerS.DeV",
+                        "serverName": "blaCk-TREe-34C2.mihanika69.WoRkeRS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -948,7 +1173,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦔🇺🇲",
+        "remarks": "🦔🇺🇲🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -1028,7 +1253,8 @@
                             "users": [
                                 {
                                     "id": "7c778f01-c667-4fba-8580-849b966b18a9",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -1042,7 +1268,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "spriNg-DisK-81D3.MeSEyEDng.wORKeRs.dEV",
+                        "serverName": "sPriNg-DISk-81D3.mEsEYeDNG.WorKeRs.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1185,7 +1411,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐏🇺🇲",
+        "remarks": "🐏🇺🇲🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -1265,7 +1491,8 @@
                             "users": [
                                 {
                                     "id": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -1279,7 +1506,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sNOWY-WOOD-A9FD.SEyedEX.WorkerS.DEv",
+                        "serverName": "snowy-wOOd-a9Fd.sEYeDEx.wORkERS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1422,7 +1649,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦆🇩🇪",
+        "remarks": "🦆🇩🇪🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -1502,7 +1729,8 @@
                             "users": [
                                 {
                                     "id": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -1516,7 +1744,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LIVELY-MAth-a2a1.mILFETta.wOrKerS.dEv",
+                        "serverName": "LiVeLY-mAth-a2a1.mIlFeTTA.WORkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1659,7 +1887,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦩🇩🇪",
+        "remarks": "🦩🇩🇪🇰🇿",
         "version": {
             "min": "26.2.6"
         },
@@ -1739,7 +1967,8 @@
                             "users": [
                                 {
                                     "id": "f48f054a-20cb-4dfc-821a-42d9655515a9",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -1753,7 +1982,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "supEr-uNIoN-7d52.seyeDdEx-fBd.wOrKErS.dEV",
+                        "serverName": "SUpeR-UniOn-7d52.seyedDex-fBD.wORkErs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1896,7 +2125,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦢🇩🇪",
+        "remarks": "🦢🇩🇪🇦🇹",
         "version": {
             "min": "26.2.6"
         },
@@ -1976,7 +2205,8 @@
                             "users": [
                                 {
                                     "id": "190f85d0-72ef-4aec-bfd8-401ac90c4d43",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -1990,7 +2220,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VPN.seYEdDEx.WOrKeRs.DEv",
+                        "serverName": "vpn.SEyeDdEX.wOrKers.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2133,7 +2363,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐈🇩🇪",
+        "remarks": "🐈🇩🇪🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -2213,7 +2443,8 @@
                             "users": [
                                 {
                                     "id": "726eeafa-e8c2-46e7-81ec-57058d552b45",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -2227,7 +2458,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LONg-DUST-93e6.seyEDHosEIn.WoRkers.DEV",
+                        "serverName": "lonG-DUST-93e6.SeyeDhOSeIN.WorkERS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2370,7 +2601,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐧🇳🇱",
+        "remarks": "🐧🇳🇱🇳🇱",
         "version": {
             "min": "26.2.6"
         },
@@ -2450,7 +2681,8 @@
                             "users": [
                                 {
                                     "id": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -2464,7 +2696,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "COol-shApe-4720.seyEDnG.wOrKErS.dev",
+                        "serverName": "COol-sHApe-4720.seYEDnG.WoRkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2607,7 +2839,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐿️🇩🇪",
+        "remarks": "🐿️🇩🇪🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -2687,7 +2919,8 @@
                             "users": [
                                 {
                                     "id": "c8805c30-a8a5-410f-abed-2ef17574cff1",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -2701,7 +2934,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPring-SoUnD-2369.SteWIeNg.wORKeRs.Dev",
+                        "serverName": "sprinG-soUND-2369.stEwiENg.WORkERS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2844,7 +3077,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦨🇩🇪",
+        "remarks": "🦨🇩🇪🇺🇸",
         "version": {
             "min": "26.2.6"
         },
@@ -2924,7 +3157,8 @@
                             "users": [
                                 {
                                     "id": "2ee79869-5abe-4a3a-b654-77b525ec99c7",
-                                    "encryption": "none"
+                                    "encryption": "none",
+                                    "flow": ""
                                 }
                             ]
                         }
@@ -2938,7 +3172,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "oRAnGE-Cloud-60C4.seYeDSteWIEAtomic.worKeRs.dEv",
+                        "serverName": "OraNGe-Cloud-60C4.sEYEDsteWIeaToMIc.wORKeRS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
