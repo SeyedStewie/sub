@@ -1,6 +1,6 @@
 [
     {
-        "remarks": "🦋🇨🇦🇩🇪",
+        "remarks": "🦋🇨🇦",
         "version": {
             "min": "26.2.6"
         },
@@ -94,7 +94,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "mqJC-08DF4-ewk8I1tjafBqtBC2brrHO.sEyeDNG1.WoRkers.DEv",
+                        "serverName": "MQjc-08DF4-EWk8I1TJAfbQTBC2bRrho.seyEDnG1.wORkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -237,7 +237,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦊🇺🇲🇩🇪",
+        "remarks": "🦊🇺🇲",
         "version": {
             "min": "26.2.6"
         },
@@ -331,7 +331,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "poLisHed-bLocK-D011.sEYeDDEX-339.workERS.DEv",
+                        "serverName": "PoLisHED-BLOCK-d011.SEYEddeX-339.WorKERs.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -474,7 +474,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦅🇺🇲🇩🇪",
+        "remarks": "🦅🇺🇲",
         "version": {
             "min": "26.2.6"
         },
@@ -568,7 +568,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WiTheREd-KiNG-1433.haNnAHoWo.WoRKeRS.DEV",
+                        "serverName": "WithErED-kIng-1433.HanNaHOWo.WorkErs.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -711,7 +711,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐠🇺🇲🇩🇪",
+        "remarks": "🐠🇺🇲",
         "version": {
             "min": "26.2.6"
         },
@@ -805,7 +805,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "bLAck-tReE-34C2.MIhANIka69.WoRKers.dev",
+                        "serverName": "bLACk-treE-34c2.MihanIkA69.wOrkERS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -948,7 +948,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦔🇺🇲🇩🇪",
+        "remarks": "🦔🇺🇲",
         "version": {
             "min": "26.2.6"
         },
@@ -1042,7 +1042,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SpRIng-diSK-81d3.Meseyedng.WORkErs.DEV",
+                        "serverName": "sPrING-disk-81D3.mEseYednG.WOrKErS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1185,7 +1185,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐏🇺🇲🇩🇪",
+        "remarks": "🐏🇺🇲",
         "version": {
             "min": "26.2.6"
         },
@@ -1279,7 +1279,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "snoWy-WooD-a9Fd.sEYEDex.workeRs.DEv",
+                        "serverName": "sNOwY-Wood-A9Fd.sEyeDEx.WorKeRs.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1422,7 +1422,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦆🇩🇪🇩🇪",
+        "remarks": "🦆🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -1516,7 +1516,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lIvely-MATh-A2A1.mIlFEttA.wORKerS.DeV",
+                        "serverName": "LIVelY-mATh-a2A1.MIlFeTtA.wORKers.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1659,7 +1659,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦩🇩🇪🇩🇪",
+        "remarks": "🦩🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -1753,7 +1753,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SupeR-UniOn-7D52.seYeDDEx-fbD.WORKeRS.dEV",
+                        "serverName": "SUPeR-uniOn-7d52.seyeddeX-FBD.workers.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1896,7 +1896,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦢🇩🇪🇩🇪",
+        "remarks": "🦢🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -1990,7 +1990,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VPN.SEYeDdeX.WORkErs.DEv",
+                        "serverName": "VPn.SeYEDDex.workErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2133,7 +2133,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐈🇩🇪🇩🇪",
+        "remarks": "🐈🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -2227,7 +2227,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lONg-DUsT-93E6.SEyEDhoSein.woRKers.DEv",
+                        "serverName": "LONg-DUsT-93E6.seyedhosEin.WORkERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2370,7 +2370,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐧🇳🇱🇩🇪",
+        "remarks": "🐧🇳🇱",
         "version": {
             "min": "26.2.6"
         },
@@ -2464,7 +2464,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "COOL-shapE-4720.SEYEdnG.wORKeRS.Dev",
+                        "serverName": "coOl-sHaPE-4720.sEyEDNg.WorkerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2607,7 +2607,7 @@
         "stats": {}
     },
     {
-        "remarks": "🐿️🇩🇪🇩🇪",
+        "remarks": "🐿️🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -2701,7 +2701,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPrInG-sOuNd-2369.sTeWiENg.WOrkErs.DeV",
+                        "serverName": "SPRiNg-sOuNd-2369.steWiENG.wORkERs.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2844,7 +2844,7 @@
         "stats": {}
     },
     {
-        "remarks": "🦨🇩🇪🇩🇪",
+        "remarks": "🦨🇩🇪",
         "version": {
             "min": "26.2.6"
         },
@@ -2938,7 +2938,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "ORANge-CLoud-60c4.SeYEDstewIeATOmiC.WOrkErS.deV",
+                        "serverName": "OrAnGe-ClOud-60C4.sEYeDsTewieAToMiC.WORKerS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
