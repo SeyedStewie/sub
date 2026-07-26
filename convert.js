@@ -1,4 +1,5 @@
 const fs = require('fs');
+const dns = require('dns').promises;
 
 if (!fs.existsSync('vpn.txt')) {
     console.error('فایل vpn.txt پیدا نشد!');
@@ -21,7 +22,66 @@ const randomizeCase = (str) => {
     return str.split('').map(c => Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()).join('');
 };
 
-async function parseVlessConfig(link, index) {
+// --- Geolocation cache ---
+const locationCache = new Map();
+const resolvedIpCache = new Map();
+
+async function resolveDomain(hostname) {
+    if (isIpAddress(hostname)) return hostname;
+    if (resolvedIpCache.has(hostname)) return resolvedIpCache.get(hostname);
+
+    try {
+        const { address } = await dns.lookup(hostname, { family: 4 }); // prefer IPv4
+        resolvedIpCache.set(hostname, address);
+        return address;
+    } catch (e) {
+        console.warn(`⚠️  DNS resolution failed for ${hostname}:`, e.message);
+        resolvedIpCache.set(hostname, null);
+        return null;
+    }
+}
+
+async function getLocationFlag(hostname) {
+    // Resolve domain to IP
+    let ip = await resolveDomain(hostname);
+    if (!ip) {
+        // fallback: treat as unknown
+        locationCache.set(hostname, '🌍');
+        return '🌍';
+    }
+
+    // Check cache for location
+    if (locationCache.has(ip)) return locationCache.get(ip);
+
+    const token = process.env.GEO_API_KEY || '';
+    if (!token) {
+        console.warn('⚠️  GEO_API_KEY not set, using 🌍 fallback');
+        locationCache.set(ip, '🌍');
+        return '🌍';
+    }
+
+    try {
+        const response = await fetch(`https://ipinfo.io/${ip}/json?token=${token}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        const country = data.country || 'UN';
+        // Convert country code to flag emoji
+        const flag = country
+            .toUpperCase()
+            .replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt(0)));
+        const result = flag || '🌍';
+        locationCache.set(ip, result);
+        return result;
+    } catch (e) {
+        console.warn(`⚠️  Error fetching location for ${ip}:`, e.message);
+        locationCache.set(ip, '🌍');
+        return '🌍';
+    }
+}
+
+// --- Protocol parsers (async) ---
+
+async function parseVless(link, index) {
     try {
         const parsed = new URL(link);
         const address = parsed.hostname.replace(/\[|\]/g, '');
@@ -44,254 +104,378 @@ async function parseVlessConfig(link, index) {
         if (!originalRemark) originalRemark = params.get('remark') || `vpn-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        const tag = originalRemark; // untouched
+        // Get location flag from resolved IP
+        const flag = await getLocationFlag(address);
+        const finalRemark = originalRemark + flag;
 
-        const outboundObj = {
-            "tag": tag,
-            "type": "vless",
-            "server": address,
-            "server_port": port,
-            "tcp_fast_open": false,
-            "uuid": uuid,
-            "packet_encoding": "",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": sni,
-                "record_fragment": false,
-                "insecure": false,
-                "alpn": ["http/1.1"],
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": fp
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": path,
-                "max_early_data": 2560,
-                "early_data_header_name": "Sec-WebSocket-Protocol",
-                "headers": {
-                    "Host": host
-                }
-            }
+        // Build modified link with flag in hash
+        const modifiedUrl = new URL(link);
+        modifiedUrl.hash = encodeURIComponent(finalRemark);
+        const modifiedLink = modifiedUrl.toString();
+
+        return {
+            protocol: 'vless',
+            tag: finalRemark,
+            server: address,
+            port: port,
+            uuid: uuid,
+            path: path,
+            host: host,
+            sni: sni,
+            fp: fp,
+            flow: params.get('flow') || '',
+            encryption: params.get('encryption') || 'none',
+            rawLink: modifiedLink
         };
-
-        if (!isIpAddress(address)) {
-            outboundObj.domain_resolver = "dns-direct";
-        }
-
-        return { tag, outboundObj, link, host, sni, fp, address, port, uuid, path };
     } catch (e) {
-        console.error(`خطا در پردازش لینک شماره ${index + 1}:`, e.message);
+        console.error(`خطا در پردازش لینک VLESS شماره ${index + 1}:`, e.message);
         return null;
     }
 }
 
-function buildXrayConfig(result) {
-    const { tag, address, port, uuid, path, host, sni, fp } = result;
-    return {
-        "remarks": tag,
-        "version": { "min": "26.2.6" },
-        "log": { "loglevel": "none" },
-        "dns": {
-            "hosts": {
-                "geosite:category-ads-all": "#3",
-                "geosite:category-ads-ir": "#3"
+async function parseTrojan(link, index) {
+    try {
+        const parsed = new URL(link);
+        const address = parsed.hostname.replace(/\[|\]/g, '');
+        const port = parseInt(parsed.port) || 443;
+        const password = parsed.username || '';
+        const params = parsed.searchParams;
+
+        let workerDomain = params.get('sni') || params.get('host') || address;
+        workerDomain = workerDomain.trim();
+
+        const sni = randomizeCase(workerDomain);
+        const host = workerDomain;
+        const fp = params.get('fp') || 'chrome';
+
+        let originalRemark = parsed.hash ? parsed.hash.slice(1).trim() : '';
+        if (!originalRemark) originalRemark = params.get('remark') || `trojan-${index + 1}`;
+        originalRemark = decodeURIComponent(originalRemark);
+
+        const flag = await getLocationFlag(address);
+        const finalRemark = originalRemark + flag;
+
+        const path = params.get('path') || '/';
+
+        const modifiedUrl = new URL(link);
+        modifiedUrl.hash = encodeURIComponent(finalRemark);
+        const modifiedLink = modifiedUrl.toString();
+
+        return {
+            protocol: 'trojan',
+            tag: finalRemark,
+            server: address,
+            port: port,
+            password: password,
+            sni: sni,
+            fp: fp,
+            host: host,
+            path: path,
+            rawLink: modifiedLink
+        };
+    } catch (e) {
+        console.error(`خطا در پردازش لینک Trojan شماره ${index + 1}:`, e.message);
+        return null;
+    }
+}
+
+async function parseWireguard(link, index) {
+    try {
+        const parsed = new URL(link);
+        const address = parsed.hostname.replace(/\[|\]/g, '');
+        const port = parseInt(parsed.port) || 51820;
+        const publicKey = parsed.username || '';
+        const params = parsed.searchParams;
+
+        const privateKey = params.get('private_key') || '';
+        const allowedIPs = params.get('allowed_ips') || '0.0.0.0/0';
+        const addressIP = params.get('address') || '';
+        const dns = params.get('dns') || '';
+
+        let originalRemark = parsed.hash ? parsed.hash.slice(1).trim() : '';
+        if (!originalRemark) originalRemark = params.get('remark') || `wg-${index + 1}`;
+        originalRemark = decodeURIComponent(originalRemark);
+
+        const flag = await getLocationFlag(address);
+        const finalRemark = originalRemark + flag;
+
+        const modifiedUrl = new URL(link);
+        modifiedUrl.hash = encodeURIComponent(finalRemark);
+        const modifiedLink = modifiedUrl.toString();
+
+        return {
+            protocol: 'wireguard',
+            tag: finalRemark,
+            server: address,
+            port: port,
+            public_key: publicKey,
+            private_key: privateKey,
+            allowed_ips: allowedIPs.split(',').map(s => s.trim()),
+            address: addressIP.split(',').map(s => s.trim()),
+            dns: dns,
+            rawLink: modifiedLink
+        };
+    } catch (e) {
+        console.error(`خطا در پردازش لینک WireGuard شماره ${index + 1}:`, e.message);
+        return null;
+    }
+}
+
+// --- Build outbound objects (unchanged logic, now using parsed.tag) ---
+
+function buildSingboxOutbound(parsed) {
+    const base = {
+        tag: parsed.tag,
+        type: parsed.protocol,
+        server: parsed.server,
+        server_port: parsed.port,
+        tcp_fast_open: false,
+    };
+
+    if (parsed.protocol === 'vless') {
+        return {
+            ...base,
+            uuid: parsed.uuid,
+            packet_encoding: '',
+            network: 'tcp',
+            tls: {
+                enabled: true,
+                server_name: parsed.sni,
+                record_fragment: false,
+                insecure: false,
+                alpn: ['http/1.1'],
+                utls: { enabled: true, fingerprint: parsed.fp }
             },
-            "servers": [
-                {
-                    "address": "https://8.8.8.8/dns-query",
-                    "tag": "remote-dns"
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [ "geosite:category-ir" ],
-                    "expectIPs": [ "geoip:ir" ],
-                    "skipFallback": true
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [ `full:${host}` ],
-                    "skipFallback": true
-                }
+            transport: {
+                type: 'ws',
+                path: parsed.path,
+                max_early_data: 2560,
+                early_data_header_name: 'Sec-WebSocket-Protocol',
+                headers: { Host: parsed.host }
+            }
+        };
+    }
+
+    if (parsed.protocol === 'trojan') {
+        return {
+            ...base,
+            password: parsed.password,
+            tls: {
+                enabled: true,
+                server_name: parsed.sni,
+                insecure: false,
+                alpn: ['http/1.1'],
+                utls: { enabled: true, fingerprint: parsed.fp }
+            },
+            transport: {
+                type: 'ws',
+                path: parsed.path,
+                headers: { Host: parsed.host }
+            }
+        };
+    }
+
+    if (parsed.protocol === 'wireguard') {
+        return {
+            ...base,
+            private_key: parsed.private_key,
+            peer_public_key: parsed.public_key,
+            peer_address: parsed.server,
+            peer_port: parsed.port,
+            local_address: parsed.address,
+            allowed_ips: parsed.allowed_ips,
+            dns_servers: parsed.dns ? [parsed.dns] : [],
+        };
+    }
+
+    return null;
+}
+
+function buildXrayConfig(parsed) {
+    const tag = parsed.tag;
+    const base = {
+        remarks: tag,
+        version: { min: '26.2.6' },
+        log: { loglevel: 'none' },
+        dns: {
+            hosts: {
+                'geosite:category-ads-all': '#3',
+                'geosite:category-ads-ir': '#3'
+            },
+            servers: [
+                { address: 'https://8.8.8.8/dns-query', tag: 'remote-dns' },
+                { address: '8.8.8.8', domains: ['geosite:category-ir'], expectIPs: ['geoip:ir'], skipFallback: true },
+                { address: '8.8.8.8', domains: [`full:${parsed.host || parsed.server}`], skipFallback: true }
             ],
-            "queryStrategy": "UseIP",
-            "tag": "dns"
+            queryStrategy: 'UseIP',
+            tag: 'dns'
         },
-        "inbounds": [
+        inbounds: [
             {
-                "listen": "127.0.0.1",
-                "port": 10808,
-                "protocol": "mixed",
-                "settings": {
-                    "auth": "noauth",
-                    "udp": true
-                },
-                "sniffing": {
-                    "destOverride": [ "http", "tls" ],
-                    "enabled": true,
-                    "routeOnly": true
-                },
-                "tag": "mixed-in"
+                listen: '127.0.0.1',
+                port: 10808,
+                protocol: 'mixed',
+                settings: { auth: 'noauth', udp: true },
+                sniffing: { destOverride: ['http', 'tls'], enabled: true, routeOnly: true },
+                tag: 'mixed-in'
             },
             {
-                "listen": "127.0.0.1",
-                "port": 10853,
-                "protocol": "dokodemo-door",
-                "settings": {
-                    "address": "1.1.1.1",
-                    "network": "tcp,udp",
-                    "port": 53
-                },
-                "tag": "dns-in"
+                listen: '127.0.0.1',
+                port: 10853,
+                protocol: 'dokodemo-door',
+                settings: { address: '1.1.1.1', network: 'tcp,udp', port: 53 },
+                tag: 'dns-in'
             }
         ],
-        "outbounds": [
-            {
-                "protocol": "vless",
-                "settings": {
-                    "vnext": [
-                        {
-                            "address": address,
-                            "port": port,
-                            "users": [
-                                {
-                                    "id": uuid,
-                                    "encryption": "none"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "streamSettings": {
-                    "network": "ws",
-                    "wsSettings": {
-                        "host": host,
-                        "path": path
-                    },
-                    "security": "tls",
-                    "tlsSettings": {
-                        "serverName": sni,
-                        "fingerprint": fp,
-                        "alpn": [ "http/1.1" ]
-                    },
-                    "sockopt": {
-                        "domainStrategy": "UseIP",
-                        "happyEyeballs": {
-                            "tryDelayMs": 250,
-                            "prioritizeIPv6": false,
-                            "interleave": 2,
-                            "maxConcurrentTry": 4
-                        }
-                    }
-                },
-                "tag": "proxy"
-            },
-            {
-                "protocol": "dns",
-                "settings": {
-                    "rules": [
-                        { "action": "hijack" }
-                    ]
-                },
-                "tag": "dns-out"
-            },
-            {
-                "protocol": "freedom",
-                "settings": {
-                    "domainStrategy": "UseIP"
-                },
-                "tag": "direct"
-            },
-            {
-                "protocol": "blackhole",
-                "settings": {
-                    "response": {
-                        "type": "http"
-                    }
-                },
-                "tag": "block"
-            }
-        ],
-        "routing": {
-            "domainStrategy": "IPIfNonMatch",
-            "rules": [
-                {
-                    "inboundTag": [ "mixed-in" ],
-                    "port": 53,
-                    "outboundTag": "dns-out",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [ "dns-in" ],
-                    "outboundTag": "dns-out",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [ "remote-dns" ],
-                    "outboundTag": "proxy",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [ "dns" ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "domain": [ "geosite:private" ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "ip": [ "geoip:private" ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "network": "udp",
-                    "outboundTag": "block",
-                    "type": "field"
-                },
-                {
-                    "domain": [ "geosite:category-ads-all", "geosite:category-ads-ir" ],
-                    "outboundTag": "block",
-                    "type": "field"
-                },
-                {
-                    "domain": [ "geosite:category-ir" ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "ip": [ "geoip:ir" ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "network": "tcp",
-                    "outboundTag": "proxy",
-                    "type": "field"
-                }
+        outbounds: [],
+        routing: {
+            domainStrategy: 'IPIfNonMatch',
+            rules: [
+                { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
+                { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
+                { inboundTag: ['remote-dns'], outboundTag: 'proxy', type: 'field' },
+                { inboundTag: ['dns'], outboundTag: 'direct', type: 'field' },
+                { domain: ['geosite:private'], outboundTag: 'direct', type: 'field' },
+                { ip: ['geoip:private'], outboundTag: 'direct', type: 'field' },
+                { network: 'udp', outboundTag: 'block', type: 'field' },
+                { domain: ['geosite:category-ads-all', 'geosite:category-ads-ir'], outboundTag: 'block', type: 'field' },
+                { domain: ['geosite:category-ir'], outboundTag: 'direct', type: 'field' },
+                { ip: ['geoip:ir'], outboundTag: 'direct', type: 'field' },
+                { network: 'tcp', outboundTag: 'proxy', type: 'field' }
             ]
         },
-        "policy": {
-            "levels": {
-                "0": {
-                    "connIdle": 300,
-                    "handshake": 4,
-                    "uplinkOnly": 1,
-                    "downlinkOnly": 1
-                }
-            },
-            "system": {
-                "statsOutboundUplink": true,
-                "statsOutboundDownlink": true
-            }
+        policy: {
+            levels: { '0': { connIdle: 300, handshake: 4, uplinkOnly: 1, downlinkOnly: 1 } },
+            system: { statsOutboundUplink: true, statsOutboundDownlink: true }
         },
-        "stats": {}
+        stats: {}
     };
+
+    let outbound = {};
+    if (parsed.protocol === 'vless') {
+        outbound = {
+            protocol: 'vless',
+            settings: {
+                vnext: [{
+                    address: parsed.server,
+                    port: parsed.port,
+                    users: [{ id: parsed.uuid, encryption: parsed.encryption, flow: parsed.flow }]
+                }]
+            },
+            streamSettings: {
+                network: 'ws',
+                wsSettings: { host: parsed.host, path: parsed.path },
+                security: 'tls',
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
+            }
+        };
+    } else if (parsed.protocol === 'trojan') {
+        outbound = {
+            protocol: 'trojan',
+            settings: {
+                servers: [{
+                    address: parsed.server,
+                    port: parsed.port,
+                    password: parsed.password,
+                    flow: '',
+                    level: 0
+                }]
+            },
+            streamSettings: {
+                network: 'ws',
+                wsSettings: { host: parsed.host, path: parsed.path },
+                security: 'tls',
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
+            }
+        };
+    } else if (parsed.protocol === 'wireguard') {
+        outbound = {
+            protocol: 'wireguard',
+            settings: {
+                secretKey: parsed.private_key,
+                address: parsed.address,
+                dns: parsed.dns ? [parsed.dns] : [],
+                peers: [{
+                    endpoint: `${parsed.server}:${parsed.port}`,
+                    publicKey: parsed.public_key,
+                    allowedIPs: parsed.allowed_ips
+                }]
+            },
+            streamSettings: { network: 'raw' },
+            sockopt: { domainStrategy: 'UseIP' }
+        };
+    }
+
+    base.outbounds = [
+        { ...outbound, tag: 'proxy' },
+        { protocol: 'dns', settings: { rules: [{ action: 'hijack' }] }, tag: 'dns-out' },
+        { protocol: 'freedom', settings: { domainStrategy: 'UseIP' }, tag: 'direct' },
+        { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
+    ];
+
+    return base;
 }
+
+function buildClashProxy(parsed) {
+    const proxy = {
+        name: parsed.tag,
+        type: parsed.protocol,
+        server: parsed.server,
+        port: parsed.port,
+        'ip-version': 'ipv4',
+        tfo: false,
+        udp: false
+    };
+
+    if (parsed.protocol === 'vless') {
+        return {
+            ...proxy,
+            uuid: parsed.uuid,
+            'packet-encoding': '',
+            tls: true,
+            servername: parsed.sni,
+            'client-fingerprint': parsed.fp,
+            'skip-cert-verify': false,
+            alpn: ['http/1.1'],
+            network: 'ws',
+            'ws-opts': {
+                path: parsed.path,
+                'max-early-data': 2560,
+                'early-data-header-name': 'Sec-WebSocket-Protocol',
+                headers: { Host: parsed.host }
+            }
+        };
+    } else if (parsed.protocol === 'trojan') {
+        return {
+            ...proxy,
+            password: parsed.password,
+            tls: true,
+            servername: parsed.sni,
+            'client-fingerprint': parsed.fp,
+            'skip-cert-verify': false,
+            alpn: ['http/1.1'],
+            network: 'ws',
+            'ws-opts': {
+                path: parsed.path,
+                headers: { Host: parsed.host }
+            }
+        };
+    } else if (parsed.protocol === 'wireguard') {
+        return {
+            ...proxy,
+            'private-key': parsed.private_key,
+            'public-key': parsed.public_key,
+            'allowed-ips': parsed.allowed_ips,
+            'ip-address': parsed.address,
+            dns: parsed.dns ? [parsed.dns] : []
+        };
+    }
+    return null;
+}
+
+// --- Main ---
 
 async function main() {
     const singboxOutbounds = [];
@@ -301,43 +485,33 @@ async function main() {
     const clashProxies = [];
 
     for (let index = 0; index < lines.length; index++) {
-        let line = lines[index].trim();
-        if (line.startsWith('vless://')) {
-            const result = await parseVlessConfig(line, index);
-            if (result) {
-                validLinks.push(result.link);
-                outboundTags.push(result.tag);
-                singboxOutbounds.push(result.outboundObj);
-                xrayConfigs.push(buildXrayConfig(result));
+        const line = lines[index].trim();
+        let parsed = null;
 
-                const clashProxy = {
-                    name: result.tag,
-                    type: "vless",
-                    server: result.outboundObj.server,
-                    port: result.outboundObj.server_port,
-                    "ip-version": "ipv4",
-                    tfo: false,
-                    udp: false,
-                    uuid: result.outboundObj.uuid,
-                    "packet-encoding": "",
-                    tls: true,
-                    servername: result.outboundObj.tls.server_name,
-                    "client-fingerprint": result.outboundObj.tls.utls.fingerprint,
-                    "skip-cert-verify": false,
-                    alpn: ["http/1.1"],
-                    network: "ws",
-                    "ws-opts": {
-                        path: result.outboundObj.transport.path,
-                        "max-early-data": 2560,
-                        "early-data-header-name": "Sec-WebSocket-Protocol",
-                        headers: {
-                            Host: result.outboundObj.transport.headers.Host
-                        }
-                    }
-                };
-                clashProxies.push(clashProxy);
-            }
+        if (line.startsWith('vless://')) {
+            parsed = await parseVless(line, index);
+        } else if (line.startsWith('trojan://')) {
+            parsed = await parseTrojan(line, index);
+        } else if (line.startsWith('wireguard://')) {
+            parsed = await parseWireguard(line, index);
+        } else {
+            console.warn(`خط ${index + 1}: پروتکل ناشناخته - نادیده گرفته شد`);
+            continue;
         }
+
+        if (!parsed) continue;
+
+        validLinks.push(parsed.rawLink);
+        outboundTags.push(parsed.tag);
+
+        const sbOut = buildSingboxOutbound(parsed);
+        if (sbOut) singboxOutbounds.push(sbOut);
+
+        const xray = buildXrayConfig(parsed);
+        if (xray) xrayConfigs.push(xray);
+
+        const clash = buildClashProxy(parsed);
+        if (clash) clashProxies.push(clash);
     }
 
     if (validLinks.length === 0) {
@@ -345,7 +519,7 @@ async function main() {
         process.exit(1);
     }
 
-    // 1. vpn64.txt
+    // 1. vpn64.txt (Base64 of modified links)
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
@@ -353,7 +527,7 @@ async function main() {
     // 2. vpn.json
     fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
 
-    // 3. vpn.yml – Clash with Persian group names
+    // 3. vpn.yml – Clash
     const proxyNames = clashProxies.map(p => p.name);
     const selectorName = "انتخاب دستی";
     const urlTestName = "بهترین پینگ";
@@ -372,38 +546,22 @@ async function main() {
         "geo-auto-update": true,
         "geo-update-interval": 168,
         "external-controller": "127.0.0.1:9090",
-        "external-controller-cors": {
-            "allow-origins": ["*"],
-            "allow-private-network": true
-        },
+        "external-controller-cors": { "allow-origins": ["*"], "allow-private-network": true },
         "external-ui": "ui",
         "external-ui-url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-        "profile": {
-            "store-selected": true,
-            "store-fake-ip": true
-        },
+        "profile": { "store-selected": true, "store-fake-ip": true },
         "dns": {
             "enable": true,
             "respect-rules": true,
             "use-system-hosts": false,
             "listen": "127.0.0.1:1053",
             "ipv6": false,
-            "hosts": {
-                "rule-set:category-ads-all": "rcode://refused"
-            },
-            "nameserver": [
-                `https://8.8.8.8/dns-query#${selectorName}`
-            ],
-            "proxy-server-nameserver": [
-                "8.8.8.8#DIRECT"
-            ],
-            "direct-nameserver": [
-                "8.8.8.8#DIRECT"
-            ],
+            "hosts": { "rule-set:category-ads-all": "rcode://refused" },
+            "nameserver": [`https://8.8.8.8/dns-query#${selectorName}`],
+            "proxy-server-nameserver": ["8.8.8.8#DIRECT"],
+            "direct-nameserver": ["8.8.8.8#DIRECT"],
             "direct-nameserver-follow-policy": true,
-            "nameserver-policy": {
-                "rule-set:ir": "8.8.8.8#DIRECT"
-            },
+            "nameserver-policy": { "rule-set:ir": "8.8.8.8#DIRECT" },
             "enhanced-mode": "redir-host"
         },
         "tun": {
@@ -412,10 +570,7 @@ async function main() {
             "auto-route": true,
             "strict-route": true,
             "auto-detect-interface": true,
-            "dns-hijack": [
-                "any:53",
-                "tcp://any:53"
-            ],
+            "dns-hijack": ["any:53", "tcp://any:53"],
             "mtu": 9000
         },
         "sniffer": {
@@ -424,29 +579,14 @@ async function main() {
             "parse-pure-ip": true,
             "override-destination": true,
             "sniff": {
-                "HTTP": {
-                    "ports": [80, 8080, 8880, 2052, 2082, 2086, 2095]
-                },
-                "TLS": {
-                    "ports": [443, 8443, 2053, 2083, 2087, 2096]
-                }
+                "HTTP": { "ports": [80, 8080, 8880, 2052, 2082, 2086, 2095] },
+                "TLS": { "ports": [443, 8443, 2053, 2083, 2087, 2096] }
             }
         },
         "proxies": clashProxies,
         "proxy-groups": [
-            {
-                "name": selectorName,
-                "type": "select",
-                "proxies": [urlTestName, ...proxyNames]
-            },
-            {
-                "name": urlTestName,
-                "type": "url-test",
-                "proxies": proxyNames,
-                "url": "https://www.gstatic.com/generate_204",
-                "interval": 30,
-                "tolerance": 50
-            }
+            { "name": selectorName, "type": "select", "proxies": [urlTestName, ...proxyNames] },
+            { "name": urlTestName, "type": "url-test", "proxies": proxyNames, "url": "https://www.gstatic.com/generate_204", "interval": 30, "tolerance": 50 }
         ],
         "rule-providers": {
             "category-ads-all": {
@@ -482,17 +622,12 @@ async function main() {
             "RULE-SET,ir-cidr,DIRECT",
             `MATCH,${selectorName}`
         ],
-        "ntp": {
-            "enable": true,
-            "server": "time.cloudflare.com",
-            "port": 123,
-            "interval": 30
-        }
+        "ntp": { "enable": true, "server": "time.cloudflare.com", "port": 123, "interval": 30 }
     };
 
     fs.writeFileSync('vpn.yml', JSON.stringify(clashConfig, null, 4), 'utf8');
 
-    // 4. vpns.json (Sing‑box) – unchanged
+    // 4. vpns.json – Sing-box
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
 
@@ -592,7 +727,7 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    console.log('✅ همه ۴ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    console.log('✅ همه ۴ فایل خروجی با موفقیت و به‌روزرسانی شدند!');
 }
 
 main();
