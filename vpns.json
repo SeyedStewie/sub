@@ -8,7 +8,7 @@
       {
         "type": "https",
         "server": "8.8.8.8",
-        "detour": "انتخاب دستی",
+        "detour": "✅ Selector",
         "tag": "dns-remote"
       },
       {
@@ -503,9 +503,9 @@
     },
     {
       "type": "selector",
-      "tag": "انتخاب دستی",
+      "tag": "✅ Selector",
       "outbounds": [
-        "بهترین پینگ",
+        "💦 Best Ping 🚀",
         "💦 1 - VLESS - 🦋🇨🇦",
         "💦 2 - VLESS - 🦊🇺🇲",
         "💦 3 - VLESS - 🦅🇺🇲",
@@ -529,7 +529,7 @@
     },
     {
       "type": "urltest",
-      "tag": "بهترین پینگ",
+      "tag": "💦 Best Ping 🚀",
       "outbounds": [
         "💦 1 - VLESS - 🦋🇨🇦",
         "💦 2 - VLESS - 🦊🇺🇲",
@@ -562,7 +562,7 @@
       },
       {
         "clash_mode": "Global",
-        "outbound": "انتخاب دستی"
+        "outbound": "✅ Selector"
       },
       {
         "action": "sniff"
@@ -624,7 +624,7 @@
       }
     ],
     "auto_detect_interface": true,
-    "final": "انتخاب دستی"
+    "final": "✅ Selector"
   },
   "ntp": {
     "enabled": true,
