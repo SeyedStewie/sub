@@ -133,7 +133,7 @@ lines.forEach((line) => {
 
     validLinks.push(line);
 
-    // ۱. ساختار خروجی vpn.json (Xray)
+    // ۱. خروجی vpn.json (Xray)
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         jsonConfigs.push({
           "remarks": config.remarks,
@@ -223,7 +223,7 @@ lines.forEach((line) => {
         });
     }
 
-    // ۲. خروجی Sing-box برای vpns.json
+    // ۲. خروجی Sing-box برای vpns.json (سازگار با نسخه‌های جدید)
     singboxOutbounds.push({
         "type": config.protocol,
         "tag": config.remarks,
@@ -283,7 +283,7 @@ if (validLinks.length === 0) {
 // ذخیره vpn.json (Xray)
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 
-// ذخیره ساختار کامل Sing-box برای vpns.json
+// ذخیره ساختار کامل و به‌روز Sing-box برای vpns.json
 const singboxFullConfig = {
     "log": { "level": "warn", "timestamp": true },
     "dns": {
@@ -317,7 +317,7 @@ const singboxFullConfig = {
 };
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 2), 'utf8');
 
-// ذخیره ساختار استاندارد Clash برای vpn.yml
+// ذخیره ساختار استاندارد Clash با قابلیت انتخاب دستی و «بهترین پینگ»
 let clashYaml = "port: 7890\n";
 clashYaml += "socks-port: 7891\n";
 clashYaml += "allow-lan: true\n";
@@ -348,17 +348,27 @@ clashProxies.forEach(p => {
 });
 
 clashYaml += "\nproxy-groups:\n";
-clashYaml += "  - name: \"🚀 Load-Balance\"\n";
-clashYaml += "    type: load-balance\n";
+// گروه انتخاب دستی
+clashYaml += "  - name: \"انتخاب دستی\"\n";
+clashYaml += "    type: select\n";
+clashYaml += "    proxies:\n";
+clashProxies.forEach(p => {
+    clashYaml += `      - "${p.name}"\n`;
+});
+
+// گروه بهترین پینگ (خودکار)
+clashYaml += "  - name: \"بهترین پینگ\"\n";
+clashYaml += "    type: url-test\n";
 clashYaml += "    proxies:\n";
 clashProxies.forEach(p => {
     clashYaml += `      - "${p.name}"\n`;
 });
 clashYaml += "    url: 'http://www.gstatic.com/generate_204'\n";
 clashYaml += "    interval: 300\n";
+clashYaml += "    tolerance: 50\n";
 
 clashYaml += "\nrules:\n";
-clashYaml += "  - MATCH,🚀 Load-Balance\n";
+clashYaml += "  - MATCH,انتخاب دستی\n";
 
 fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 
@@ -366,4 +376,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('تمامی فایل‌های خروجی با ساختار استاندارد و کامل ساخته شدند!');
+console.log('تمامی فایل‌های خروجی با موفقیت و رفع ایرادات بروزرسانی شدند!');
