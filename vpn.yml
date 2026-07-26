@@ -7,7 +7,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: mqJC-08Df4-EwK8i1TJAfbqtbc2brRHO.SeyEdNg1.wOrkeRs.DeV
+    sni: mqJC-08DF4-ewk8I1tjafBqtBC2brrHO.sEyeDNG1.WoRkers.DEv
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==
     ws-headers:
@@ -20,7 +20,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: poLiShed-bLoCk-D011.SEYeDDeX-339.wORkerS.Dev
+    sni: poLisHed-bLocK-D011.sEYeDDEX-339.workERS.DEv
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ==
     ws-headers:
@@ -33,7 +33,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: WiTHERed-kiNg-1433.HaNNahoWO.WoRkErS.DEv
+    sni: WiTheREd-KiNG-1433.haNnAHoWo.WoRKeRS.DEV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=
     ws-headers:
@@ -46,7 +46,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: bLACk-TrEE-34C2.mIHANIKa69.WORkErs.Dev
+    sni: bLAck-tReE-34C2.MIhANIka69.WoRKers.dev
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19
     ws-headers:
@@ -59,7 +59,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: sprInG-dISk-81d3.MeseYEDng.WorKeRS.deV
+    sni: SpRIng-diSK-81d3.Meseyedng.WORkErs.DEV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==
     ws-headers:
@@ -72,7 +72,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: SnOWY-WOoD-A9fd.seYEDEx.WOrKerS.DeV
+    sni: snoWy-WooD-a9Fd.sEYEDex.workeRs.DEv
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19
     ws-headers:
@@ -85,7 +85,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: LiVeLY-MATH-A2a1.miLFEttA.wORKERS.DEV
+    sni: lIvely-MATh-A2A1.mIlFEttA.wORKerS.DeV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=
     ws-headers:
@@ -98,7 +98,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: SupeR-UnION-7D52.sEYEDDEX-fbD.woRkERS.dEV
+    sni: SupeR-UniOn-7D52.seYeDDEx-fbD.WORKeRS.dEV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=
     ws-headers:
@@ -111,7 +111,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: VPn.sEyEddex.WOrkeRs.dEV
+    sni: VPN.SEYeDdeX.WORkErs.DEv
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0=
     ws-headers:
@@ -124,7 +124,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: loNG-dUst-93E6.sEYEdHOSEIn.woRKErS.deV
+    sni: lONg-DUsT-93E6.SEyEDhoSein.woRKers.DEv
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=
     ws-headers:
@@ -137,7 +137,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: cool-shapE-4720.sEyednG.WorKERs.DeV
+    sni: COOL-shapE-4720.SEYEdnG.wORKeRS.Dev
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=
     ws-headers:
@@ -150,7 +150,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: spRinG-sOuND-2369.StEWIEng.WoRkERS.dEv
+    sni: sPrInG-sOuNd-2369.sTeWiENg.WOrkErs.DeV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19
     ws-headers:
@@ -163,7 +163,7 @@ proxies:
     network: ws
     tls: true
     udp: true
-    sni: OrAnge-CLoud-60c4.SEyEDSTEWiEATOmiC.wORkerS.DeV
+    sni: ORANge-CLoud-60c4.SeYEDstewIeATOmiC.WOrkErS.deV
     fingerprint: chrome
     ws-path: /eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==
     ws-headers:
