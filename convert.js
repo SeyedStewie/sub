@@ -114,7 +114,7 @@ async function main() {
     const outboundTags = [];
     const validLinks = [];
     const xrayOutbounds = [];      // برای vpn.json
-    const clashProxies = [];       // برای vpn.yml
+    const clashProxies = [];       // برای vpn.yml (لیست پروکسی‌ها)
 
     for (let index = 0; index < lines.length; index++) {
         let line = lines[index].trim();
@@ -125,7 +125,7 @@ async function main() {
                 outboundTags.push(result.tag);
                 singboxOutbounds.push(result.outboundObj);
 
-                // ---- ساخت خروجی Xray ----
+                // ---- Xray outbound (vpn.json) ----
                 const xrayObj = {
                     protocol: "vless",
                     settings: {
@@ -155,7 +155,7 @@ async function main() {
                 };
                 xrayOutbounds.push(xrayObj);
 
-                // ---- ساخت خروجی Clash ----
+                // ---- Clash proxy (برای بخش proxies) ----
                 const clashProxy = {
                     name: result.tag,
                     type: "vless",
@@ -182,15 +182,21 @@ async function main() {
         process.exit(1);
     }
 
-    // ۱. تولید فایل vpn64.txt (به‌روزرسانی شده)
+    // ۱. vpn64.txt (بی‌تغییر)
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // ۲. تولید فایل vpn.json (آرایه خروجی‌های Xray)
+    // ۲. vpn.json (آرایه خروجی‌های Xray)
     fs.writeFileSync('vpn.json', JSON.stringify(xrayOutbounds, null, 4), 'utf8');
 
-    // ۳. تولید فایل vpn.yml (لیست پروکسی‌های Clash)
+    // ۳. vpn.yml (فایل کامل Clash با proxy-groups و rules)
+    const selectorTag = "انتخاب دستی";
+    const urlTestTag = "بهترین پینگ";
+
+    // لیست نام‌های پروکسی برای گروه‌ها
+    const proxyNames = clashProxies.map(p => p.name);
+
     let ymlContent = "proxies:\n";
     clashProxies.forEach(p => {
         ymlContent += `  - name: "${p.name}"\n`;
@@ -207,12 +213,36 @@ async function main() {
         ymlContent += `    ws-headers:\n`;
         ymlContent += `      Host: ${p["ws-headers"].Host}\n`;
     });
+
+    // proxy-groups
+    ymlContent += "\nproxy-groups:\n";
+    // گروه انتخاب دستی
+    ymlContent += `  - name: "${selectorTag}"\n`;
+    ymlContent += `    type: select\n`;
+    ymlContent += `    proxies:\n`;
+    ymlContent += `      - "${urlTestTag}"\n`;
+    proxyNames.forEach(name => {
+        ymlContent += `      - "${name}"\n`;
+    });
+    ymlContent += `      - DIRECT\n`;
+
+    // گروه url-test
+    ymlContent += `  - name: "${urlTestTag}"\n`;
+    ymlContent += `    type: url-test\n`;
+    ymlContent += `    proxies:\n`;
+    proxyNames.forEach(name => {
+        ymlContent += `      - "${name}"\n`;
+    });
+    ymlContent += `    url: "http://www.gstatic.com/generate_204"\n`;
+    ymlContent += `    interval: 300\n`;
+
+    // rules
+    ymlContent += "\nrules:\n";
+    ymlContent += `  - MATCH, "${selectorTag}"\n`;
+
     fs.writeFileSync('vpn.yml', ymlContent, 'utf8');
 
-    // ۴. تولید فایل vpns.json (سینگ‌باکس) – بدون تغییر
-    const selectorTag = "انتخاب دستی";
-    const urlTestTag = "بهترین پینگ";
-
+    // ۴. vpns.json (سینگ‌باکس) – بدون تغییر
     const singboxFullConfig = {
         "log": { "disabled": true, "timestamp": true },
         "dns": {
