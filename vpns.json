@@ -80,7 +80,6 @@
       "tcp_fast_open": false,
       "uuid": "83addb25-9876-47a3-9f18-0756fb477099",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv",
@@ -113,7 +112,6 @@
       "tcp_fast_open": false,
       "uuid": "4e667592-a9bf-4b89-bbe2-f4656be6a9d6",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv",
@@ -146,7 +144,6 @@
       "tcp_fast_open": false,
       "uuid": "22df3e50-40d6-4003-8623-917ef4385fcb",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV",
@@ -179,7 +176,6 @@
       "tcp_fast_open": false,
       "uuid": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev",
@@ -212,7 +208,6 @@
       "tcp_fast_open": false,
       "uuid": "7c778f01-c667-4fba-8580-849b966b18a9",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv",
@@ -245,7 +240,6 @@
       "tcp_fast_open": false,
       "uuid": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev",
@@ -278,7 +272,6 @@
       "tcp_fast_open": false,
       "uuid": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "livelY-MATH-A2a1.milfEttA.woRKErs.dEV",
@@ -311,7 +304,6 @@
       "tcp_fast_open": false,
       "uuid": "f48f054a-20cb-4dfc-821a-42d9655515a9",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV",
@@ -344,7 +336,6 @@
       "tcp_fast_open": false,
       "uuid": "190f85d0-72ef-4aec-bfd8-401ac90c4d43",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "vpn.SeYEddEx.woRKERs.DeV",
@@ -377,7 +368,6 @@
       "tcp_fast_open": false,
       "uuid": "726eeafa-e8c2-46e7-81ec-57058d552b45",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv",
@@ -410,7 +400,6 @@
       "tcp_fast_open": false,
       "uuid": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv",
@@ -443,7 +432,6 @@
       "tcp_fast_open": false,
       "uuid": "c8805c30-a8a5-410f-abed-2ef17574cff1",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV",
@@ -476,7 +464,6 @@
       "tcp_fast_open": false,
       "uuid": "2ee79869-5abe-4a3a-b654-77b525ec99c7",
       "packet_encoding": "",
-      "network": "ws",
       "tls": {
         "enabled": true,
         "server_name": "oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV",
