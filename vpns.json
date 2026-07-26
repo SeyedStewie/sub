@@ -11,16 +11,16 @@
       },
       {
         "tag": "localdns",
-        "address": "local",
-        "detour": "direct"
+        "address": "local"
       }
     ],
     "rules": [
       {
-        "outbound": "any",
+        "rule_set": [],
         "server": "proxydns"
       }
-    ]
+    ],
+    "final": "proxydns"
   },
   "inbounds": [
     {
@@ -340,12 +340,7 @@
     }
   ],
   "route": {
-    "rules": [
-      {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      }
-    ],
+    "final": "direct",
     "auto_detect_interface": true
   }
 }

@@ -194,13 +194,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -413,13 +406,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
@@ -642,13 +628,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -861,13 +840,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
@@ -1090,13 +1062,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -1309,13 +1274,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
@@ -1538,13 +1496,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -1757,13 +1708,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
@@ -1986,13 +1930,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -2205,13 +2142,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
@@ -2434,13 +2364,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -2658,13 +2581,6 @@
           "type": "field"
         },
         {
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
           "network": "tcp",
           "outboundTag": "proxy",
           "type": "field"
@@ -2877,13 +2793,6 @@
         {
           "domain": [
             "geosite:category-ir"
-          ],
-          "outboundTag": "direct",
-          "type": "field"
-        },
-        {
-          "ip": [
-            "geoip:ir"
           ],
           "outboundTag": "direct",
           "type": "field"
