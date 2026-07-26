@@ -13,30 +13,39 @@ if (lines.length === 0) {
     process.exit(1);
 }
 
-// تابع تشخیص آی‌پی (برای جلوگیری از ارسال آی‌پی به domain_resolver)
+// تشخیص آی‌پی برای تنظیمات Resolver
 const isIpAddress = (ip) => {
     const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
     const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
     return ipv4Regex.test(ip) || ipv6Regex.test(ip);
 };
 
+// تابع ایجاد حروف تصادفی برای SNI جهت بایپس DPI
+const randomizeCase = (str) => {
+    return str.split('').map(c => Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()).join('');
+};
+
 function parseVlessConfig(link, index) {
     try {
         const parsed = new URL(link);
-        let rawRemarks = decodeURIComponent(parsed.hash.replace('#', '')).trim();
-        if (!rawRemarks) rawRemarks = `VLESS Config ${index + 1}`;
-
         const address = parsed.hostname;
         const port = parseInt(parsed.port) || 443;
         const uuid = parsed.username || parsed.pathname.replace(/^\/\/?/, '');
         const params = parsed.searchParams;
 
         const path = params.get('path') || '/';
-        const host = params.get('host') || address;
-        const sni = params.get('sni') || host || address;
+        // در کانفیگ ورکر، هدر Host باید همون دامنه اصلی باشه
+        const host = params.get('host') || 'vpn.seyeddex.workers.dev';
+        // اعمال حروف تصادفی روی SNI
+        const sni = randomizeCase(host);
         const fp = params.get('fp') || 'chrome';
 
-        const tag = `💦 ${index + 1} - VLESS - ${rawRemarks}`;
+        // تنظیم اسم تگ مشابه فایل سالم
+        let tagType = "Clean IP";
+        if (address === host) tagType = "Domain";
+        else if (isIpAddress(address)) tagType = "IPv4";
+
+        const tag = `💦 ${index + 1} - VLESS - ${tagType} : ${port}`;
 
         const outboundObj = {
             "tag": tag,
@@ -49,12 +58,10 @@ function parseVlessConfig(link, index) {
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": sni,
+                "server_name": sni, // نامنظم شده
                 "record_fragment": false,
                 "insecure": false,
-                "alpn": [
-                    "http/1.1"
-                ],
+                "alpn": ["http/1.1"],
                 "utls": {
                     "enabled": true,
                     "fingerprint": fp
@@ -66,12 +73,12 @@ function parseVlessConfig(link, index) {
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": host
+                    "Host": host // فیکس شده روی دامنه
                 }
             }
         };
 
-        // نکته حیاتی: اضافه کردن domain_resolver فقط برای دامنه‌ها
+        // اعمال domain_resolver فقط برای دامنه‌ها
         if (!isIpAddress(address)) {
             outboundObj.domain_resolver = "dns-direct";
         }
@@ -126,32 +133,15 @@ const singboxFullConfig = {
             }
         ],
         "rules": [
-            {
-                "clash_mode": "Direct",
-                "server": "dns-direct"
-            },
-            {
-                "clash_mode": "Global",
-                "server": "dns-remote"
-            },
-            {
-                "rule_set": [
-                    "geosite-category-ads-all"
-                ],
-                "action": "reject"
-            },
+            { "clash_mode": "Direct", "server": "dns-direct" },
+            { "clash_mode": "Global", "server": "dns-remote" },
+            { "rule_set": ["geosite-category-ads-all"], "action": "reject" },
             {
                 "type": "logical",
                 "mode": "and",
                 "rules": [
-                    {
-                        "rule_set": [
-                            "geosite-ir"
-                        ]
-                    },
-                    {
-                        "rule_set": "geoip-ir"
-                    }
+                    { "rule_set": ["geosite-ir"] },
+                    { "rule_set": "geoip-ir" }
                 ],
                 "action": "route",
                 "server": "dns-direct"
@@ -164,9 +154,7 @@ const singboxFullConfig = {
         {
             "type": "tun",
             "tag": "tun-in",
-            "address": [
-                "172.19.0.1/28"
-            ],
+            "address": ["172.19.0.1/28"],
             "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
@@ -184,10 +172,7 @@ const singboxFullConfig = {
         {
             "type": "selector",
             "tag": selectorTag,
-            "outbounds": [
-                urlTestTag,
-                ...outboundTags
-            ],
+            "outbounds": [urlTestTag, ...outboundTags],
             "interrupt_exist_connections": false
         },
         {
@@ -206,53 +191,16 @@ const singboxFullConfig = {
     ],
     "route": {
         "rules": [
-            {
-                "ip_cidr": "172.19.0.2",
-                "action": "hijack-dns"
-            },
-            {
-                "clash_mode": "Direct",
-                "outbound": "direct"
-            },
-            {
-                "clash_mode": "Global",
-                "outbound": selectorTag
-            },
-            {
-                "action": "sniff"
-            },
-            {
-                "protocol": "dns",
-                "action": "hijack-dns"
-            },
-            {
-                "ip_is_private": true,
-                "outbound": "direct"
-            },
-            {
-                "network": "udp",
-                "action": "reject"
-            },
-            {
-                "rule_set": [
-                    "geosite-category-ads-all"
-                ],
-                "action": "reject"
-            },
-            {
-                "rule_set": [
-                    "geosite-ir"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            },
-            {
-                "rule_set": [
-                    "geoip-ir"
-                ],
-                "action": "route",
-                "outbound": "direct"
-            }
+            { "ip_cidr": "172.19.0.2", "action": "hijack-dns" },
+            { "clash_mode": "Direct", "outbound": "direct" },
+            { "clash_mode": "Global", "outbound": selectorTag },
+            { "action": "sniff" },
+            { "protocol": "dns", "action": "hijack-dns" },
+            { "ip_is_private": true, "outbound": "direct" },
+            { "network": "udp", "action": "reject" },
+            { "rule_set": ["geosite-category-ads-all"], "action": "reject" },
+            { "rule_set": ["geosite-ir"], "action": "route", "outbound": "direct" },
+            { "rule_set": ["geoip-ir"], "action": "route", "outbound": "direct" }
         ],
         "rule_set": [
             {
@@ -289,10 +237,7 @@ const singboxFullConfig = {
         "write_to_system": false
     },
     "experimental": {
-        "cache_file": {
-            "enabled": true,
-            "store_fakeip": true
-        },
+        "cache_file": { "enabled": true, "store_fakeip": true },
         "clash_api": {
             "external_controller": "127.0.0.1:9090",
             "external_ui": "ui",
@@ -304,5 +249,4 @@ const singboxFullConfig = {
 };
 
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
-
-console.log('فایل vpns.json دقیقاً مطابق با ساختار اصلی ساخته شد!');
+console.log('فایل vpns.json با ساختار دقیق ورکرز ساخته شد!');
