@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Mqjc-08Df4-ewk8I1tjaFBqTBC2bRRhO.seYednG1.wOrkeRs.dEv",
+                "server_name": "mqjC-08dF4-Ewk8i1Tjafbqtbc2brRHo.seYEdnG1.worKERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -96,7 +96,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==?ed=2560",
+                "path": "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "POLISHeD-BlocK-d011.seyeDDEX-339.WoRkerS.dev",
+                "server_name": "POLIShED-BLoCk-D011.seyEddEX-339.wOrKerS.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -128,7 +128,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ==?ed=2560",
+                "path": "/eyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ==",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "WiThEred-kIng-1433.HanNAHoWO.woRkErs.DeV",
+                "server_name": "withEReD-King-1433.hannAHoWo.WORKERs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -160,7 +160,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BlaCk-treE-34c2.MIhaNikA69.woRkERs.DEv",
+                "server_name": "BlACk-tRee-34c2.mihaNika69.WORkErs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -192,7 +192,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19?ed=2560",
+                "path": "/eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SpRiNG-dIsK-81D3.meSeyEdnG.WOrkerS.dEV",
+                "server_name": "SprInG-DiSK-81D3.MEseYEDNg.wOrkERs.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -224,7 +224,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==?ed=2560",
+                "path": "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "sNOWy-wood-A9fd.seYeDEx.wOrKERS.dEv",
+                "server_name": "SNoWy-WoOd-A9FD.seYEdex.WOrKers.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -256,7 +256,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19?ed=2560",
+                "path": "/eyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LIVely-MaTh-a2A1.mILfetTA.wOrkERS.dev",
+                "server_name": "LIvEly-mAtH-A2A1.mILfETTa.WorkErS.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -288,7 +288,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SupER-UNiOn-7d52.sEyeDdEx-fbD.WoRKers.dev",
+                "server_name": "sUPER-UnION-7D52.SEYEDdEX-FBd.wOrKerS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -320,7 +320,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Vpn.sEYEddex.WorKeRS.dEv",
+                "server_name": "Vpn.seyEddEX.workers.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -352,7 +352,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LoNg-dust-93e6.sEyedhOSeIn.wORkErs.deV",
+                "server_name": "lonG-dUsT-93e6.SeyeDHoSeIN.WOrKerS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -384,7 +384,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "CoOl-SHApe-4720.SeYedNg.WoRkerS.dev",
+                "server_name": "coOL-SHApe-4720.SEyEdNG.WORkers.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -416,7 +416,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=?ed=2560",
+                "path": "/eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "sPrINg-sOUNd-2369.StEwiENg.WorKErS.DeV",
+                "server_name": "sPriNg-souND-2369.StEWiENg.WORkERs.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -448,7 +448,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19?ed=2560",
+                "path": "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "oRange-cLOuD-60c4.seYeDstewieaToMIc.wOrKERs.dEv",
+                "server_name": "ORANGe-CLouD-60c4.SeYeDsTEWIEAtOMIC.WORKeRS.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -480,7 +480,7 @@
             },
             "transport": {
                 "type": "ws",
-                "path": "/eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==?ed=2560",
+                "path": "/eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==",
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
