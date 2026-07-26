@@ -113,7 +113,7 @@ lines.forEach((line, index) => {
     if (!config) return;
 
     validLinks.push(line);
-    const tag = `${config.remarks}`;
+    const tag = `💦 ${index + 1} - ${config.protocol.toUpperCase()} - ${config.remarks}`;
     outboundTags.push(tag);
 
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
@@ -123,23 +123,23 @@ lines.forEach((line, index) => {
         });
     }
 
-    // ساختار استاندارد و سازگار برای سینگ‌باکس
     const outboundObj = {
-        "type": config.protocol,
         "tag": tag,
+        "type": config.protocol,
         "server": config.address,
         "server_port": config.port,
         "tcp_fast_open": false,
         "uuid": config.uuid,
         "password": config.password,
-        "packet_encoding": "xudp",
-        "domain_resolver": "dns-direct"
+        "packet_encoding": "",
+        "network": "tcp"
     };
 
     if (config.security === 'tls') {
         outboundObj.tls = {
             "enabled": true,
             "server_name": config.sni,
+            "record_fragment": false,
             "insecure": false,
             "alpn": config.alpn,
             "utls": {
@@ -153,17 +153,15 @@ lines.forEach((line, index) => {
         outboundObj.transport = {
             "type": "ws",
             "path": config.path || "/",
+            "max_early_data": 2560,
+            "early_data_header_name": "Sec-WebSocket-Protocol",
             "headers": {
                 "Host": config.sni
             }
         };
-    } else if (config.net === 'grpc') {
-        outboundObj.transport = {
-            "type": "grpc",
-            "service_name": config.path || ""
-        };
     }
 
+    outboundObj.domain_resolver = "dns-direct";
     singboxOutbounds.push(outboundObj);
 
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
@@ -458,4 +456,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('اسکریپت کامل با موفقیت اجرا شد و فایل‌ها بدون نقص ساخته شدند!');
+console.log('اسکریپت با نام‌های جدید «انتخاب دستی» و «بهترین پینگ» با موفقیت اجرا شد!');
