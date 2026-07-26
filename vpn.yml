@@ -1,244 +1,40 @@
-port: 7890
-socks-port: 7891
-allow-lan: true
-mode: rule
-log-level: info
-external-controller: '127.0.0.1:9090'
-
 proxies:
-  - name: "💦 1 - VLESS - 🦋🇨🇦"
+  - name: "🦋🇨🇦🇩🇪"
     type: vless
-    server: 23.227.60.0
-    port: 443
-    uuid: 83addb25-9876-47a3-9f18-0756fb477099
-    cipher: none
-    tls: true
-    servername: mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==?ed=2560"
-      headers:
-        Host: 23.227.60.0
-  - name: "💦 2 - VLESS - 🦊🇺🇲"
+    url: "vless://83addb25-9876-47a3-9f18-0756fb477099@23.227.60.0:443?encryption=none&security=tls&alpn=http%2F1.1&sni=mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ%3D%3D%3Fed%3D2560#%F0%9F%A6%8B%F0%9F%87%A8%F0%9F%87%A6%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦊🇺🇲🇩🇪"
     type: vless
-    server: 144.31.143.6
-    port: 443
-    uuid: 4e667592-a9bf-4b89-bbe2-f4656be6a9d6
-    cipher: none
-    tls: true
-    servername: POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ==?ed=2560"
-      headers:
-        Host: 144.31.143.6
-  - name: "💦 3 - VLESS - 🦅🇺🇲"
+    url: "vless://4e667592-a9bf-4b89-bbe2-f4656be6a9d6@144.31.143.6:443?encryption=none&security=tls&alpn=http%2F1.1&sni=POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ%3D%3D%3Fed%3D2560#%F0%9F%A6%8A%F0%9F%87%BA%F0%9F%87%B2%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦅🇺🇲🇩🇪"
     type: vless
-    server: 91.90.195.68
-    port: 443
-    uuid: 22df3e50-40d6-4003-8623-917ef4385fcb
-    cipher: none
-    tls: true
-    servername: WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=?ed=2560"
-      headers:
-        Host: 91.90.195.68
-  - name: "💦 4 - VLESS - 🐠🇺🇲"
+    url: "vless://22df3e50-40d6-4003-8623-917ef4385fcb@91.90.195.68:443?encryption=none&security=tls&alpn=http%2F1.1&sni=WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV&fp=chrome&type=ws&path=%2FeyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0%3D%3Fed%3D2560#%F0%9F%A6%85%F0%9F%87%BA%F0%9F%87%B2%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🐠🇺🇲🇩🇪"
     type: vless
-    server: 85.239.230.164
-    port: 443
-    uuid: 8e7a9828-3ab4-44f7-ba1c-af611980928a
-    cipher: none
-    tls: true
-    servername: BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19?ed=2560"
-      headers:
-        Host: 85.239.230.164
-  - name: "💦 5 - VLESS - 🦔🇺🇲"
+    url: "vless://8e7a9828-3ab4-44f7-ba1c-af611980928a@85.239.230.164:443?encryption=none&security=tls&alpn=http%2F1.1&sni=BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19%3Fed%3D2560#%F0%9F%90%A0%F0%9F%87%BA%F0%9F%87%B2%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦔🇺🇲🇩🇪"
     type: vless
-    server: 91.90.195.68
-    port: 443
-    uuid: 7c778f01-c667-4fba-8580-849b966b18a9
-    cipher: none
-    tls: true
-    servername: SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==?ed=2560"
-      headers:
-        Host: 91.90.195.68
-  - name: "💦 6 - VLESS - 🐏🇺🇲"
+    url: "vless://7c778f01-c667-4fba-8580-849b966b18a9@91.90.195.68:443?encryption=none&security=tls&alpn=http%2F1.1&sni=SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv&fp=chrome&type=ws&path=%2FeyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ%3D%3D%3Fed%3D2560#%F0%9F%A6%94%F0%9F%87%BA%F0%9F%87%B2%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🐏🇺🇲🇩🇪"
     type: vless
-    server: 128.14.196.39
-    port: 443
-    uuid: ffef1b41-1cef-4345-9013-60fba8b2b90b
-    cipher: none
-    tls: true
-    servername: sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19?ed=2560"
-      headers:
-        Host: 128.14.196.39
-  - name: "💦 7 - VLESS - 🦆🇩🇪"
+    url: "vless://ffef1b41-1cef-4345-9013-60fba8b2b90b@128.14.196.39:443?encryption=none&security=tls&alpn=http%2F1.1&sni=sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19%3Fed%3D2560#%F0%9F%90%8F%F0%9F%87%BA%F0%9F%87%B2%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦆🇩🇪🇩🇪"
     type: vless
-    server: 188.114.96.3
-    port: 443
-    uuid: ac272a6b-6347-43f9-a14f-d4eaf1e65f09
-    cipher: none
-    tls: true
-    servername: livelY-MATH-A2a1.milfEttA.woRKErs.dEV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=?ed=2560"
-      headers:
-        Host: 188.114.96.3
-  - name: "💦 8 - VLESS - 🦩🇩🇪"
+    url: "vless://ac272a6b-6347-43f9-a14f-d4eaf1e65f09@188.114.96.3:443?encryption=none&security=tls&alpn=http%2F1.1&sni=livelY-MATH-A2a1.milfEttA.woRKErs.dEV&fp=chrome&type=ws&path=%2FeyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0%3D%3Fed%3D2560#%F0%9F%A6%86%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦩🇩🇪🇩🇪"
     type: vless
-    server: 31.43.179.0
-    port: 443
-    uuid: f48f054a-20cb-4dfc-821a-42d9655515a9
-    cipher: none
-    tls: true
-    servername: Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=?ed=2560"
-      headers:
-        Host: 31.43.179.0
-  - name: "💦 9 - VLESS - 🦢🇩🇪"
+    url: "vless://f48f054a-20cb-4dfc-821a-42d9655515a9@31.43.179.0:443?encryption=none&security=tls&alpn=http%2F1.1&sni=Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0%3D%3Fed%3D2560#%F0%9F%A6%A9%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦢🇩🇪🇩🇪"
     type: vless
-    server: 212.183.88.1
-    port: 443
-    uuid: 190f85d0-72ef-4aec-bfd8-401ac90c4d43
-    cipher: none
-    tls: true
-    servername: vpn.SeYEddEx.woRKERs.DeV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0=?ed=2560"
-      headers:
-        Host: 212.183.88.1
-  - name: "💦 10 - VLESS - 🐈🇩🇪"
+    url: "vless://190f85d0-72ef-4aec-bfd8-401ac90c4d43@212.183.88.1:443?encryption=none&security=tls&alpn=http%2F1.1&sni=vpn.SeYEddEx.woRKERs.DeV&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0%3D%3Fed%3D2560#%F0%9F%A6%A2%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🐈🇩🇪🇩🇪"
     type: vless
-    server: 172.67.255.0
-    port: 443
-    uuid: 726eeafa-e8c2-46e7-81ec-57058d552b45
-    cipher: none
-    tls: true
-    servername: loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=?ed=2560"
-      headers:
-        Host: 172.67.255.0
-  - name: "💦 11 - VLESS - 🐧🇳🇱"
+    url: "vless://726eeafa-e8c2-46e7-81ec-57058d552b45@172.67.255.0:443?encryption=none&security=tls&alpn=http%2F1.1&sni=loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv&fp=chrome&type=ws&path=%2FeyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0%3D%3Fed%3D2560#%F0%9F%90%88%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🐧🇳🇱🇩🇪"
     type: vless
-    server: 95.85.62.66
-    port: 443
-    uuid: f442a6ea-77fa-49de-8b0f-a5b1cf733fed
-    cipher: none
-    tls: true
-    servername: cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=?ed=2560"
-      headers:
-        Host: 95.85.62.66
-  - name: "💦 12 - VLESS - 🐿️🇩🇪"
+    url: "vless://f442a6ea-77fa-49de-8b0f-a5b1cf733fed@95.85.62.66:443?encryption=none&security=tls&alpn=http%2F1.1&sni=cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0%3D%3Fed%3D2560#%F0%9F%90%A7%F0%9F%87%B3%F0%9F%87%B1%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🐿️🇩🇪🇩🇪"
     type: vless
-    server: 104.21.86.99
-    port: 443
-    uuid: c8805c30-a8a5-410f-abed-2ef17574cff1
-    cipher: none
-    tls: true
-    servername: SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19?ed=2560"
-      headers:
-        Host: 104.21.86.99
-  - name: "💦 13 - VLESS - 🦨🇩🇪"
+    url: "vless://c8805c30-a8a5-410f-abed-2ef17574cff1@104.21.86.99:443?encryption=none&security=tls&alpn=http%2F1.1&sni=SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV&fp=chrome&type=ws&path=%2FeyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19%3Fed%3D2560#%F0%9F%90%BF%EF%B8%8F%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"
+  - name: "🦨🇩🇪🇩🇪"
     type: vless
-    server: 107.174.67.116
-    port: 443
-    uuid: 2ee79869-5abe-4a3a-b654-77b525ec99c7
-    cipher: none
-    tls: true
-    servername: oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV
-    client-fingerprint: chrome
-    network: ws
-    ws: true
-    ws-opts:
-      path: "/eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==?ed=2560"
-      headers:
-        Host: orange-cloud-60c4.seyedstewieatomic.workers.dev
-
-proxy-groups:
-  - name: "✅ Selector"
-    type: select
-    proxies:
-      - "💦 Best Ping 🚀"
-      - "💦 1 - VLESS - 🦋🇨🇦"
-      - "💦 2 - VLESS - 🦊🇺🇲"
-      - "💦 3 - VLESS - 🦅🇺🇲"
-      - "💦 4 - VLESS - 🐠🇺🇲"
-      - "💦 5 - VLESS - 🦔🇺🇲"
-      - "💦 6 - VLESS - 🐏🇺🇲"
-      - "💦 7 - VLESS - 🦆🇩🇪"
-      - "💦 8 - VLESS - 🦩🇩🇪"
-      - "💦 9 - VLESS - 🦢🇩🇪"
-      - "💦 10 - VLESS - 🐈🇩🇪"
-      - "💦 11 - VLESS - 🐧🇳🇱"
-      - "💦 12 - VLESS - 🐿️🇩🇪"
-      - "💦 13 - VLESS - 🦨🇩🇪"
-  - name: "💦 Best Ping 🚀"
-    type: url-test
-    proxies:
-      - "💦 1 - VLESS - 🦋🇨🇦"
-      - "💦 2 - VLESS - 🦊🇺🇲"
-      - "💦 3 - VLESS - 🦅🇺🇲"
-      - "💦 4 - VLESS - 🐠🇺🇲"
-      - "💦 5 - VLESS - 🦔🇺🇲"
-      - "💦 6 - VLESS - 🐏🇺🇲"
-      - "💦 7 - VLESS - 🦆🇩🇪"
-      - "💦 8 - VLESS - 🦩🇩🇪"
-      - "💦 9 - VLESS - 🦢🇩🇪"
-      - "💦 10 - VLESS - 🐈🇩🇪"
-      - "💦 11 - VLESS - 🐧🇳🇱"
-      - "💦 12 - VLESS - 🐿️🇩🇪"
-      - "💦 13 - VLESS - 🦨🇩🇪"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
-
-rules:
-  - MATCH,✅ Selector
+    url: "vless://2ee79869-5abe-4a3a-b654-77b525ec99c7@107.174.67.116:443?path=%2FeyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ%3D%3D%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=orange-cloud-60c4.seyedstewieatomic.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV#%F0%9F%A6%A8%F0%9F%87%A9%F0%9F%87%AA%F0%9F%87%A9%F0%9F%87%AA"

@@ -73,7 +73,7 @@
     ],
     "outbounds": [
         {
-            "tag": "%F0%9F%A6%8B%F0%9F%87%A8%F0%9F%87%A6",
+            "tag": "🦋🇨🇦🇩🇪",
             "type": "vless",
             "server": "23.227.60.0",
             "server_port": 443,
@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "MQjc-08Df4-Ewk8I1tjaFbQtbC2bRRhO.sEYEDnG1.WorkErs.DEV",
+                "server_name": "MqjC-08dF4-EWK8i1tJafBQTbC2BrRhO.seYEdNg1.workERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -105,7 +105,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%8A%F0%9F%87%BA%F0%9F%87%B2",
+            "tag": "🦊🇺🇲🇩🇪",
             "type": "vless",
             "server": "144.31.143.6",
             "server_port": 443,
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "polIsHEd-bloCk-D011.seYEDdEX-339.WORKers.deV",
+                "server_name": "PolISheD-bLOck-D011.sEYEDdEx-339.woRkErS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -137,7 +137,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%85%F0%9F%87%BA%F0%9F%87%B2",
+            "tag": "🦅🇺🇲🇩🇪",
             "type": "vless",
             "server": "91.90.195.68",
             "server_port": 443,
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "wiThEREd-KinG-1433.HANnaHOWo.wORKeRs.Dev",
+                "server_name": "wItHerED-kING-1433.HannAhOWO.woRKeRs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -169,7 +169,7 @@
             }
         },
         {
-            "tag": "%F0%9F%90%A0%F0%9F%87%BA%F0%9F%87%B2",
+            "tag": "🐠🇺🇲🇩🇪",
             "type": "vless",
             "server": "85.239.230.164",
             "server_port": 443,
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BLack-tree-34C2.MIHanIKa69.WoRKERs.dev",
+                "server_name": "BLACk-TrEe-34c2.MIHaNika69.WoRkErs.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -201,7 +201,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%94%F0%9F%87%BA%F0%9F%87%B2",
+            "tag": "🦔🇺🇲🇩🇪",
             "type": "vless",
             "server": "91.90.195.68",
             "server_port": 443,
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "sPRIng-DiSK-81d3.MESeyedNG.workeRs.Dev",
+                "server_name": "sPRINg-DiSk-81d3.MesEYednG.wOrKERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -233,7 +233,7 @@
             }
         },
         {
-            "tag": "%F0%9F%90%8F%F0%9F%87%BA%F0%9F%87%B2",
+            "tag": "🐏🇺🇲🇩🇪",
             "type": "vless",
             "server": "128.14.196.39",
             "server_port": 443,
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SNOWy-wOod-A9FD.seYeDex.woRkERs.DeV",
+                "server_name": "SNOwy-wooD-a9Fd.sEYEdex.wORKerS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -265,7 +265,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%86%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🦆🇩🇪🇩🇪",
             "type": "vless",
             "server": "188.114.96.3",
             "server_port": 443,
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LIvelY-Math-a2a1.MILfEtTa.WorKers.deV",
+                "server_name": "lively-MaTh-A2A1.miLFETTa.WorkERs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -297,7 +297,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%A9%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🦩🇩🇪🇩🇪",
             "type": "vless",
             "server": "31.43.179.0",
             "server_port": 443,
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SuPeR-uNIOn-7d52.seYeDDeX-FBd.workers.DEV",
+                "server_name": "sUPer-UNIOn-7D52.SEYeddex-FBD.WORkERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -329,7 +329,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%A2%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🦢🇩🇪🇩🇪",
             "type": "vless",
             "server": "212.183.88.1",
             "server_port": 443,
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPn.sEyEDDEx.WORKERs.DeV",
+                "server_name": "Vpn.SEYedDEX.WOrkErs.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -361,7 +361,7 @@
             }
         },
         {
-            "tag": "%F0%9F%90%88%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🐈🇩🇪🇩🇪",
             "type": "vless",
             "server": "172.67.255.0",
             "server_port": 443,
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LONg-dUSt-93E6.SeyedHoSeIn.woRkerS.dEv",
+                "server_name": "lOnG-DUSt-93e6.SeyEDHosEin.WOrkeRs.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -393,7 +393,7 @@
             }
         },
         {
-            "tag": "%F0%9F%90%A7%F0%9F%87%B3%F0%9F%87%B1",
+            "tag": "🐧🇳🇱🇩🇪",
             "type": "vless",
             "server": "95.85.62.66",
             "server_port": 443,
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "coOl-ShApE-4720.SEYedNG.worKerS.deV",
+                "server_name": "cool-shapE-4720.SEYEdNG.woRkErS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -425,7 +425,7 @@
             }
         },
         {
-            "tag": "%F0%9F%90%BF%EF%B8%8F%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🐿️🇩🇪🇩🇪",
             "type": "vless",
             "server": "104.21.86.99",
             "server_port": 443,
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "spriNg-souND-2369.sTeWieNG.WORkeRs.DEV",
+                "server_name": "spriNG-SOuNd-2369.stEWiENg.workers.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -457,7 +457,7 @@
             }
         },
         {
-            "tag": "%F0%9F%A6%A8%F0%9F%87%A9%F0%9F%87%AA",
+            "tag": "🦨🇩🇪🇩🇪",
             "type": "vless",
             "server": "107.174.67.116",
             "server_port": 443,
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "oraNgE-CLOud-60c4.SeyedStewiEAtOMIc.workERS.deV",
+                "server_name": "oRaNGe-ClOUd-60c4.SEYEdSTewIEAtomic.WoRkERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -493,19 +493,19 @@
             "tag": "انتخاب دستی",
             "outbounds": [
                 "بهترین پینگ",
-                "%F0%9F%A6%8B%F0%9F%87%A8%F0%9F%87%A6",
-                "%F0%9F%A6%8A%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%85%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%90%A0%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%94%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%90%8F%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%86%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A9%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A2%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%90%88%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%90%A7%F0%9F%87%B3%F0%9F%87%B1",
-                "%F0%9F%90%BF%EF%B8%8F%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A8%F0%9F%87%A9%F0%9F%87%AA"
+                "🦋🇨🇦🇩🇪",
+                "🦊🇺🇲🇩🇪",
+                "🦅🇺🇲🇩🇪",
+                "🐠🇺🇲🇩🇪",
+                "🦔🇺🇲🇩🇪",
+                "🐏🇺🇲🇩🇪",
+                "🦆🇩🇪🇩🇪",
+                "🦩🇩🇪🇩🇪",
+                "🦢🇩🇪🇩🇪",
+                "🐈🇩🇪🇩🇪",
+                "🐧🇳🇱🇩🇪",
+                "🐿️🇩🇪🇩🇪",
+                "🦨🇩🇪🇩🇪"
             ],
             "interrupt_exist_connections": false
         },
@@ -518,19 +518,19 @@
             "type": "urltest",
             "tag": "بهترین پینگ",
             "outbounds": [
-                "%F0%9F%A6%8B%F0%9F%87%A8%F0%9F%87%A6",
-                "%F0%9F%A6%8A%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%85%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%90%A0%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%94%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%90%8F%F0%9F%87%BA%F0%9F%87%B2",
-                "%F0%9F%A6%86%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A9%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A2%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%90%88%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%90%A7%F0%9F%87%B3%F0%9F%87%B1",
-                "%F0%9F%90%BF%EF%B8%8F%F0%9F%87%A9%F0%9F%87%AA",
-                "%F0%9F%A6%A8%F0%9F%87%A9%F0%9F%87%AA"
+                "🦋🇨🇦🇩🇪",
+                "🦊🇺🇲🇩🇪",
+                "🦅🇺🇲🇩🇪",
+                "🐠🇺🇲🇩🇪",
+                "🦔🇺🇲🇩🇪",
+                "🐏🇺🇲🇩🇪",
+                "🦆🇩🇪🇩🇪",
+                "🦩🇩🇪🇩🇪",
+                "🦢🇩🇪🇩🇪",
+                "🐈🇩🇪🇩🇪",
+                "🐧🇳🇱🇩🇪",
+                "🐿️🇩🇪🇩🇪",
+                "🦨🇩🇪🇩🇪"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interrupt_exist_connections": false,
