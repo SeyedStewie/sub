@@ -6,21 +6,21 @@
   "dns": {
     "servers": [
       {
-        "tag": "proxydns",
+        "tag": "google",
         "address": "tls://8.8.8.8"
       },
       {
-        "tag": "localdns",
+        "tag": "local",
         "address": "local"
       }
     ],
     "rules": [
       {
-        "rule_set": [],
-        "server": "proxydns"
+        "outbound": "any",
+        "server": "google"
       }
     ],
-    "final": "proxydns"
+    "independent_cache": true
   },
   "inbounds": [
     {
@@ -340,7 +340,8 @@
     }
   ],
   "route": {
-    "final": "direct",
+    "default_domain_resolver": "google",
+    "rules": [],
     "auto_detect_interface": true
   }
 }
