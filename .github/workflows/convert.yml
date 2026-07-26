@@ -32,6 +32,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add vpn.json
-          git diff --staged --quiet || git commit -m "Auto-update vpn.json using ipinfo.io API"
+          git add vpn.json vpns.json vpn.yml vpn64.txt
+          git diff --staged --quiet || git commit -m "Auto-update all VPN subscription formats"
           git push
