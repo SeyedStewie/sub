@@ -47,7 +47,6 @@ function getRealCountryFlag(address) {
     return '🌍';
 }
 
-// پارس کردن انواع لینک‌ها (vless, trojan, wireguard)
 function parseConfig(link) {
     try {
         if (link.startsWith('vless://')) {
@@ -57,7 +56,7 @@ function parseConfig(link) {
 
             const address = parsed.hostname;
             const flag = getRealCountryFlag(address);
-            const remarks = `${rawRemarks}${flag}`; // حفظ پرچم قبلی و اضافه شدن پرچم جدید به انتها
+            const remarks = `${rawRemarks}${flag}`;
 
             const params = parsed.searchParams;
             return {
@@ -134,7 +133,7 @@ lines.forEach((line) => {
 
     validLinks.push(line);
 
-    // ۱. ساختار سفارشی شما برای vpn.json
+    // ۱. ساختار کامل خروجی vpn.json با تمام جزئیات امنیتی و ترافیک
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         jsonConfigs.push({
           "remarks": config.remarks,
@@ -155,49 +154,123 @@ lines.forEach((line) => {
               "settings": { "auth": "noauth", "udp": true },
               "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": true },
               "tag": "mixed-in"
+            },
+            {
+              "listen": "127.0.0.1", "port": 10853, "protocol": "dokodemo-door",
+              "settings": { "address": "1.1.1.1", "network": "tcp,udp", "port": 53 },
+              "tag": "dns-in"
             }
           ],
           "outbounds": [
             {
               "protocol": config.protocol,
               "settings": config.protocol === 'vless' ? {
-                "vnext": [{ "address": config.address, "port": config.port, "users": [{ "id": config.uuid, "encryption": "none" }] }]
+                "vnext": [{
+                  "address": config.address,
+                  "port": config.port,
+                  "users": [{ "id": config.uuid, "encryption": "none" }]
+                }]
               } : {
-                "servers": [{ "address": config.address, "port": config.port, "password": config.password }]
+                "servers": [{
+                  "address": config.address,
+                  "port": config.port,
+                  "password": config.password
+                }]
               },
               "streamSettings": {
                 "network": config.net,
+                "wsSettings": {
+                  "host": config.sni.toLowerCase(),
+                  "path": config.path
+                },
                 "security": config.security,
-                "tlsSettings": { "serverName": config.sni, "fingerprint": config.fp }
+                "tlsSettings": {
+                  "serverName": config.sni,
+                  "fingerprint": config.fp,
+                  "alpn": config.alpn
+                },
+                "sockopt": {
+                  "domainStrategy": "UseIP"
+                }
               },
               "tag": "proxy"
             },
-            { "protocol": "freedom", "settings": {}, "tag": "direct" }
+            { "protocol": "dns", "settings": { "rules": [{ "action": "hijack" }] }, "tag": "dns-out" },
+            { "protocol": "freedom", "settings": { "domainStrategy": "UseIP" }, "tag": "direct" },
+            { "protocol": "blackhole", "settings": { "response": { "type": "http" } }, "tag": "block" }
           ],
-          "routing": { "domainStrategy": "AsIs", "rules": [] }
+          "routing": {
+            "domainStrategy": "AsIs",
+            "rules": [
+              { "inboundTag": ["mixed-in"], "port": 53, "outboundTag": "dns-out", "type": "field" },
+              { "inboundTag": ["dns-in"], "outboundTag": "dns-out", "type": "field" },
+              { "inboundTag": ["remote-dns"], "outboundTag": "proxy", "type": "field" },
+              { "inboundTag": ["dns"], "outboundTag": "direct", "type": "field" },
+              { "domain": ["geosite:private"], "outboundTag": "direct", "type": "field" },
+              { "ip": ["geoip:private"], "outboundTag": "direct", "type": "field" },
+              { "network": "udp", "outboundTag": "block", "type": "field" },
+              { "domain": ["geosite:category-ads-all", "geosite:category-ads-ir"], "outboundTag": "block", "type": "field" },
+              { "domain": ["geosite:category-ir"], "outboundTag": "direct", "type": "field" },
+              { "ip": ["geoip:ir"], "outboundTag": "direct", "type": "field" },
+              { "network": "tcp", "outboundTag": "proxy", "type": "field" }
+            ]
+          },
+          "policy": {
+            "levels": { "0": { "connIdle": 300, "handshake": 4, "uplinkOnly": 1, "downlinkOnly": 1 } },
+            "system": { "statsOutboundUplink": true, "statsOutboundDownlink": true }
+          },
+          "stats": {}
         });
     }
 
-    // ۲. خروجی Sing-box برای vpns.json (نمونه اوباند)
+    // ۲. خروجی Sing-box برای vpns.json
     singboxOutbounds.push({
         "type": config.protocol,
         "tag": config.remarks,
         "server": config.address,
         "server_port": config.port,
-        ...(config.protocol === 'vless' && { "uuid": config.uuid, "flow": "" }),
+        ...(config.protocol === 'vless' && {
+            "uuid": config.uuid,
+            "flow": "",
+            ...(config.security === 'tls' && {
+                "tls": {
+                    "enabled": true,
+                    "server_name": config.sni,
+                    "utls": { "enabled": true, "fingerprint": config.fp }
+                }
+            }),
+            ...(config.net === 'ws' && {
+                "transport": { "type": "ws", "path": config.path, "headers": { "Host": config.sni } }
+            })
+        }),
         ...(config.protocol === 'trojan' && { "password": config.password }),
         ...(config.protocol === 'wireguard' && { "local_address": [config.ip], "private_key": config.privateKey, "server_pubkey": config.publicKey })
     });
 
-    // ۳. خروجی Clash برای vpn.yml (نمونه پروکسی)
+    // ۳. خروجی Clash برای vpn.yml
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         clashProxies.push({
             name: config.remarks,
             type: config.protocol,
             server: config.address,
             port: config.port,
-            ...(config.protocol === 'vless' && { uuid: config.uuid, cipher: 'none', tls: true, 'client-fingerprint': config.fp }),
-            ...(config.protocol === 'trojan' && { password: config.password, tls: true })
+            ...(config.protocol === 'vless' && {
+                uuid: config.uuid,
+                cipher: 'none',
+                tls: config.security === 'tls',
+                servername: config.sni,
+                'client-fingerprint': config.fp,
+                network: config.net,
+                ...(config.net === 'ws' && {
+                    ws: true,
+                    'ws-opts': { path: config.path, headers: { Host: config.sni } }
+                })
+            }),
+            ...(config.protocol === 'trojan' && {
+                password: config.password,
+                tls: true,
+                servername: config.sni
+            })
         });
     }
 });
@@ -211,7 +284,7 @@ if (validLinks.length === 0) {
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 fs.writeFileSync('vpns.json', JSON.stringify({ outbounds: singboxOutbounds }, null, 2), 'utf8');
 
-// ساخت محتوای YAML برای Clash
+// ساخت YAML استاندارد برای Clash
 let clashYaml = "proxies:\n";
 clashProxies.forEach(p => {
     clashYaml += `  - name: "${p.name}"\n`;
@@ -220,14 +293,23 @@ clashProxies.forEach(p => {
     clashYaml += `    port: ${p.port}\n`;
     if (p.uuid) clashYaml += `    uuid: ${p.uuid}\n`;
     if (p.password) clashYaml += `    password: ${p.password}\n`;
-    if (p.tls) clashYaml += `    tls: true\n`;
     if (p.cipher) clashYaml += `    cipher: ${p.cipher}\n`;
+    if (p.tls !== undefined) clashYaml += `    tls: ${p.tls}\n`;
+    if (p.servername) clashYaml += `    servername: ${p.servername}\n`;
     if (p['client-fingerprint']) clashYaml += `    client-fingerprint: ${p['client-fingerprint']}\n`;
+    if (p.network) clashYaml += `    network: ${p.network}\n`;
+    if (p.ws) {
+        clashYaml += `    ws-opts:\n`;
+        if (p['ws-opts'].path) clashYaml += `      path: "${p['ws-opts'].path}"\n`;
+        if (p['ws-opts'].headers && p['ws-opts'].headers.Host) {
+            clashYaml += `      headers:\n        Host: ${p['ws-opts'].headers.Host}\n`;
+        }
+    }
 });
 fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 
-// ساخت و ذخیره Base64 در vpn64.txt
+// ذخیره Base64
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('تمامی فایل‌های خروجی با موفقیت تولید شدند!');
+console.log('فایل‌های خروجی با ساختار کامل و صحیح بازسازی شدند!');
