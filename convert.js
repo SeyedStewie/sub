@@ -113,6 +113,8 @@ async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
     const validLinks = [];
+    const xrayOutbounds = [];      // برای vpn.json
+    const clashProxies = [];       // برای vpn.yml
 
     for (let index = 0; index < lines.length; index++) {
         let line = lines[index].trim();
@@ -122,6 +124,55 @@ async function main() {
                 validLinks.push(result.link);
                 outboundTags.push(result.tag);
                 singboxOutbounds.push(result.outboundObj);
+
+                // ---- ساخت خروجی Xray ----
+                const xrayObj = {
+                    protocol: "vless",
+                    settings: {
+                        vnext: [{
+                            address: result.outboundObj.server,
+                            port: result.outboundObj.server_port,
+                            users: [{
+                                id: result.outboundObj.uuid,
+                                encryption: "none",
+                                flow: ""  // در صورت نیاز از پارامتر flow استفاده کنید
+                            }]
+                        }]
+                    },
+                    streamSettings: {
+                        network: "ws",
+                        security: "tls",
+                        tlsSettings: {
+                            serverName: result.outboundObj.tls.server_name,
+                            fingerprint: result.outboundObj.tls.utls.fingerprint,
+                            allowInsecure: false
+                        },
+                        wsSettings: {
+                            path: result.outboundObj.transport.path,
+                            headers: result.outboundObj.transport.headers
+                        }
+                    }
+                };
+                xrayOutbounds.push(xrayObj);
+
+                // ---- ساخت خروجی Clash ----
+                const clashProxy = {
+                    name: result.tag,
+                    type: "vless",
+                    server: result.outboundObj.server,
+                    port: result.outboundObj.server_port,
+                    uuid: result.outboundObj.uuid,
+                    network: "ws",
+                    tls: true,
+                    udp: true,
+                    sni: result.outboundObj.tls.server_name,
+                    fingerprint: result.outboundObj.tls.utls.fingerprint,
+                    "ws-path": result.outboundObj.transport.path,
+                    "ws-headers": {
+                        Host: result.outboundObj.transport.headers.Host
+                    }
+                };
+                clashProxies.push(clashProxy);
             }
         }
     }
@@ -136,17 +187,29 @@ async function main() {
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // ۲. تولید فایل vpn.json (به‌روزرسانی شده با آرایه لینک‌های جدید)
-    fs.writeFileSync('vpn.json', JSON.stringify(validLinks, null, 4), 'utf8');
+    // ۲. تولید فایل vpn.json (آرایه خروجی‌های Xray)
+    fs.writeFileSync('vpn.json', JSON.stringify(xrayOutbounds, null, 4), 'utf8');
 
-    // ۳. تولید فایل vpn.yml (به‌روزرسانی شده)
+    // ۳. تولید فایل vpn.yml (لیست پروکسی‌های Clash)
     let ymlContent = "proxies:\n";
-    validLinks.forEach((link, idx) => {
-        ymlContent += `  - name: "${outboundTags[idx]}"\n    type: vless\n    url: "${link}"\n`;
+    clashProxies.forEach(p => {
+        ymlContent += `  - name: "${p.name}"\n`;
+        ymlContent += `    type: ${p.type}\n`;
+        ymlContent += `    server: ${p.server}\n`;
+        ymlContent += `    port: ${p.port}\n`;
+        ymlContent += `    uuid: ${p.uuid}\n`;
+        ymlContent += `    network: ${p.network}\n`;
+        ymlContent += `    tls: ${p.tls}\n`;
+        ymlContent += `    udp: ${p.udp}\n`;
+        ymlContent += `    sni: ${p.sni}\n`;
+        ymlContent += `    fingerprint: ${p.fingerprint}\n`;
+        ymlContent += `    ws-path: ${p["ws-path"]}\n`;
+        ymlContent += `    ws-headers:\n`;
+        ymlContent += `      Host: ${p["ws-headers"].Host}\n`;
     });
     fs.writeFileSync('vpn.yml', ymlContent, 'utf8');
 
-    // ۴. تولید فایل vpns.json (سینگ‌باکس)
+    // ۴. تولید فایل vpns.json (سینگ‌باکس) – بدون تغییر
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
 
