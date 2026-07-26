@@ -73,7 +73,7 @@
     ],
     "outbounds": [
         {
-            "tag": "💦 1 - VLESS - 🦋🇨🇦",
+            "tag": "💦 1 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "23.227.60.0",
             "server_port": 443,
@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv",
+                "server_name": "vPN.SeyEdDeX.WORKeRs.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -100,12 +100,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "23.227.60.0"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 2 - VLESS - 🦊🇺🇲",
+            "tag": "💦 2 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "144.31.143.6",
             "server_port": 443,
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv",
+                "server_name": "VPn.sEYEDdeX.woRKerS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -132,12 +132,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "144.31.143.6"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 3 - VLESS - 🦅🇺🇲",
+            "tag": "💦 3 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "91.90.195.68",
             "server_port": 443,
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV",
+                "server_name": "Vpn.seyeDdex.WOrkeRS.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -164,12 +164,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "91.90.195.68"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 4 - VLESS - 🐠🇺🇲",
+            "tag": "💦 4 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "85.239.230.164",
             "server_port": 443,
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev",
+                "server_name": "VPn.SEYEDdEX.worKers.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -196,12 +196,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "85.239.230.164"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 5 - VLESS - 🦔🇺🇲",
+            "tag": "💦 5 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "91.90.195.68",
             "server_port": 443,
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv",
+                "server_name": "VpN.seyEDDeX.WoRKeRS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -228,12 +228,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "91.90.195.68"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 6 - VLESS - 🐏🇺🇲",
+            "tag": "💦 6 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "128.14.196.39",
             "server_port": 443,
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev",
+                "server_name": "VPN.SEyEdDEx.wOrKers.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -260,12 +260,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "128.14.196.39"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 7 - VLESS - 🦆🇩🇪",
+            "tag": "💦 7 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "188.114.96.3",
             "server_port": 443,
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "livelY-MATH-A2a1.milfEttA.woRKErs.dEV",
+                "server_name": "vPN.SeYeDdeX.wORkerS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -292,12 +292,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "188.114.96.3"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 8 - VLESS - 🦩🇩🇪",
+            "tag": "💦 8 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "31.43.179.0",
             "server_port": 443,
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV",
+                "server_name": "vpn.SeYEddeX.wORkerS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -324,12 +324,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "31.43.179.0"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 9 - VLESS - 🦢🇩🇪",
+            "tag": "💦 9 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "212.183.88.1",
             "server_port": 443,
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vpn.SeYEddEx.woRKERs.DeV",
+                "server_name": "vPn.sEYEdDeX.WORkeRS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -356,12 +356,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "212.183.88.1"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 10 - VLESS - 🐈🇩🇪",
+            "tag": "💦 10 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "172.67.255.0",
             "server_port": 443,
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv",
+                "server_name": "vpn.seYeddex.woRKerS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -388,12 +388,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "172.67.255.0"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 11 - VLESS - 🐧🇳🇱",
+            "tag": "💦 11 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "95.85.62.66",
             "server_port": 443,
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv",
+                "server_name": "VpN.SEYeDdex.wORkers.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -420,12 +420,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "95.85.62.66"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 12 - VLESS - 🐿️🇩🇪",
+            "tag": "💦 12 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "104.21.86.99",
             "server_port": 443,
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV",
+                "server_name": "vpN.SeyeddeX.WOrkERS.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -452,12 +452,12 @@
                 "max_early_data": 2560,
                 "early_data_header_name": "Sec-WebSocket-Protocol",
                 "headers": {
-                    "Host": "104.21.86.99"
+                    "Host": "vpn.seyeddex.workers.dev"
                 }
             }
         },
         {
-            "tag": "💦 13 - VLESS - 🦨🇩🇪",
+            "tag": "💦 13 - VLESS - IPv4 : 443",
             "type": "vless",
             "server": "107.174.67.116",
             "server_port": 443,
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "oRANGe-ClOUd-60c4.SeYEDSTewIeatOMIc.woRkERs.DeV",
+                "server_name": "OraNGe-cLOuD-60C4.sEYedStEWIEATOMIC.WorKERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -493,19 +493,19 @@
             "tag": "✅ Selector",
             "outbounds": [
                 "💦 Best Ping 🚀",
-                "💦 1 - VLESS - 🦋🇨🇦",
-                "💦 2 - VLESS - 🦊🇺🇲",
-                "💦 3 - VLESS - 🦅🇺🇲",
-                "💦 4 - VLESS - 🐠🇺🇲",
-                "💦 5 - VLESS - 🦔🇺🇲",
-                "💦 6 - VLESS - 🐏🇺🇲",
-                "💦 7 - VLESS - 🦆🇩🇪",
-                "💦 8 - VLESS - 🦩🇩🇪",
-                "💦 9 - VLESS - 🦢🇩🇪",
-                "💦 10 - VLESS - 🐈🇩🇪",
-                "💦 11 - VLESS - 🐧🇳🇱",
-                "💦 12 - VLESS - 🐿️🇩🇪",
-                "💦 13 - VLESS - 🦨🇩🇪"
+                "💦 1 - VLESS - IPv4 : 443",
+                "💦 2 - VLESS - IPv4 : 443",
+                "💦 3 - VLESS - IPv4 : 443",
+                "💦 4 - VLESS - IPv4 : 443",
+                "💦 5 - VLESS - IPv4 : 443",
+                "💦 6 - VLESS - IPv4 : 443",
+                "💦 7 - VLESS - IPv4 : 443",
+                "💦 8 - VLESS - IPv4 : 443",
+                "💦 9 - VLESS - IPv4 : 443",
+                "💦 10 - VLESS - IPv4 : 443",
+                "💦 11 - VLESS - IPv4 : 443",
+                "💦 12 - VLESS - IPv4 : 443",
+                "💦 13 - VLESS - IPv4 : 443"
             ],
             "interrupt_exist_connections": false
         },
@@ -518,19 +518,19 @@
             "type": "urltest",
             "tag": "💦 Best Ping 🚀",
             "outbounds": [
-                "💦 1 - VLESS - 🦋🇨🇦",
-                "💦 2 - VLESS - 🦊🇺🇲",
-                "💦 3 - VLESS - 🦅🇺🇲",
-                "💦 4 - VLESS - 🐠🇺🇲",
-                "💦 5 - VLESS - 🦔🇺🇲",
-                "💦 6 - VLESS - 🐏🇺🇲",
-                "💦 7 - VLESS - 🦆🇩🇪",
-                "💦 8 - VLESS - 🦩🇩🇪",
-                "💦 9 - VLESS - 🦢🇩🇪",
-                "💦 10 - VLESS - 🐈🇩🇪",
-                "💦 11 - VLESS - 🐧🇳🇱",
-                "💦 12 - VLESS - 🐿️🇩🇪",
-                "💦 13 - VLESS - 🦨🇩🇪"
+                "💦 1 - VLESS - IPv4 : 443",
+                "💦 2 - VLESS - IPv4 : 443",
+                "💦 3 - VLESS - IPv4 : 443",
+                "💦 4 - VLESS - IPv4 : 443",
+                "💦 5 - VLESS - IPv4 : 443",
+                "💦 6 - VLESS - IPv4 : 443",
+                "💦 7 - VLESS - IPv4 : 443",
+                "💦 8 - VLESS - IPv4 : 443",
+                "💦 9 - VLESS - IPv4 : 443",
+                "💦 10 - VLESS - IPv4 : 443",
+                "💦 11 - VLESS - IPv4 : 443",
+                "💦 12 - VLESS - IPv4 : 443",
+                "💦 13 - VLESS - IPv4 : 443"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interrupt_exist_connections": false,
