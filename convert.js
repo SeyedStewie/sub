@@ -56,7 +56,7 @@ function parseConfig(link) {
 
             const address = parsed.hostname;
             const flag = getRealCountryFlag(address);
-            const remarks = `${rawRemarks}${flag}`;
+            const remarks = `${rawRemarks} ${flag}`;
 
             const params = parsed.searchParams;
             return {
@@ -80,7 +80,7 @@ function parseConfig(link) {
 
             const address = parsed.hostname;
             const flag = getRealCountryFlag(address);
-            const remarks = `${rawRemarks}${flag}`;
+            const remarks = `${rawRemarks} ${flag}`;
 
             const params = parsed.searchParams;
             return {
@@ -96,26 +96,6 @@ function parseConfig(link) {
                 net: params.get('type') || 'tcp'
             };
         }
-        else if (link.startsWith('wireguard://')) {
-            const parsed = new URL(link);
-            let rawRemarks = decodeURIComponent(parsed.hash.replace('#', '')).trim();
-            if (!rawRemarks) rawRemarks = 'WireGuard Config';
-
-            const address = parsed.hostname;
-            const flag = getRealCountryFlag(address);
-            const remarks = `${rawRemarks}${flag}`;
-
-            const params = parsed.searchParams;
-            return {
-                protocol: 'wireguard',
-                remarks,
-                address,
-                port: parseInt(parsed.port) || 51820,
-                privateKey: parsed.username,
-                publicKey: params.get('publickey') || '',
-                ip: params.get('ip') || ''
-            };
-        }
     } catch (e) {
         console.error('خطا در پارس کردن لینک:', link);
     }
@@ -126,130 +106,57 @@ const jsonConfigs = [];
 const singboxOutbounds = [];
 const clashProxies = [];
 const validLinks = [];
+const outboundTags = [];
 
-lines.forEach((line) => {
+lines.forEach((line, index) => {
     const config = parseConfig(line);
     if (!config) return;
 
     validLinks.push(line);
+    const tag = `${index + 1} - ${config.protocol.toUpperCase()} - ${config.remarks}`;
+    outboundTags.push(tag);
 
-    // ۱. خروجی vpn.json (Xray)
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         jsonConfigs.push({
           "remarks": config.remarks,
-          "version": { "min": "26.2.6" },
-          "log": { "loglevel": "none" },
-          "dns": {
-            "hosts": { "geosite:category-ads-all": "#3", "geosite:category-ads-ir": "#3" },
-            "servers": [
-              { "address": "https://8.8.8.8/dns-query", "tag": "remote-dns" },
-              { "address": "8.8.8.8", "domains": ["geosite:category-ir"], "expectIPs": ["geoip:ir"], "skipFallback": true }
-            ],
-            "queryStrategy": "UseIP",
-            "tag": "dns"
-          },
-          "inbounds": [
-            {
-              "listen": "127.0.0.1", "port": 10808, "protocol": "mixed",
-              "settings": { "auth": "noauth", "udp": true },
-              "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": true },
-              "tag": "mixed-in"
-            },
-            {
-              "listen": "127.0.0.1", "port": 10853, "protocol": "dokodemo-door",
-              "settings": { "address": "1.1.1.1", "network": "tcp,udp", "port": 53 },
-              "tag": "dns-in"
-            }
-          ],
-          "outbounds": [
-            {
-              "protocol": config.protocol,
-              "settings": config.protocol === 'vless' ? {
-                "vnext": [{
-                  "address": config.address,
-                  "port": config.port,
-                  "users": [{ "id": config.uuid, "encryption": "none" }]
-                }]
-              } : {
-                "servers": [{
-                  "address": config.address,
-                  "port": config.port,
-                  "password": config.password
-                }]
-              },
-              "streamSettings": {
-                "network": config.net,
-                "wsSettings": {
-                  "host": config.sni.toLowerCase(),
-                  "path": config.path
-                },
-                "security": config.security,
-                "tlsSettings": {
-                  "serverName": config.sni,
-                  "fingerprint": config.fp,
-                  "alpn": config.alpn
-                },
-                "sockopt": {
-                  "domainStrategy": "UseIP"
-                }
-              },
-              "tag": "proxy"
-            },
-            { "protocol": "dns", "settings": { "rules": [{ "action": "hijack" }] }, "tag": "dns-out" },
-            { "protocol": "freedom", "settings": { "domainStrategy": "UseIP" }, "tag": "direct" },
-            { "protocol": "blackhole", "settings": { "response": { "type": "http" } }, "tag": "block" }
-          ],
-          "routing": {
-            "domainStrategy": "AsIs",
-            "rules": [
-              { "inboundTag": ["mixed-in"], "port": 53, "outboundTag": "dns-out", "type": "field" },
-              { "inboundTag": ["dns-in"], "outboundTag": "dns-out", "type": "field" },
-              { "inboundTag": ["remote-dns"], "outboundTag": "proxy", "type": "field" },
-              { "inboundTag": ["dns"], "outboundTag": "direct", "type": "field" },
-              { "domain": ["geosite:private"], "outboundTag": "direct", "type": "field" },
-              { "ip": ["geoip:private"], "outboundTag": "direct", "type": "field" },
-              { "network": "udp", "outboundTag": "block", "type": "field" },
-              { "domain": ["geosite:category-ads-all", "geosite:category-ads-ir"], "outboundTag": "block", "type": "field" },
-              { "domain": ["geosite:category-ir"], "outboundTag": "direct", "type": "field" },
-              { "network": "tcp", "outboundTag": "proxy", "type": "field" }
-            ]
-          },
-          "policy": {
-            "levels": { "0": { "connIdle": 300, "handshake": 4, "uplinkOnly": 1, "downlinkOnly": 1 } },
-            "system": { "statsOutboundUplink": true, "statsOutboundDownlink": true }
-          },
-          "stats": {}
+          "outbounds": [{ "protocol": config.protocol, "tag": "proxy" }]
         });
     }
 
-    // ۲. خروجی Sing-box برای vpns.json
     singboxOutbounds.push({
         "type": config.protocol,
-        "tag": config.remarks,
+        "tag": tag,
         "server": config.address,
         "server_port": config.port,
-        ...(config.protocol === 'vless' && {
-            "uuid": config.uuid,
-            "flow": "",
-            ...(config.security === 'tls' && {
-                "tls": {
-                    "enabled": true,
-                    "server_name": config.sni,
-                    "utls": { "enabled": true, "fingerprint": config.fp }
-                }
-            }),
-            ...(config.net === 'ws' && {
-                "transport": { "type": "ws", "path": config.path, "headers": { "Host": config.sni } }
-            })
+        "tcp_fast_open": false,
+        "uuid": config.uuid,
+        "packet_encoding": "",
+        "network": config.net,
+        ...(config.security === 'tls' && {
+            "tls": {
+                "enabled": true,
+                "server_name": config.sni,
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": config.alpn,
+                "utls": { "enabled": true, "fingerprint": config.fp }
+            }
         }),
-        ...(config.protocol === 'trojan' && { "password": config.password }),
-        ...(config.protocol === 'wireguard' && { "local_address": [config.ip], "private_key": config.privateKey, "server_pubkey": config.publicKey })
+        ...(config.net === 'ws' && {
+            "transport": {
+                "type": "ws",
+                "path": config.path,
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": { "Host": config.sni }
+            }
+        }),
+        "domain_resolver": "dns-direct"
     });
 
-    // ۳. خروجی Clash برای vpn.yml
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         clashProxies.push({
-            name: config.remarks,
+            name: tag,
             type: config.protocol,
             server: config.address,
             port: config.port,
@@ -279,44 +186,210 @@ if (validLinks.length === 0) {
     process.exit(1);
 }
 
-// ذخیره vpn.json (Xray)
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 
-// ذخیره ساختار کاملاً جدید و استاندارد Sing-box (سازگار با نسخه 1.12 و بالاتر) بدون خطای DNS و Domain Resolver
+const selectorTag = "انتخاب دستی";
+const urlTestTag = "بهترین پینگ";
+
 const singboxFullConfig = {
-    "log": { "level": "warn", "timestamp": true },
+    "log": {
+        "disabled": true,
+        "timestamp": true
+    },
     "dns": {
         "servers": [
-            { "tag": "google", "address": "tls://8.8.8.8" },
-            { "tag": "local", "address": "local" }
+            {
+                "type": "https",
+                "server": "8.8.8.8",
+                "detour": selectorTag,
+                "tag": "dns-remote"
+            },
+            {
+                "type": "udp",
+                "server": "8.8.8.8",
+                "tag": "dns-direct"
+            }
         ],
         "rules": [
-            { "outbound": "any", "server": "google" }
+            {
+                "clash_mode": "Direct",
+                "server": "dns-direct"
+            },
+            {
+                "clash_mode": "Global",
+                "server": "dns-remote"
+            },
+            {
+                "rule_set": [
+                    "geosite-category-ads-all"
+                ],
+                "action": "reject"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": [
+                            "geosite-ir"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-ir"
+                    }
+                ],
+                "action": "route",
+                "server": "dns-direct"
+            }
         ],
+        "strategy": "ipv4_only",
         "independent_cache": true
     },
     "inbounds": [
         {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.19.0.1/28"
+            ],
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "mixed"
+        },
+        {
             "type": "mixed",
             "tag": "mixed-in",
             "listen": "127.0.0.1",
-            "listen_port": 10808
+            "listen_port": 2080
         }
     ],
     "outbounds": [
         ...singboxOutbounds,
-        { "type": "direct", "tag": "direct" },
-        { "type": "block", "tag": "block" }
+        {
+            "type": "selector",
+            "tag": selectorTag,
+            "outbounds": [
+                urlTestTag,
+                ...outboundTags
+            ],
+            "interrupt_exist_connections": false
+        },
+        {
+            "type": "direct",
+            "tag": "direct",
+            "domain_resolver": "dns-direct"
+        },
+        {
+            "type": "urltest",
+            "tag": urlTestTag,
+            "outbounds": outboundTags,
+            "url": "https://www.gstatic.com/generate_204",
+            "interrupt_exist_connections": false,
+            "interval": "30s"
+        }
     ],
     "route": {
-        "default_domain_resolver": "google",
-        "rules": [],
-        "auto_detect_interface": true
+        "rules": [
+            {
+                "ip_cidr": "172.19.0.2",
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": selectorTag
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-category-ads-all"
+                ],
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "geoip-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            }
+        ],
+        "rule_set": [
+            {
+                "type": "remote",
+                "tag": "geosite-category-ads-all",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-category-ads-all.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": selectorTag
+    },
+    "ntp": {
+        "enabled": true,
+        "server": "time.cloudflare.com",
+        "server_port": 123,
+        "domain_resolver": "dns-direct",
+        "interval": "30m",
+        "write_to_system": false
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": true
+        },
+        "clash_api": {
+            "external_controller": "127.0.0.1:9090",
+            "external_ui": "ui",
+            "default_mode": "Rule",
+            "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "direct"
+        }
     }
 };
+
 fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 2), 'utf8');
 
-// ذخیره ساختار استاندارد Clash با قابلیت انتخاب دستی و «بهترین پینگ»
 let clashYaml = "port: 7890\n";
 clashYaml += "socks-port: 7891\n";
 clashYaml += "allow-lan: true\n";
@@ -347,16 +420,15 @@ clashProxies.forEach(p => {
 });
 
 clashYaml += "\nproxy-groups:\n";
-// گروه انتخاب دستی
-clashYaml += "  - name: \"انتخاب دستی\"\n";
+clashYaml += `  - name: "${selectorTag}"\n`;
 clashYaml += "    type: select\n";
 clashYaml += "    proxies:\n";
+clashYaml += `      - "${urlTestTag}"\n`;
 clashProxies.forEach(p => {
     clashYaml += `      - "${p.name}"\n`;
 });
 
-// گروه بهترین پینگ (خودکار)
-clashYaml += "  - name: \"بهترین پینگ\"\n";
+clashYaml += `  - name: "${urlTestTag}"\n`;
 clashYaml += "    type: url-test\n";
 clashYaml += "    proxies:\n";
 clashProxies.forEach(p => {
@@ -367,12 +439,11 @@ clashYaml += "    interval: 300\n";
 clashYaml += "    tolerance: 50\n";
 
 clashYaml += "\nrules:\n";
-clashYaml += "  - MATCH,انتخاب دستی\n";
+clashYaml += `  - MATCH,${selectorTag}\n`;
 
 fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 
-// ذخیره Base64 در vpn64.txt
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('تنظیمات DNS و Route سینگ‌باکس با موفقیت برای نسخه‌های جدید بروزرسانی شد!');
+console.log('فایل‌ها با نام‌گذاری‌های جدید بروزرسانی شدند!');
