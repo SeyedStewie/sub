@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Mqjc-08Df4-eWk8I1TjAFbQTBC2BRrHO.sEyEDng1.WoRkErS.dEv",
+                "server_name": "Mqjc-08DF4-eWk8I1TJafbQtBc2BRrHo.sEYeDng1.wORKErS.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "polISheD-bLOck-d011.SeyeddEX-339.worKErS.dEv",
+                "server_name": "poLIShed-BLOCK-D011.SEyEdDeX-339.woRKERs.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "WiTherEd-KIng-1433.haNnahOWo.WoRKErs.deV",
+                "server_name": "WITHeREd-kiNG-1433.HANNahOwo.WORkErs.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BLacK-TREE-34C2.MiHANIka69.wOrKErs.DEV",
+                "server_name": "bLaCK-treE-34c2.mIhanIkA69.wORkerS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "spRiNg-DISK-81d3.meSEyEDNG.workErS.dev",
+                "server_name": "sPRING-dISK-81d3.mesEYEdng.wOrKeRs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "sNowY-wOOD-a9Fd.SEYeDEx.wOrkerS.dev",
+                "server_name": "SnoWY-wood-a9fD.SeyedEX.WoRkERs.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LivELY-maTH-a2A1.MIlFETTA.WORKers.deV",
+                "server_name": "liVeLY-maTh-a2a1.MiLFEttA.WoRkERs.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SuPER-Union-7d52.sEyEDdEX-FBD.wORKErs.DeV",
+                "server_name": "sUPer-UNiON-7D52.SEyEDdeX-FbD.WorkErs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPN.SeYEDDeX.woRKErS.DeV",
+                "server_name": "vPN.seyeddEX.woRkERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "loNg-dUSt-93E6.SeyEDhosEIn.WOrKERs.deV",
+                "server_name": "lOnG-DUSt-93e6.seyeDhOSEIN.wOrKErS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "cOol-ShApE-4720.SEYEdNg.wORkErS.dEV",
+                "server_name": "cOol-sHAPe-4720.seyEdng.WorKERs.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SprINg-SOUnd-2369.sTEwIEng.WorkErS.DeV",
+                "server_name": "spRing-sOUnD-2369.stEwieNg.WOrKerS.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "ORAngE-cLouD-60C4.seYEdSTewIeatoMiC.WORKERS.DeV",
+                "server_name": "oRAnge-Cloud-60C4.seyedSTEWieAtOmIC.worKers.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
