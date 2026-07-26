@@ -113,7 +113,7 @@ lines.forEach((line, index) => {
     if (!config) return;
 
     validLinks.push(line);
-    const tag = `${index + 1} - ${config.protocol.toUpperCase()} - ${config.remarks}`;
+    const tag = `${config.remarks}`;
     outboundTags.push(tag);
 
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
@@ -123,35 +123,48 @@ lines.forEach((line, index) => {
         });
     }
 
-    singboxOutbounds.push({
+    // ساختار استاندارد و سازگار برای سینگ‌باکس
+    const outboundObj = {
         "type": config.protocol,
         "tag": tag,
         "server": config.address,
         "server_port": config.port,
         "tcp_fast_open": false,
         "uuid": config.uuid,
-        "packet_encoding": "",
-        ...(config.security === 'tls' && {
-            "tls": {
-                "enabled": true,
-                "server_name": config.sni,
-                "record_fragment": false,
-                "insecure": false,
-                "alpn": config.alpn,
-                "utls": { "enabled": true, "fingerprint": config.fp }
-            }
-        }),
-        ...(config.net === 'ws' && {
-            "transport": {
-                "type": "ws",
-                "path": config.path,
-                "max_early_data": 2560,
-                "early_data_header_name": "Sec-WebSocket-Protocol",
-                "headers": { "Host": config.sni }
-            }
-        }),
+        "password": config.password,
+        "packet_encoding": "xudp",
         "domain_resolver": "dns-direct"
-    });
+    };
+
+    if (config.security === 'tls') {
+        outboundObj.tls = {
+            "enabled": true,
+            "server_name": config.sni,
+            "insecure": false,
+            "alpn": config.alpn,
+            "utls": {
+                "enabled": true,
+                "fingerprint": config.fp || "chrome"
+            }
+        };
+    }
+
+    if (config.net === 'ws') {
+        outboundObj.transport = {
+            "type": "ws",
+            "path": config.path || "/",
+            "headers": {
+                "Host": config.sni
+            }
+        };
+    } else if (config.net === 'grpc') {
+        outboundObj.transport = {
+            "type": "grpc",
+            "service_name": config.path || ""
+        };
+    }
+
+    singboxOutbounds.push(outboundObj);
 
     if (config.protocol === 'vless' || config.protocol === 'trojan') {
         clashProxies.push({
@@ -445,4 +458,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('اسکریپت با موفقیت اجرا شد و فایل‌ها بدون خطا ساخته شدند!');
+console.log('اسکریپت کامل با موفقیت اجرا شد و فایل‌ها بدون نقص ساخته شدند!');
