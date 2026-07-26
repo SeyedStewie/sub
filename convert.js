@@ -21,21 +21,6 @@ const randomizeCase = (str) => {
     return str.split('').map(c => Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()).join('');
 };
 
-async function getIpLocation(ip) {
-    const ipinfoToken = process.env.IPINFO_TOKEN || ''; 
-    try {
-        // const response = await fetch(`https://ipinfo.io/${ip}/json?token=${ipinfoToken}`);
-        // const data = await response.json();
-        // const country = data.country || 'UN';
-        // const flag = country.replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt(0)));
-        // return { country, flag };
-
-        return { country: 'DE', flag: '🇩🇪' };
-    } catch (e) {
-        return { country: 'UN', flag: '🌐' };
-    }
-}
-
 async function parseVlessConfig(link, index) {
     try {
         const parsed = new URL(link);
@@ -55,14 +40,12 @@ async function parseVlessConfig(link, index) {
         const host = workerDomain;
         const fp = params.get('fp') || 'chrome';
 
+        // Remark: untouched – no flags, no modifications
         let originalRemark = parsed.hash ? parsed.hash.slice(1).trim() : '';
         if (!originalRemark) originalRemark = params.get('remark') || `vpn-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        const locationInfo = await getIpLocation(address);
-        
-        // چسباندن پرچم بدون فاصله به انتهای ریمارک
-        let tag = `${originalRemark}${locationInfo.flag}`;
+        const tag = originalRemark; // no flag appended
 
         const outboundObj = {
             "tag": tag,
@@ -99,8 +82,8 @@ async function parseVlessConfig(link, index) {
             outboundObj.domain_resolver = "dns-direct";
         }
 
-        parsed.hash = encodeURIComponent(tag);
-        const updatedLink = parsed.toString();
+        // Do NOT modify the original link – leave hash as is
+        const updatedLink = link; // keep original
 
         return { tag, outboundObj, link: updatedLink, host, sni, fp, address, port, uuid, path };
     } catch (e) {
@@ -109,7 +92,6 @@ async function parseVlessConfig(link, index) {
     }
 }
 
-// ساخت کانفیگ کامل Xray برای هر لینک
 function buildXrayConfig(result) {
     const { tag, address, port, uuid, path, host, sni, fp } = result;
     return {
@@ -319,8 +301,8 @@ async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
     const validLinks = [];
-    const xrayConfigs = [];        // برای vpn.json (کانفیگ کامل Xray)
-    const clashProxies = [];       // برای vpn.yml
+    const xrayConfigs = [];
+    const clashProxies = [];
 
     for (let index = 0; index < lines.length; index++) {
         let line = lines[index].trim();
@@ -330,25 +312,32 @@ async function main() {
                 validLinks.push(result.link);
                 outboundTags.push(result.tag);
                 singboxOutbounds.push(result.outboundObj);
-
-                // ---- Xray full config (vpn.json) ----
                 xrayConfigs.push(buildXrayConfig(result));
 
-                // ---- Clash proxy ----
+                // ---- Clash proxy (full Clash Meta format) ----
                 const clashProxy = {
                     name: result.tag,
                     type: "vless",
                     server: result.outboundObj.server,
                     port: result.outboundObj.server_port,
+                    "ip-version": "ipv4",
+                    tfo: false,
+                    udp: false,
                     uuid: result.outboundObj.uuid,
-                    network: "ws",
+                    "packet-encoding": "",
                     tls: true,
-                    udp: true,
-                    sni: result.outboundObj.tls.server_name,
-                    fingerprint: result.outboundObj.tls.utls.fingerprint,
-                    "ws-path": result.outboundObj.transport.path,
-                    "ws-headers": {
-                        Host: result.outboundObj.transport.headers.Host
+                    servername: result.outboundObj.tls.server_name,
+                    "client-fingerprint": result.outboundObj.tls.utls.fingerprint,
+                    "skip-cert-verify": false,
+                    alpn: ["http/1.1"],
+                    network: "ws",
+                    "ws-opts": {
+                        path: result.outboundObj.transport.path,
+                        "max-early-data": 2560,
+                        "early-data-header-name": "Sec-WebSocket-Protocol",
+                        headers: {
+                            Host: result.outboundObj.transport.headers.Host
+                        }
                     }
                 };
                 clashProxies.push(clashProxy);
@@ -361,57 +350,157 @@ async function main() {
         process.exit(1);
     }
 
-    // ۱. vpn64.txt
+    // 1. vpn64.txt
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // ۲. vpn.json (آرایه کانفیگ‌های کامل Xray)
+    // 2. vpn.json (Xray)
     fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
 
-    // ۳. vpn.yml (Clash)
+    // 3. vpn.yml – full Clash Meta config (as JSON)
+    const proxyNames = clashProxies.map(p => p.name);
+    const selectorName = "✅ Selector";
+    const urlTestName = "💦 Best Ping 🚀";
+
+    const clashConfig = {
+        "mixed-port": 7890,
+        "ipv6": true,
+        "allow-lan": false,
+        "unified-delay": false,
+        "log-level": "silent",
+        "mode": "rule",
+        "disable-keep-alive": false,
+        "keep-alive-idle": 10,
+        "keep-alive-interval": 15,
+        "tcp-concurrent": true,
+        "geo-auto-update": true,
+        "geo-update-interval": 168,
+        "external-controller": "127.0.0.1:9090",
+        "external-controller-cors": {
+            "allow-origins": ["*"],
+            "allow-private-network": true
+        },
+        "external-ui": "ui",
+        "external-ui-url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+        "profile": {
+            "store-selected": true,
+            "store-fake-ip": true
+        },
+        "dns": {
+            "enable": true,
+            "respect-rules": true,
+            "use-system-hosts": false,
+            "listen": "127.0.0.1:1053",
+            "ipv6": false,
+            "hosts": {
+                "rule-set:category-ads-all": "rcode://refused"
+            },
+            "nameserver": [
+                "https://8.8.8.8/dns-query#✅ Selector"
+            ],
+            "proxy-server-nameserver": [
+                "8.8.8.8#DIRECT"
+            ],
+            "direct-nameserver": [
+                "8.8.8.8#DIRECT"
+            ],
+            "direct-nameserver-follow-policy": true,
+            "nameserver-policy": {
+                "rule-set:ir": "8.8.8.8#DIRECT"
+            },
+            "enhanced-mode": "redir-host"
+        },
+        "tun": {
+            "enable": true,
+            "stack": "mixed",
+            "auto-route": true,
+            "strict-route": true,
+            "auto-detect-interface": true,
+            "dns-hijack": [
+                "any:53",
+                "tcp://any:53"
+            ],
+            "mtu": 9000
+        },
+        "sniffer": {
+            "enable": true,
+            "force-dns-mapping": true,
+            "parse-pure-ip": true,
+            "override-destination": true,
+            "sniff": {
+                "HTTP": {
+                    "ports": [80, 8080, 8880, 2052, 2082, 2086, 2095]
+                },
+                "TLS": {
+                    "ports": [443, 8443, 2053, 2083, 2087, 2096]
+                }
+            }
+        },
+        "proxies": clashProxies,
+        "proxy-groups": [
+            {
+                "name": selectorName,
+                "type": "select",
+                "proxies": [urlTestName, ...proxyNames]
+            },
+            {
+                "name": urlTestName,
+                "type": "url-test",
+                "proxies": proxyNames,
+                "url": "https://www.gstatic.com/generate_204",
+                "interval": 30,
+                "tolerance": 50
+            }
+        ],
+        "rule-providers": {
+            "category-ads-all": {
+                "type": "http",
+                "format": "text",
+                "behavior": "domain",
+                "path": "./ruleset/category-ads-all.txt",
+                "interval": 86400,
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/category-ads-all.txt"
+            },
+            "ir": {
+                "type": "http",
+                "format": "text",
+                "behavior": "domain",
+                "path": "./ruleset/ir.txt",
+                "interval": 86400,
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/ir.txt"
+            },
+            "ir-cidr": {
+                "type": "http",
+                "format": "text",
+                "behavior": "ipcidr",
+                "path": "./ruleset/ir-cidr.txt",
+                "interval": 86400,
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-clash-rules/release/ircidr.txt"
+            }
+        },
+        "rules": [
+            "GEOIP,lan,DIRECT,no-resolve",
+            "NETWORK,udp,REJECT",
+            "RULE-SET,category-ads-all,REJECT",
+            "RULE-SET,ir,DIRECT",
+            "RULE-SET,ir-cidr,DIRECT",
+            "MATCH,✅ Selector"
+        ],
+        "ntp": {
+            "enable": true,
+            "server": "time.cloudflare.com",
+            "port": 123,
+            "interval": 30
+        }
+    };
+
+    fs.writeFileSync('vpn.yml', JSON.stringify(clashConfig, null, 4), 'utf8');
+
+    // 4. vpns.json (Sing‑box) – unchanged, already has Iran/AdBlock rules
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
-    const proxyNames = clashProxies.map(p => p.name);
 
-    let ymlContent = "proxies:\n";
-    clashProxies.forEach(p => {
-        ymlContent += `  - name: "${p.name}"\n`;
-        ymlContent += `    type: ${p.type}\n`;
-        ymlContent += `    server: ${p.server}\n`;
-        ymlContent += `    port: ${p.port}\n`;
-        ymlContent += `    uuid: ${p.uuid}\n`;
-        ymlContent += `    network: ${p.network}\n`;
-        ymlContent += `    tls: ${p.tls}\n`;
-        ymlContent += `    udp: ${p.udp}\n`;
-        ymlContent += `    sni: ${p.sni}\n`;
-        ymlContent += `    fingerprint: ${p.fingerprint}\n`;
-        ymlContent += `    ws-path: ${p["ws-path"]}\n`;
-        ymlContent += `    ws-headers:\n`;
-        ymlContent += `      Host: ${p["ws-headers"].Host}\n`;
-    });
-
-    ymlContent += "\nproxy-groups:\n";
-    ymlContent += `  - name: "${selectorTag}"\n`;
-    ymlContent += `    type: select\n`;
-    ymlContent += `    proxies:\n`;
-    ymlContent += `      - "${urlTestTag}"\n`;
-    proxyNames.forEach(name => { ymlContent += `      - "${name}"\n`; });
-    ymlContent += `      - DIRECT\n`;
-
-    ymlContent += `  - name: "${urlTestTag}"\n`;
-    ymlContent += `    type: url-test\n`;
-    ymlContent += `    proxies:\n`;
-    proxyNames.forEach(name => { ymlContent += `      - "${name}"\n`; });
-    ymlContent += `    url: "http://www.gstatic.com/generate_204"\n`;
-    ymlContent += `    interval: 300\n`;
-
-    ymlContent += "\nrules:\n";
-    ymlContent += `  - MATCH, "${selectorTag}"\n`;
-
-    fs.writeFileSync('vpn.yml', ymlContent, 'utf8');
-
-    // ۴. vpns.json (سینگ‌باکس) – بدون تغییر
     const singboxFullConfig = {
         "log": { "disabled": true, "timestamp": true },
         "dns": {
