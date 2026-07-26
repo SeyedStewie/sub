@@ -1,5 +1,4 @@
 const fs = require('fs');
-const dns = require('dns').promises;
 
 if (!fs.existsSync('vpn.txt')) {
     console.error('فایل vpn.txt پیدا نشد!');
@@ -22,66 +21,9 @@ const randomizeCase = (str) => {
     return str.split('').map(c => Math.random() > 0.5 ? c.toUpperCase() : c.toLowerCase()).join('');
 };
 
-// --- Geolocation cache ---
-const locationCache = new Map();
-const resolvedIpCache = new Map();
+// --- Protocol parsers ---
 
-async function resolveDomain(hostname) {
-    if (isIpAddress(hostname)) return hostname;
-    if (resolvedIpCache.has(hostname)) return resolvedIpCache.get(hostname);
-
-    try {
-        const { address } = await dns.lookup(hostname, { family: 4 }); // prefer IPv4
-        resolvedIpCache.set(hostname, address);
-        return address;
-    } catch (e) {
-        console.warn(`⚠️  DNS resolution failed for ${hostname}:`, e.message);
-        resolvedIpCache.set(hostname, null);
-        return null;
-    }
-}
-
-async function getLocationFlag(hostname) {
-    // Resolve domain to IP
-    let ip = await resolveDomain(hostname);
-    if (!ip) {
-        // fallback: treat as unknown
-        locationCache.set(hostname, '🌍');
-        return '🌍';
-    }
-
-    // Check cache for location
-    if (locationCache.has(ip)) return locationCache.get(ip);
-
-    const token = process.env.GEO_API_KEY || '';
-    if (!token) {
-        console.warn('⚠️  GEO_API_KEY not set, using 🌍 fallback');
-        locationCache.set(ip, '🌍');
-        return '🌍';
-    }
-
-    try {
-        const response = await fetch(`https://ipinfo.io/${ip}/json?token=${token}`);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        const country = data.country || 'UN';
-        // Convert country code to flag emoji
-        const flag = country
-            .toUpperCase()
-            .replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt(0)));
-        const result = flag || '🌍';
-        locationCache.set(ip, result);
-        return result;
-    } catch (e) {
-        console.warn(`⚠️  Error fetching location for ${ip}:`, e.message);
-        locationCache.set(ip, '🌍');
-        return '🌍';
-    }
-}
-
-// --- Protocol parsers (async) ---
-
-async function parseVless(link, index) {
+function parseVless(link, index) {
     try {
         const parsed = new URL(link);
         const address = parsed.hostname.replace(/\[|\]/g, '');
@@ -104,18 +46,9 @@ async function parseVless(link, index) {
         if (!originalRemark) originalRemark = params.get('remark') || `vpn-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        // Get location flag from resolved IP
-        const flag = await getLocationFlag(address);
-        const finalRemark = originalRemark + flag;
-
-        // Build modified link with flag in hash
-        const modifiedUrl = new URL(link);
-        modifiedUrl.hash = encodeURIComponent(finalRemark);
-        const modifiedLink = modifiedUrl.toString();
-
         return {
             protocol: 'vless',
-            tag: finalRemark,
+            tag: originalRemark,
             server: address,
             port: port,
             uuid: uuid,
@@ -123,9 +56,10 @@ async function parseVless(link, index) {
             host: host,
             sni: sni,
             fp: fp,
+            raw: link,
+            // additional
             flow: params.get('flow') || '',
-            encryption: params.get('encryption') || 'none',
-            rawLink: modifiedLink
+            encryption: params.get('encryption') || 'none'
         };
     } catch (e) {
         console.error(`خطا در پردازش لینک VLESS شماره ${index + 1}:`, e.message);
@@ -133,7 +67,7 @@ async function parseVless(link, index) {
     }
 }
 
-async function parseTrojan(link, index) {
+function parseTrojan(link, index) {
     try {
         const parsed = new URL(link);
         const address = parsed.hostname.replace(/\[|\]/g, '');
@@ -152,18 +86,11 @@ async function parseTrojan(link, index) {
         if (!originalRemark) originalRemark = params.get('remark') || `trojan-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        const flag = await getLocationFlag(address);
-        const finalRemark = originalRemark + flag;
-
         const path = params.get('path') || '/';
-
-        const modifiedUrl = new URL(link);
-        modifiedUrl.hash = encodeURIComponent(finalRemark);
-        const modifiedLink = modifiedUrl.toString();
 
         return {
             protocol: 'trojan',
-            tag: finalRemark,
+            tag: originalRemark,
             server: address,
             port: port,
             password: password,
@@ -171,7 +98,7 @@ async function parseTrojan(link, index) {
             fp: fp,
             host: host,
             path: path,
-            rawLink: modifiedLink
+            raw: link
         };
     } catch (e) {
         console.error(`خطا در پردازش لینک Trojan شماره ${index + 1}:`, e.message);
@@ -179,7 +106,8 @@ async function parseTrojan(link, index) {
     }
 }
 
-async function parseWireguard(link, index) {
+function parseWireguard(link, index) {
+    // Custom URI format: wireguard://public_key@endpoint:port?private_key=...&address=...&allowed_ips=...&dns=...
     try {
         const parsed = new URL(link);
         const address = parsed.hostname.replace(/\[|\]/g, '');
@@ -196,16 +124,9 @@ async function parseWireguard(link, index) {
         if (!originalRemark) originalRemark = params.get('remark') || `wg-${index + 1}`;
         originalRemark = decodeURIComponent(originalRemark);
 
-        const flag = await getLocationFlag(address);
-        const finalRemark = originalRemark + flag;
-
-        const modifiedUrl = new URL(link);
-        modifiedUrl.hash = encodeURIComponent(finalRemark);
-        const modifiedLink = modifiedUrl.toString();
-
         return {
             protocol: 'wireguard',
-            tag: finalRemark,
+            tag: originalRemark,
             server: address,
             port: port,
             public_key: publicKey,
@@ -213,7 +134,7 @@ async function parseWireguard(link, index) {
             allowed_ips: allowedIPs.split(',').map(s => s.trim()),
             address: addressIP.split(',').map(s => s.trim()),
             dns: dns,
-            rawLink: modifiedLink
+            raw: link
         };
     } catch (e) {
         console.error(`خطا در پردازش لینک WireGuard شماره ${index + 1}:`, e.message);
@@ -221,7 +142,7 @@ async function parseWireguard(link, index) {
     }
 }
 
-// --- Build outbound objects (unchanged logic, now using parsed.tag) ---
+// --- Build outbound objects for each protocol ---
 
 function buildSingboxOutbound(parsed) {
     const base = {
@@ -351,6 +272,7 @@ function buildXrayConfig(parsed) {
         stats: {}
     };
 
+    // Build outbound
     let outbound = {};
     if (parsed.protocol === 'vless') {
         outbound = {
@@ -359,7 +281,7 @@ function buildXrayConfig(parsed) {
                 vnext: [{
                     address: parsed.server,
                     port: parsed.port,
-                    users: [{ id: parsed.uuid, encryption: parsed.encryption, flow: parsed.flow }]
+                    users: [{ id: parsed.uuid, encryption: parsed.encryption || 'none', flow: parsed.flow || '' }]
                 }]
             },
             streamSettings: {
@@ -475,8 +397,6 @@ function buildClashProxy(parsed) {
     return null;
 }
 
-// --- Main ---
-
 async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
@@ -489,11 +409,11 @@ async function main() {
         let parsed = null;
 
         if (line.startsWith('vless://')) {
-            parsed = await parseVless(line, index);
+            parsed = parseVless(line, index);
         } else if (line.startsWith('trojan://')) {
-            parsed = await parseTrojan(line, index);
+            parsed = parseTrojan(line, index);
         } else if (line.startsWith('wireguard://')) {
-            parsed = await parseWireguard(line, index);
+            parsed = parseWireguard(line, index);
         } else {
             console.warn(`خط ${index + 1}: پروتکل ناشناخته - نادیده گرفته شد`);
             continue;
@@ -501,15 +421,18 @@ async function main() {
 
         if (!parsed) continue;
 
-        validLinks.push(parsed.rawLink);
+        validLinks.push(parsed.raw);
         outboundTags.push(parsed.tag);
 
+        // Sing-box outbound
         const sbOut = buildSingboxOutbound(parsed);
         if (sbOut) singboxOutbounds.push(sbOut);
 
+        // Xray config
         const xray = buildXrayConfig(parsed);
         if (xray) xrayConfigs.push(xray);
 
+        // Clash proxy
         const clash = buildClashProxy(parsed);
         if (clash) clashProxies.push(clash);
     }
@@ -519,7 +442,7 @@ async function main() {
         process.exit(1);
     }
 
-    // 1. vpn64.txt (Base64 of modified links)
+    // 1. vpn64.txt
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
@@ -727,7 +650,7 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    console.log('✅ همه ۴ فایل خروجی با موفقیت و به‌روزرسانی شدند!');
+    console.log('✅ همه ۴ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
