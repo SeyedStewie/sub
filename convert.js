@@ -25,12 +25,11 @@ function parseVlessConfig(link, index) {
         const uuid = parsed.username;
         const params = parsed.searchParams;
 
-        const net = params.get('type') || 'tcp';
         const path = params.get('path') || '/';
         const host = params.get('host') || parsed.hostname;
         const sni = params.get('sni') || host || address;
         const fp = params.get('fp') || 'chrome';
-        const security = params.get('security') || 'none';
+        const security = params.get('security') || 'tls';
 
         const tag = `💦 ${index + 1} - VLESS - ${rawRemarks}`;
 
@@ -42,11 +41,8 @@ function parseVlessConfig(link, index) {
             "tcp_fast_open": false,
             "uuid": uuid,
             "packet_encoding": "",
-            "network": "tcp"
-        };
-
-        if (security === 'tls') {
-            outboundObj.tls = {
+            "network": "tcp",
+            "tls": {
                 "enabled": true,
                 "server_name": sni,
                 "record_fragment": false,
@@ -56,11 +52,8 @@ function parseVlessConfig(link, index) {
                     "enabled": true,
                     "fingerprint": fp
                 }
-            };
-        }
-
-        if (net === 'ws') {
-            outboundObj.transport = {
+            },
+            "transport": {
                 "type": "ws",
                 "path": path,
                 "max_early_data": 2560,
@@ -68,12 +61,10 @@ function parseVlessConfig(link, index) {
                 "headers": {
                     "Host": host
                 }
-            };
-        }
+            },
+            "domain_resolver": "dns-direct"
+        };
 
-        outboundObj.domain_resolver = "dns-direct";
-
-        // ساخت آبجکت کلش
         const clashObj = {
             name: tag,
             type: 'vless',
@@ -81,19 +72,16 @@ function parseVlessConfig(link, index) {
             port: port,
             uuid: uuid,
             cipher: 'none',
-            tls: security === 'tls',
+            tls: true,
             servername: sni,
             'client-fingerprint': fp,
-            network: net
-        };
-
-        if (net === 'ws') {
-            clashObj.ws = true;
-            clashObj['ws-opts'] = {
+            network: 'ws',
+            ws: true,
+            'ws-opts': {
                 path: path,
                 headers: { Host: host }
-            };
-        }
+            }
+        };
 
         return { tag, outboundObj, clashObj, link };
     } catch (e) {
@@ -124,8 +112,8 @@ if (validLinks.length === 0) {
     process.exit(1);
 }
 
-const selectorTag = "انتخاب دستی";
-const urlTestTag = "بهترین پینگ";
+const selectorTag = "✅ Selector";
+const urlTestTag = "💦 Best Ping 🚀";
 
 const singboxFullConfig = {
     "log": {
@@ -299,11 +287,10 @@ clashProxies.forEach(p => {
     clashYaml += `    servername: ${p.servername}\n`;
     clashYaml += `    client-fingerprint: ${p['client-fingerprint']}\n`;
     clashYaml += `    network: ${p.network}\n`;
-    if (p.ws) {
-        clashYaml += `    ws-opts:\n`;
-        clashYaml += `      path: "${p['ws-opts'].path}"\n`;
-        clashYaml += `      headers:\n        Host: ${p['ws-opts'].headers.Host}\n`;
-    }
+    clashYaml += `    ws: true\n`;
+    clashYaml += `    ws-opts:\n`;
+    clashYaml += `      path: "${p['ws-opts'].path}"\n`;
+    clashYaml += `      headers:\n        Host: ${p['ws-opts'].headers.Host}\n`;
 });
 
 clashYaml += "\nproxy-groups:\n";
@@ -333,4 +320,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('مبدل با موفقیت و با تنظیمات کامل پکت‌ها و مسیرها اجرا شد!');
+console.log('مبدل دقیقاً طبق الگوی شما بازنویسی و اجرا شد!');
