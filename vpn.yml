@@ -6,7 +6,7 @@ log-level: info
 external-controller: '127.0.0.1:9090'
 
 proxies:
-  - name: "🦋🇨🇦 🇨🇦"
+  - name: "💦 1 - VLESS - 🦋🇨🇦 🇨🇦"
     type: vless
     server: 23.227.60.0
     port: 443
@@ -20,7 +20,7 @@ proxies:
       path: "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==?ed=2560"
       headers:
         Host: mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv
-  - name: "🦊🇺🇲 🇫🇮"
+  - name: "💦 2 - VLESS - 🦊🇺🇲 🇫🇮"
     type: vless
     server: 144.31.143.6
     port: 443
@@ -34,7 +34,7 @@ proxies:
       path: "/eyJqdW5rIjoiMGQ1anREVVRtQ1MwM2oiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIzNC4yMTIuMjQwLjEyOSJdfQ==?ed=2560"
       headers:
         Host: POlISheD-bLock-D011.SEYedDeX-339.woRkerS.DEv
-  - name: "🦅🇺🇲 🇺🇸"
+  - name: "💦 3 - VLESS - 🦅🇺🇲 🇺🇸"
     type: vless
     server: 91.90.195.68
     port: 443
@@ -48,7 +48,7 @@ proxies:
       path: "/eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=?ed=2560"
       headers:
         Host: WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV
-  - name: "🐠🇺🇲 🇺🇸"
+  - name: "💦 4 - VLESS - 🐠🇺🇲 🇺🇸"
     type: vless
     server: 85.239.230.164
     port: 443
@@ -62,7 +62,7 @@ proxies:
       path: "/eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19?ed=2560"
       headers:
         Host: BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev
-  - name: "🦔🇺🇲 🇺🇸"
+  - name: "💦 5 - VLESS - 🦔🇺🇲 🇺🇸"
     type: vless
     server: 91.90.195.68
     port: 443
@@ -76,7 +76,7 @@ proxies:
       path: "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==?ed=2560"
       headers:
         Host: SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv
-  - name: "🐏🇺🇲 🇺🇸"
+  - name: "💦 6 - VLESS - 🐏🇺🇲 🇺🇸"
     type: vless
     server: 128.14.196.39
     port: 443
@@ -90,7 +90,7 @@ proxies:
       path: "/eyJqdW5rIjoiUTVpSnJvcWZvUTJZRlkiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxOC4yMTYuNTUuMTAwIl19?ed=2560"
       headers:
         Host: sNowy-wOoD-A9FD.SEYEdEx.worKeRs.dev
-  - name: "🦆🇩🇪 🇺🇸"
+  - name: "💦 7 - VLESS - 🦆🇩🇪 🇺🇸"
     type: vless
     server: 188.114.96.3
     port: 443
@@ -104,7 +104,7 @@ proxies:
       path: "/eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=?ed=2560"
       headers:
         Host: livelY-MATH-A2a1.milfEttA.woRKErs.dEV
-  - name: "🦩🇩🇪 🇰🇿"
+  - name: "💦 8 - VLESS - 🦩🇩🇪 🇰🇿"
     type: vless
     server: 31.43.179.0
     port: 443
@@ -118,7 +118,7 @@ proxies:
       path: "/eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=?ed=2560"
       headers:
         Host: Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV
-  - name: "🦢🇩🇪 🇦🇹"
+  - name: "💦 9 - VLESS - 🦢🇩🇪 🇦🇹"
     type: vless
     server: 212.183.88.1
     port: 443
@@ -132,7 +132,7 @@ proxies:
       path: "/eyJqdW5rIjoiQmpLU1VSQVNqUm5IZDUwYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjEwNy4xNTUuMTMiXX0=?ed=2560"
       headers:
         Host: vpn.SeYEddEx.woRKERs.DeV
-  - name: "🐈🇩🇪 🇺🇸"
+  - name: "💦 10 - VLESS - 🐈🇩🇪 🇺🇸"
     type: vless
     server: 172.67.255.0
     port: 443
@@ -146,7 +146,7 @@ proxies:
       path: "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=?ed=2560"
       headers:
         Host: loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv
-  - name: "🐧🇳🇱 🇳🇱"
+  - name: "💦 11 - VLESS - 🐧🇳🇱 🇳🇱"
     type: vless
     server: 95.85.62.66
     port: 443
@@ -160,7 +160,7 @@ proxies:
       path: "/eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=?ed=2560"
       headers:
         Host: cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv
-  - name: "🐿️🇩🇪 🇺🇸"
+  - name: "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸"
     type: vless
     server: 104.21.86.99
     port: 443
@@ -174,7 +174,7 @@ proxies:
       path: "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19?ed=2560"
       headers:
         Host: SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV
-  - name: "🦨🇩🇪 🇺🇸"
+  - name: "💦 13 - VLESS - 🦨🇩🇪 🇺🇸"
     type: vless
     server: 107.174.67.116
     port: 443
@@ -194,35 +194,35 @@ proxy-groups:
     type: select
     proxies:
       - "بهترین پینگ"
-      - "🦋🇨🇦 🇨🇦"
-      - "🦊🇺🇲 🇫🇮"
-      - "🦅🇺🇲 🇺🇸"
-      - "🐠🇺🇲 🇺🇸"
-      - "🦔🇺🇲 🇺🇸"
-      - "🐏🇺🇲 🇺🇸"
-      - "🦆🇩🇪 🇺🇸"
-      - "🦩🇩🇪 🇰🇿"
-      - "🦢🇩🇪 🇦🇹"
-      - "🐈🇩🇪 🇺🇸"
-      - "🐧🇳🇱 🇳🇱"
-      - "🐿️🇩🇪 🇺🇸"
-      - "🦨🇩🇪 🇺🇸"
+      - "💦 1 - VLESS - 🦋🇨🇦 🇨🇦"
+      - "💦 2 - VLESS - 🦊🇺🇲 🇫🇮"
+      - "💦 3 - VLESS - 🦅🇺🇲 🇺🇸"
+      - "💦 4 - VLESS - 🐠🇺🇲 🇺🇸"
+      - "💦 5 - VLESS - 🦔🇺🇲 🇺🇸"
+      - "💦 6 - VLESS - 🐏🇺🇲 🇺🇸"
+      - "💦 7 - VLESS - 🦆🇩🇪 🇺🇸"
+      - "💦 8 - VLESS - 🦩🇩🇪 🇰🇿"
+      - "💦 9 - VLESS - 🦢🇩🇪 🇦🇹"
+      - "💦 10 - VLESS - 🐈🇩🇪 🇺🇸"
+      - "💦 11 - VLESS - 🐧🇳🇱 🇳🇱"
+      - "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸"
+      - "💦 13 - VLESS - 🦨🇩🇪 🇺🇸"
   - name: "بهترین پینگ"
     type: url-test
     proxies:
-      - "🦋🇨🇦 🇨🇦"
-      - "🦊🇺🇲 🇫🇮"
-      - "🦅🇺🇲 🇺🇸"
-      - "🐠🇺🇲 🇺🇸"
-      - "🦔🇺🇲 🇺🇸"
-      - "🐏🇺🇲 🇺🇸"
-      - "🦆🇩🇪 🇺🇸"
-      - "🦩🇩🇪 🇰🇿"
-      - "🦢🇩🇪 🇦🇹"
-      - "🐈🇩🇪 🇺🇸"
-      - "🐧🇳🇱 🇳🇱"
-      - "🐿️🇩🇪 🇺🇸"
-      - "🦨🇩🇪 🇺🇸"
+      - "💦 1 - VLESS - 🦋🇨🇦 🇨🇦"
+      - "💦 2 - VLESS - 🦊🇺🇲 🇫🇮"
+      - "💦 3 - VLESS - 🦅🇺🇲 🇺🇸"
+      - "💦 4 - VLESS - 🐠🇺🇲 🇺🇸"
+      - "💦 5 - VLESS - 🦔🇺🇲 🇺🇸"
+      - "💦 6 - VLESS - 🐏🇺🇲 🇺🇸"
+      - "💦 7 - VLESS - 🦆🇩🇪 🇺🇸"
+      - "💦 8 - VLESS - 🦩🇩🇪 🇰🇿"
+      - "💦 9 - VLESS - 🦢🇩🇪 🇦🇹"
+      - "💦 10 - VLESS - 🐈🇩🇪 🇺🇸"
+      - "💦 11 - VLESS - 🐧🇳🇱 🇳🇱"
+      - "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸"
+      - "💦 13 - VLESS - 🦨🇩🇪 🇺🇸"
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
     tolerance: 50
