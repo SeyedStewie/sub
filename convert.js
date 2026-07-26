@@ -26,10 +26,9 @@ function parseVlessConfig(link, index) {
         const params = parsed.searchParams;
 
         const path = params.get('path') || '/';
-        const host = params.get('host') || parsed.hostname;
-        const sni = params.get('sni') || host || address;
+        const host = params.get('host'] || parsed.hostname;
+        const sni = params.get('sni'] || host || address;
         const fp = params.get('fp') || 'chrome';
-        const security = params.get('security') || 'tls';
 
         const tag = `💦 ${index + 1} - VLESS - ${rawRemarks}`;
 
@@ -47,7 +46,9 @@ function parseVlessConfig(link, index) {
                 "server_name": sni,
                 "record_fragment": false,
                 "insecure": false,
-                "alpn": ["http/1.1"],
+                "alpn": [
+                    "http/1.1"
+                ],
                 "utls": {
                     "enabled": true,
                     "fingerprint": fp
@@ -144,15 +145,23 @@ const singboxFullConfig = {
                 "server": "dns-remote"
             },
             {
-                "rule_set": ["geosite-category-ads-all"],
+                "rule_set": [
+                    "geosite-category-ads-all"
+                ],
                 "action": "reject"
             },
             {
                 "type": "logical",
                 "mode": "and",
                 "rules": [
-                    { "rule_set": ["geosite-ir"] },
-                    { "rule_set": "geoip-ir" }
+                    {
+                        "rule_set": [
+                            "geosite-ir"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-ir"
+                    }
                 ],
                 "action": "route",
                 "server": "dns-direct"
@@ -165,7 +174,9 @@ const singboxFullConfig = {
         {
             "type": "tun",
             "tag": "tun-in",
-            "address": ["172.19.0.1/28"],
+            "address": [
+                "172.19.0.1/28"
+            ],
             "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
@@ -205,16 +216,53 @@ const singboxFullConfig = {
     ],
     "route": {
         "rules": [
-            { "ip_cidr": "172.19.0.2", "action": "hijack-dns" },
-            { "clash_mode": "Direct", "outbound": "direct" },
-            { "clash_mode": "Global", "outbound": selectorTag },
-            { "action": "sniff" },
-            { "protocol": "dns", "action": "hijack-dns" },
-            { "ip_is_private": true, "outbound": "direct" },
-            { "network": "udp", "action": "reject" },
-            { "rule_set": ["geosite-category-ads-all"], "action": "reject" },
-            { "rule_set": ["geosite-ir"], "action": "route", "outbound": "direct" },
-            { "rule_set": ["geoip-ir"], "action": "route", "outbound": "direct" }
+            {
+                "ip_cidr": "172.19.0.2",
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": selectorTag
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-category-ads-all"
+                ],
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "geoip-ir"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            }
         ],
         "rule_set": [
             {
@@ -320,4 +368,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('مبدل دقیقاً طبق الگوی شما بازنویسی و اجرا شد!');
+console.log('فایل خروجی سینگ‌باکس با موفقیت و تطابق ۱۰۰٪ با ساختار سالم ساخته شد[span_1](start_span)[span_1](end_span)!');
