@@ -73,7 +73,7 @@
   ],
   "outbounds": [
     {
-      "tag": "💦 1 - VLESS - 🦋🇨🇦 🇨🇦",
+      "tag": "🦋🇨🇦 🇨🇦",
       "type": "vless",
       "server": "23.227.60.0",
       "server_port": 443,
@@ -106,7 +106,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 2 - VLESS - 🦊🇺🇲 🇫🇮",
+      "tag": "🦊🇺🇲 🇫🇮",
       "type": "vless",
       "server": "144.31.143.6",
       "server_port": 443,
@@ -139,7 +139,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 3 - VLESS - 🦅🇺🇲 🇺🇸",
+      "tag": "🦅🇺🇲 🇺🇸",
       "type": "vless",
       "server": "91.90.195.68",
       "server_port": 443,
@@ -172,7 +172,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 4 - VLESS - 🐠🇺🇲 🇺🇸",
+      "tag": "🐠🇺🇲 🇺🇸",
       "type": "vless",
       "server": "85.239.230.164",
       "server_port": 443,
@@ -205,7 +205,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 5 - VLESS - 🦔🇺🇲 🇺🇸",
+      "tag": "🦔🇺🇲 🇺🇸",
       "type": "vless",
       "server": "91.90.195.68",
       "server_port": 443,
@@ -238,7 +238,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 6 - VLESS - 🐏🇺🇲 🇺🇸",
+      "tag": "🐏🇺🇲 🇺🇸",
       "type": "vless",
       "server": "128.14.196.39",
       "server_port": 443,
@@ -271,7 +271,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 7 - VLESS - 🦆🇩🇪 🇺🇸",
+      "tag": "🦆🇩🇪 🇺🇸",
       "type": "vless",
       "server": "188.114.96.3",
       "server_port": 443,
@@ -304,7 +304,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 8 - VLESS - 🦩🇩🇪 🇰🇿",
+      "tag": "🦩🇩🇪 🇰🇿",
       "type": "vless",
       "server": "31.43.179.0",
       "server_port": 443,
@@ -337,7 +337,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 9 - VLESS - 🦢🇩🇪 🇦🇹",
+      "tag": "🦢🇩🇪 🇦🇹",
       "type": "vless",
       "server": "212.183.88.1",
       "server_port": 443,
@@ -370,7 +370,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 10 - VLESS - 🐈🇩🇪 🇺🇸",
+      "tag": "🐈🇩🇪 🇺🇸",
       "type": "vless",
       "server": "172.67.255.0",
       "server_port": 443,
@@ -403,7 +403,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 11 - VLESS - 🐧🇳🇱 🇳🇱",
+      "tag": "🐧🇳🇱 🇳🇱",
       "type": "vless",
       "server": "95.85.62.66",
       "server_port": 443,
@@ -436,7 +436,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸",
+      "tag": "🐿️🇩🇪 🇺🇸",
       "type": "vless",
       "server": "104.21.86.99",
       "server_port": 443,
@@ -469,7 +469,7 @@
       "domain_resolver": "dns-direct"
     },
     {
-      "tag": "💦 13 - VLESS - 🦨🇩🇪 🇺🇸",
+      "tag": "🦨🇩🇪 🇺🇸",
       "type": "vless",
       "server": "107.174.67.116",
       "server_port": 443,
@@ -506,19 +506,19 @@
       "tag": "انتخاب دستی",
       "outbounds": [
         "بهترین پینگ",
-        "💦 1 - VLESS - 🦋🇨🇦 🇨🇦",
-        "💦 2 - VLESS - 🦊🇺🇲 🇫🇮",
-        "💦 3 - VLESS - 🦅🇺🇲 🇺🇸",
-        "💦 4 - VLESS - 🐠🇺🇲 🇺🇸",
-        "💦 5 - VLESS - 🦔🇺🇲 🇺🇸",
-        "💦 6 - VLESS - 🐏🇺🇲 🇺🇸",
-        "💦 7 - VLESS - 🦆🇩🇪 🇺🇸",
-        "💦 8 - VLESS - 🦩🇩🇪 🇰🇿",
-        "💦 9 - VLESS - 🦢🇩🇪 🇦🇹",
-        "💦 10 - VLESS - 🐈🇩🇪 🇺🇸",
-        "💦 11 - VLESS - 🐧🇳🇱 🇳🇱",
-        "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸",
-        "💦 13 - VLESS - 🦨🇩🇪 🇺🇸"
+        "🦋🇨🇦 🇨🇦",
+        "🦊🇺🇲 🇫🇮",
+        "🦅🇺🇲 🇺🇸",
+        "🐠🇺🇲 🇺🇸",
+        "🦔🇺🇲 🇺🇸",
+        "🐏🇺🇲 🇺🇸",
+        "🦆🇩🇪 🇺🇸",
+        "🦩🇩🇪 🇰🇿",
+        "🦢🇩🇪 🇦🇹",
+        "🐈🇩🇪 🇺🇸",
+        "🐧🇳🇱 🇳🇱",
+        "🐿️🇩🇪 🇺🇸",
+        "🦨🇩🇪 🇺🇸"
       ],
       "interrupt_exist_connections": false
     },
@@ -531,19 +531,19 @@
       "type": "urltest",
       "tag": "بهترین پینگ",
       "outbounds": [
-        "💦 1 - VLESS - 🦋🇨🇦 🇨🇦",
-        "💦 2 - VLESS - 🦊🇺🇲 🇫🇮",
-        "💦 3 - VLESS - 🦅🇺🇲 🇺🇸",
-        "💦 4 - VLESS - 🐠🇺🇲 🇺🇸",
-        "💦 5 - VLESS - 🦔🇺🇲 🇺🇸",
-        "💦 6 - VLESS - 🐏🇺🇲 🇺🇸",
-        "💦 7 - VLESS - 🦆🇩🇪 🇺🇸",
-        "💦 8 - VLESS - 🦩🇩🇪 🇰🇿",
-        "💦 9 - VLESS - 🦢🇩🇪 🇦🇹",
-        "💦 10 - VLESS - 🐈🇩🇪 🇺🇸",
-        "💦 11 - VLESS - 🐧🇳🇱 🇳🇱",
-        "💦 12 - VLESS - 🐿️🇩🇪 🇺🇸",
-        "💦 13 - VLESS - 🦨🇩🇪 🇺🇸"
+        "🦋🇨🇦 🇨🇦",
+        "🦊🇺🇲 🇫🇮",
+        "🦅🇺🇲 🇺🇸",
+        "🐠🇺🇲 🇺🇸",
+        "🦔🇺🇲 🇺🇸",
+        "🐏🇺🇲 🇺🇸",
+        "🦆🇩🇪 🇺🇸",
+        "🦩🇩🇪 🇰🇿",
+        "🦢🇩🇪 🇦🇹",
+        "🐈🇩🇪 🇺🇸",
+        "🐧🇳🇱 🇳🇱",
+        "🐿️🇩🇪 🇺🇸",
+        "🦨🇩🇪 🇺🇸"
       ],
       "url": "https://www.gstatic.com/generate_204",
       "interrupt_exist_connections": false,
