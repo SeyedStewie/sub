@@ -102,19 +102,225 @@ async function parseVlessConfig(link, index) {
         parsed.hash = encodeURIComponent(tag);
         const updatedLink = parsed.toString();
 
-        return { tag, outboundObj, link: updatedLink };
+        return { tag, outboundObj, link: updatedLink, host, sni, fp, address, port, uuid, path };
     } catch (e) {
         console.error(`خطا در پردازش لینک شماره ${index + 1}:`, e.message);
         return null;
     }
 }
 
+// ساخت کانفیگ کامل Xray برای هر لینک
+function buildXrayConfig(result) {
+    const { tag, address, port, uuid, path, host, sni, fp } = result;
+    return {
+        "remarks": tag,
+        "version": { "min": "26.2.6" },
+        "log": { "loglevel": "none" },
+        "dns": {
+            "hosts": {
+                "geosite:category-ads-all": "#3",
+                "geosite:category-ads-ir": "#3"
+            },
+            "servers": [
+                {
+                    "address": "https://8.8.8.8/dns-query",
+                    "tag": "remote-dns"
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [ "geosite:category-ir" ],
+                    "expectIPs": [ "geoip:ir" ],
+                    "skipFallback": true
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [ `full:${host}` ],
+                    "skipFallback": true
+                }
+            ],
+            "queryStrategy": "UseIP",
+            "tag": "dns"
+        },
+        "inbounds": [
+            {
+                "listen": "127.0.0.1",
+                "port": 10808,
+                "protocol": "mixed",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true
+                },
+                "sniffing": {
+                    "destOverride": [ "http", "tls" ],
+                    "enabled": true,
+                    "routeOnly": true
+                },
+                "tag": "mixed-in"
+            },
+            {
+                "listen": "127.0.0.1",
+                "port": 10853,
+                "protocol": "dokodemo-door",
+                "settings": {
+                    "address": "1.1.1.1",
+                    "network": "tcp,udp",
+                    "port": 53
+                },
+                "tag": "dns-in"
+            }
+        ],
+        "outbounds": [
+            {
+                "protocol": "vless",
+                "settings": {
+                    "vnext": [
+                        {
+                            "address": address,
+                            "port": port,
+                            "users": [
+                                {
+                                    "id": uuid,
+                                    "encryption": "none"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "ws",
+                    "wsSettings": {
+                        "host": host,
+                        "path": path
+                    },
+                    "security": "tls",
+                    "tlsSettings": {
+                        "serverName": sni,
+                        "fingerprint": fp,
+                        "alpn": [ "http/1.1" ]
+                    },
+                    "sockopt": {
+                        "domainStrategy": "UseIP",
+                        "happyEyeballs": {
+                            "tryDelayMs": 250,
+                            "prioritizeIPv6": false,
+                            "interleave": 2,
+                            "maxConcurrentTry": 4
+                        }
+                    }
+                },
+                "tag": "proxy"
+            },
+            {
+                "protocol": "dns",
+                "settings": {
+                    "rules": [
+                        { "action": "hijack" }
+                    ]
+                },
+                "tag": "dns-out"
+            },
+            {
+                "protocol": "freedom",
+                "settings": {
+                    "domainStrategy": "UseIP"
+                },
+                "tag": "direct"
+            },
+            {
+                "protocol": "blackhole",
+                "settings": {
+                    "response": {
+                        "type": "http"
+                    }
+                },
+                "tag": "block"
+            }
+        ],
+        "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [
+                {
+                    "inboundTag": [ "mixed-in" ],
+                    "port": 53,
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [ "dns-in" ],
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [ "remote-dns" ],
+                    "outboundTag": "proxy",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [ "dns" ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "domain": [ "geosite:private" ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [ "geoip:private" ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "udp",
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [ "geosite:category-ads-all", "geosite:category-ads-ir" ],
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [ "geosite:category-ir" ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [ "geoip:ir" ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "tcp",
+                    "outboundTag": "proxy",
+                    "type": "field"
+                }
+            ]
+        },
+        "policy": {
+            "levels": {
+                "0": {
+                    "connIdle": 300,
+                    "handshake": 4,
+                    "uplinkOnly": 1,
+                    "downlinkOnly": 1
+                }
+            },
+            "system": {
+                "statsOutboundUplink": true,
+                "statsOutboundDownlink": true
+            }
+        },
+        "stats": {}
+    };
+}
+
 async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
     const validLinks = [];
-    const xrayOutbounds = [];      // برای vpn.json
-    const clashProxies = [];       // برای vpn.yml (لیست پروکسی‌ها)
+    const xrayConfigs = [];        // برای vpn.json (کانفیگ کامل Xray)
+    const clashProxies = [];       // برای vpn.yml
 
     for (let index = 0; index < lines.length; index++) {
         let line = lines[index].trim();
@@ -125,37 +331,10 @@ async function main() {
                 outboundTags.push(result.tag);
                 singboxOutbounds.push(result.outboundObj);
 
-                // ---- Xray outbound (vpn.json) ----
-                const xrayObj = {
-                    protocol: "vless",
-                    settings: {
-                        vnext: [{
-                            address: result.outboundObj.server,
-                            port: result.outboundObj.server_port,
-                            users: [{
-                                id: result.outboundObj.uuid,
-                                encryption: "none",
-                                flow: ""  // در صورت نیاز از پارامتر flow استفاده کنید
-                            }]
-                        }]
-                    },
-                    streamSettings: {
-                        network: "ws",
-                        security: "tls",
-                        tlsSettings: {
-                            serverName: result.outboundObj.tls.server_name,
-                            fingerprint: result.outboundObj.tls.utls.fingerprint,
-                            allowInsecure: false
-                        },
-                        wsSettings: {
-                            path: result.outboundObj.transport.path,
-                            headers: result.outboundObj.transport.headers
-                        }
-                    }
-                };
-                xrayOutbounds.push(xrayObj);
+                // ---- Xray full config (vpn.json) ----
+                xrayConfigs.push(buildXrayConfig(result));
 
-                // ---- Clash proxy (برای بخش proxies) ----
+                // ---- Clash proxy ----
                 const clashProxy = {
                     name: result.tag,
                     type: "vless",
@@ -182,19 +361,17 @@ async function main() {
         process.exit(1);
     }
 
-    // ۱. vpn64.txt (بی‌تغییر)
+    // ۱. vpn64.txt
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // ۲. vpn.json (آرایه خروجی‌های Xray)
-    fs.writeFileSync('vpn.json', JSON.stringify(xrayOutbounds, null, 4), 'utf8');
+    // ۲. vpn.json (آرایه کانفیگ‌های کامل Xray)
+    fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
 
-    // ۳. vpn.yml (فایل کامل Clash با proxy-groups و rules)
+    // ۳. vpn.yml (Clash)
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
-
-    // لیست نام‌های پروکسی برای گروه‌ها
     const proxyNames = clashProxies.map(p => p.name);
 
     let ymlContent = "proxies:\n";
@@ -214,29 +391,21 @@ async function main() {
         ymlContent += `      Host: ${p["ws-headers"].Host}\n`;
     });
 
-    // proxy-groups
     ymlContent += "\nproxy-groups:\n";
-    // گروه انتخاب دستی
     ymlContent += `  - name: "${selectorTag}"\n`;
     ymlContent += `    type: select\n`;
     ymlContent += `    proxies:\n`;
     ymlContent += `      - "${urlTestTag}"\n`;
-    proxyNames.forEach(name => {
-        ymlContent += `      - "${name}"\n`;
-    });
+    proxyNames.forEach(name => { ymlContent += `      - "${name}"\n`; });
     ymlContent += `      - DIRECT\n`;
 
-    // گروه url-test
     ymlContent += `  - name: "${urlTestTag}"\n`;
     ymlContent += `    type: url-test\n`;
     ymlContent += `    proxies:\n`;
-    proxyNames.forEach(name => {
-        ymlContent += `      - "${name}"\n`;
-    });
+    proxyNames.forEach(name => { ymlContent += `      - "${name}"\n`; });
     ymlContent += `    url: "http://www.gstatic.com/generate_204"\n`;
     ymlContent += `    interval: 300\n`;
 
-    // rules
     ymlContent += "\nrules:\n";
     ymlContent += `  - MATCH, "${selectorTag}"\n`;
 
