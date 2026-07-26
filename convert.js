@@ -282,18 +282,18 @@ if (validLinks.length === 0) {
 // ذخیره vpn.json (Xray)
 fs.writeFileSync('vpn.json', JSON.stringify(jsonConfigs, null, 2), 'utf8');
 
-// ذخیره ساختار کاملاً مدرن و استاندارد Sing-box (سازگار با نسخه 1.12 و بالاتر) بدون خطای Deprecated
+// ذخیره ساختار کاملاً جدید و استاندارد Sing-box (سازگار با نسخه 1.12 و بالاتر) بدون خطای DNS و Domain Resolver
 const singboxFullConfig = {
     "log": { "level": "warn", "timestamp": true },
     "dns": {
         "servers": [
-            { "tag": "proxydns", "address": "tls://8.8.8.8" },
-            { "tag": "localdns", "address": "local" }
+            { "tag": "google", "address": "tls://8.8.8.8" },
+            { "tag": "local", "address": "local" }
         ],
         "rules": [
-            { "rule_set": [], "server": "proxydns" }
+            { "outbound": "any", "server": "google" }
         ],
-        "final": "proxydns"
+        "independent_cache": true
     },
     "inbounds": [
         {
@@ -309,7 +309,8 @@ const singboxFullConfig = {
         { "type": "block", "tag": "block" }
     ],
     "route": {
-        "final": "direct",
+        "default_domain_resolver": "google",
+        "rules": [],
         "auto_detect_interface": true
     }
 };
@@ -374,4 +375,4 @@ fs.writeFileSync('vpn.yml', clashYaml, 'utf8');
 const base64Content = Buffer.from(validLinks.join('\n')).toString('base64');
 fs.writeFileSync('vpn64.txt', base64Content, 'utf8');
 
-console.log('تمامی فایل‌ها با موفقیت و بر اساس استانداردهای جدید سینگ‌باکس بروزرسانی شدند!');
+console.log('تنظیمات DNS و Route سینگ‌باکس با موفقیت برای نسخه‌های جدید بروزرسانی شد!');
