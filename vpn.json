@@ -95,7 +95,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "mQjc-08DF4-EwK8i1TjaFBQtbc2brrHo.seYednG1.workERs.DEv",
+                        "serverName": "MQJC-08dF4-EWk8I1TjAFBqtbC2bRrHo.SEYeDNG1.wORKeRS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -142,7 +142,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -333,7 +333,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "pOlIsHeD-BlOCk-d011.SeYedDex-339.WOrkERS.dEV",
+                        "serverName": "POLIsHEd-BLOck-D011.SeyeDDEx-339.wORKeRs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -380,7 +380,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -571,7 +571,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WItherEd-kING-1433.HAnNAhOwO.Workers.dEv",
+                        "serverName": "Withered-KiNG-1433.haNNaHowO.WOrKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -618,7 +618,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -809,7 +809,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "blAck-TreE-34c2.miHaniKA69.WOrKERS.dEV",
+                        "serverName": "black-tRee-34c2.miHaNika69.woRkErs.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -856,7 +856,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -1047,7 +1047,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SpRING-disK-81d3.MesEyeDng.worKerS.DEV",
+                        "serverName": "sPring-dISK-81d3.MeseyeDNG.WorKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1094,7 +1094,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -1285,7 +1285,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SNOwY-WOOD-A9fD.sEYEDEX.WoRkerS.DeV",
+                        "serverName": "SNoWy-wood-a9Fd.sEYEdeX.wOrKErS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1332,7 +1332,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -1523,7 +1523,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lIVELY-math-a2A1.milFEtTa.wOrkeRS.DeV",
+                        "serverName": "LIVeLy-MATh-a2a1.miLfETtA.WORKeRs.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1570,7 +1570,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -1761,7 +1761,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SUper-UniOn-7D52.SeYEdDEX-FBD.woRKErs.DEV",
+                        "serverName": "sUPEr-UnIoN-7d52.SeyeDdEx-FBD.wORkeRs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1808,7 +1808,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -1999,7 +1999,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VPn.SEYeDdex.wORKErS.DEV",
+                        "serverName": "vpn.SeYeddeX.wORkErS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2046,7 +2046,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -2237,7 +2237,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lONg-dUst-93E6.SEYEDHOsEiN.wOrkErs.Dev",
+                        "serverName": "LOnG-DusT-93e6.SEyEDhOSein.WOrKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2284,7 +2284,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -2475,7 +2475,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "coOl-shape-4720.SEYedng.WorkERS.dev",
+                        "serverName": "coOl-ShaPE-4720.SeyeDnG.wORKeRs.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2522,7 +2522,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -2713,7 +2713,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sprIng-sOUnd-2369.StewIeng.workErs.DeV",
+                        "serverName": "sPRInG-SOUNd-2369.STewIENG.wORKErS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2760,7 +2760,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -2951,7 +2951,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "oRAnGE-ClOuD-60c4.SeYEdSTewIeatoMIC.WOrkERS.DEV",
+                        "serverName": "ORAnGe-ClOUD-60c4.seyeDstEWieAtOMic.workerS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2998,7 +2998,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [
@@ -3185,7 +3185,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "au0z-fgMw39k6VT83x65r2ogHFAMf.MiLkYriDer.worKeRs.DEV",
+                        "serverName": "AU0z-fGmw39k6vT83X65R2OGHFAmF.MilKyRIdER.WoRkerS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3232,241 +3232,7 @@
             }
         ],
         "routing": {
-            "domainStrategy": "AsIs",
-            "rules": [
-                {
-                    "inboundTag": [
-                        "mixed-in"
-                    ],
-                    "port": 53,
-                    "outboundTag": "dns-out",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [
-                        "dns-in"
-                    ],
-                    "outboundTag": "dns-out",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [
-                        "remote-dns"
-                    ],
-                    "outboundTag": "proxy",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": [
-                        "dns"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "domain": [
-                        "geosite:private"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "ip": [
-                        "geoip:private"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "network": "udp",
-                    "outboundTag": "block",
-                    "type": "field"
-                },
-                {
-                    "domain": [
-                        "geosite:category-ads-all",
-                        "geosite:category-ads-ir"
-                    ],
-                    "outboundTag": "block",
-                    "type": "field"
-                },
-                {
-                    "domain": [
-                        "geosite:category-ir"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "ip": [
-                        "geoip:ir"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "network": "tcp",
-                    "outboundTag": "proxy",
-                    "type": "field"
-                }
-            ]
-        },
-        "policy": {
-            "levels": {
-                "0": {
-                    "connIdle": 300,
-                    "handshake": 4,
-                    "uplinkOnly": 1,
-                    "downlinkOnly": 1
-                }
-            },
-            "system": {
-                "statsOutboundUplink": true,
-                "statsOutboundDownlink": true
-            }
-        },
-        "stats": {}
-    },
-    {
-        "remarks": "🐶🇩🇪",
-        "version": {
-            "min": "26.2.6"
-        },
-        "log": {
-            "loglevel": "none"
-        },
-        "dns": {
-            "hosts": {
-                "geosite:category-ads-all": "#3",
-                "geosite:category-ads-ir": "#3"
-            },
-            "servers": [
-                {
-                    "address": "https://8.8.8.8/dns-query",
-                    "tag": "remote-dns"
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [
-                        "geosite:category-ir"
-                    ],
-                    "expectIPs": [
-                        "geoip:ir"
-                    ],
-                    "skipFallback": true
-                },
-                {
-                    "address": "8.8.8.8",
-                    "domains": [
-                        "full:37jeiDLKyHtqJR450ST.MILkYrIdEr1.wORKErS.DEV"
-                    ],
-                    "skipFallback": true
-                }
-            ],
-            "queryStrategy": "UseIP",
-            "tag": "dns"
-        },
-        "inbounds": [
-            {
-                "listen": "127.0.0.1",
-                "port": 10808,
-                "protocol": "mixed",
-                "settings": {
-                    "auth": "noauth",
-                    "udp": true
-                },
-                "sniffing": {
-                    "destOverride": [
-                        "http",
-                        "tls"
-                    ],
-                    "enabled": true,
-                    "routeOnly": true
-                },
-                "tag": "mixed-in"
-            },
-            {
-                "listen": "127.0.0.1",
-                "port": 10853,
-                "protocol": "dokodemo-door",
-                "settings": {
-                    "address": "1.1.1.1",
-                    "network": "tcp,udp",
-                    "port": 53
-                },
-                "tag": "dns-in"
-            }
-        ],
-        "outbounds": [
-            {
-                "protocol": "trojan",
-                "settings": {
-                    "servers": [
-                        {
-                            "address": "5.187.5.27",
-                            "port": 443,
-                            "password": "seyed",
-                            "flow": "",
-                            "level": 0
-                        }
-                    ]
-                },
-                "streamSettings": {
-                    "network": "ws",
-                    "wsSettings": {
-                        "host": "37jeiDLKyHtqJR450ST.MILkYrIdEr1.wORKErS.DEV",
-                        "path": "/tr/WX4aiXSrmVHy88pdrFLW4a41VACriX?ed=2560"
-                    },
-                    "security": "tls",
-                    "tlsSettings": {
-                        "serverName": "37jeidLkyHTQjr450sT.MILKyrIdEr1.WoRKErS.DeV",
-                        "fingerprint": "chrome",
-                        "alpn": [
-                            "http/1.1"
-                        ]
-                    },
-                    "sockopt": {
-                        "domainStrategy": "UseIP",
-                        "happyEyeballs": {
-                            "tryDelayMs": 250,
-                            "prioritizeIPv6": false,
-                            "interleave": 2,
-                            "maxConcurrentTry": 4
-                        }
-                    }
-                },
-                "tag": "proxy"
-            },
-            {
-                "protocol": "dns",
-                "settings": {
-                    "rules": [
-                        {
-                            "action": "hijack"
-                        }
-                    ]
-                },
-                "tag": "dns-out"
-            },
-            {
-                "protocol": "freedom",
-                "settings": {
-                    "domainStrategy": "UseIP"
-                },
-                "tag": "direct"
-            },
-            {
-                "protocol": "blackhole",
-                "settings": {
-                    "response": {
-                        "type": "http"
-                    }
-                },
-                "tag": "block"
-            }
-        ],
-        "routing": {
-            "domainStrategy": "AsIs",
+            "domainStrategy": "IPIfNonMatch",
             "rules": [
                 {
                     "inboundTag": [

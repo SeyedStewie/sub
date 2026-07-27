@@ -101,7 +101,7 @@
             "uuid": "83addb25-9876-47a3-9f18-0756fb477099",
             "packet-encoding": "",
             "tls": true,
-            "servername": "mQjc-08DF4-EwK8i1TjaFBQtbc2brrHo.seYednG1.workERs.DEv",
+            "servername": "MQJC-08dF4-EWk8I1TjAFBqtbC2bRrHo.SEYeDNG1.wORKeRS.deV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -128,7 +128,7 @@
             "uuid": "4e667592-a9bf-4b89-bbe2-f4656be6a9d6",
             "packet-encoding": "",
             "tls": true,
-            "servername": "pOlIsHeD-BlOCk-d011.SeYedDex-339.WOrkERS.dEV",
+            "servername": "POLIsHEd-BLOck-D011.SeyeDDEx-339.wORKeRs.DEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -155,7 +155,7 @@
             "uuid": "22df3e50-40d6-4003-8623-917ef4385fcb",
             "packet-encoding": "",
             "tls": true,
-            "servername": "WItherEd-kING-1433.HAnNAhOwO.Workers.dEv",
+            "servername": "Withered-KiNG-1433.haNNaHowO.WOrKERS.dEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -182,7 +182,7 @@
             "uuid": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
             "packet-encoding": "",
             "tls": true,
-            "servername": "blAck-TreE-34c2.miHaniKA69.WOrKERS.dEV",
+            "servername": "black-tRee-34c2.miHaNika69.woRkErs.dEV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -209,7 +209,7 @@
             "uuid": "7c778f01-c667-4fba-8580-849b966b18a9",
             "packet-encoding": "",
             "tls": true,
-            "servername": "SpRING-disK-81d3.MesEyeDng.worKerS.DEV",
+            "servername": "sPring-dISK-81d3.MeseyeDNG.WorKERS.dEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -236,7 +236,7 @@
             "uuid": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
             "packet-encoding": "",
             "tls": true,
-            "servername": "SNOwY-WOOD-A9fD.sEYEDEX.WoRkerS.DeV",
+            "servername": "SNoWy-wood-a9Fd.sEYEdeX.wOrKErS.deV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -263,7 +263,7 @@
             "uuid": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
             "packet-encoding": "",
             "tls": true,
-            "servername": "lIVELY-math-a2A1.milFEtTa.wOrkeRS.DeV",
+            "servername": "LIVeLy-MATh-a2a1.miLfETtA.WORKeRs.deV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -290,7 +290,7 @@
             "uuid": "f48f054a-20cb-4dfc-821a-42d9655515a9",
             "packet-encoding": "",
             "tls": true,
-            "servername": "SUper-UniOn-7D52.SeYEdDEX-FBD.woRKErs.DEV",
+            "servername": "sUPEr-UnIoN-7d52.SeyeDdEx-FBD.wORkeRs.DeV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -317,7 +317,7 @@
             "uuid": "190f85d0-72ef-4aec-bfd8-401ac90c4d43",
             "packet-encoding": "",
             "tls": true,
-            "servername": "VPn.SEYeDdex.wORKErS.DEV",
+            "servername": "vpn.SeYeddeX.wORkErS.Dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -344,7 +344,7 @@
             "uuid": "726eeafa-e8c2-46e7-81ec-57058d552b45",
             "packet-encoding": "",
             "tls": true,
-            "servername": "lONg-dUst-93E6.SEYEDHOsEiN.wOrkErs.Dev",
+            "servername": "LOnG-DusT-93e6.SEyEDhOSein.WOrKERs.DEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -371,7 +371,7 @@
             "uuid": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
             "packet-encoding": "",
             "tls": true,
-            "servername": "coOl-shape-4720.SEYedng.WorkERS.dev",
+            "servername": "coOl-ShaPE-4720.SeyeDnG.wORKeRs.Dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -398,7 +398,7 @@
             "uuid": "c8805c30-a8a5-410f-abed-2ef17574cff1",
             "packet-encoding": "",
             "tls": true,
-            "servername": "sprIng-sOUnd-2369.StewIeng.workErs.DeV",
+            "servername": "sPRInG-SOUNd-2369.STewIENG.wORKErS.deV",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -425,7 +425,7 @@
             "uuid": "2ee79869-5abe-4a3a-b654-77b525ec99c7",
             "packet-encoding": "",
             "tls": true,
-            "servername": "oRAnGE-ClOuD-60c4.SeYEdSTewIeatoMIC.WOrkERS.DEV",
+            "servername": "ORAnGe-ClOUD-60c4.seyeDstEWieAtOMic.workerS.Dev",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -451,7 +451,7 @@
             "udp": false,
             "password": "seyed",
             "tls": true,
-            "servername": "au0z-fgMw39k6VT83x65r2ogHFAMf.MiLkYriDer.worKeRs.DEV",
+            "servername": "AU0z-fGmw39k6vT83X65R2OGHFAmF.MilKyRIdER.WoRkerS.dEv",
             "client-fingerprint": "chrome",
             "skip-cert-verify": false,
             "alpn": [
@@ -462,30 +462,6 @@
                 "path": "/tr/EaQVoH8HHMhYxmW0STUT6vzMsdu9iR2?ed=2560",
                 "headers": {
                     "Host": "Au0z-fgmw39k6vT83x65r2OGHfAMF.MIlKYriDeR.wOrKERS.DEv"
-                }
-            }
-        },
-        {
-            "name": "🐶🇩🇪",
-            "type": "trojan",
-            "server": "5.187.5.27",
-            "port": 443,
-            "ip-version": "ipv4",
-            "tfo": false,
-            "udp": false,
-            "password": "seyed",
-            "tls": true,
-            "servername": "37jeidLkyHTQjr450sT.MILKyrIdEr1.WoRKErS.DeV",
-            "client-fingerprint": "chrome",
-            "skip-cert-verify": false,
-            "alpn": [
-                "http/1.1"
-            ],
-            "network": "ws",
-            "ws-opts": {
-                "path": "/tr/WX4aiXSrmVHy88pdrFLW4a41VACriX?ed=2560",
-                "headers": {
-                    "Host": "37jeiDLKyHtqJR450ST.MILkYrIdEr1.wORKErS.DEV"
                 }
             }
         }
@@ -509,8 +485,7 @@
                 "🐧🇳🇱",
                 "🐿️🇩🇪",
                 "🦨🇩🇪",
-                "🐺🇩🇪",
-                "🐶🇩🇪"
+                "🐺🇩🇪"
             ]
         },
         {
@@ -530,8 +505,7 @@
                 "🐧🇳🇱",
                 "🐿️🇩🇪",
                 "🦨🇩🇪",
-                "🐺🇩🇪",
-                "🐶🇩🇪"
+                "🐺🇩🇪"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interval": 30,
