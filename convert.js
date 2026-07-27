@@ -250,7 +250,7 @@ function buildXrayConfig(parsed) {
         ],
         outbounds: [],
         routing: {
-            domainStrategy: 'IPIfNonMatch',
+            domainStrategy: 'AsIs',  // changed from 'IPIfNonMatch'
             rules: [
                 { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
                 { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
