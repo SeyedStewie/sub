@@ -95,7 +95,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "MqJc-08Df4-eWK8I1tjAFBqtBc2bRRHO.SEYeDNG1.WORkErs.dEV",
+                        "serverName": "mqJC-08DF4-eWk8i1tjAfbqtBC2bRrHO.SEYeDnG1.workeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -333,7 +333,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "pOlisHED-bloCK-d011.sEyedDex-339.wORkErs.DEV",
+                        "serverName": "pOlished-BlOck-D011.SeyEDdEX-339.WoRKERs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -571,7 +571,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WitheReD-King-1433.hANnAhowo.wORkERs.dEV",
+                        "serverName": "WiThErED-kING-1433.HANNaHOWO.WoRKERs.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -809,7 +809,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "BlAcK-TReE-34c2.MIHAnIKa69.WoRKerS.Dev",
+                        "serverName": "BLacK-Tree-34C2.MIhAniKA69.WoRKers.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1047,7 +1047,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPring-DIsK-81d3.meseYednG.WorkeRs.dEV",
+                        "serverName": "SpriNg-DIsk-81d3.meSEyEdng.WorKeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1285,7 +1285,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SnowY-WOoD-a9FD.seyeDEX.WOrKERS.DeV",
+                        "serverName": "SNOwy-WooD-A9fd.Seyedex.WOrKers.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1523,7 +1523,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LivEly-Math-a2a1.MiLFeTTa.WoRKerS.DeV",
+                        "serverName": "LIVelY-mATH-A2A1.mILfeTta.wOrkeRs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1761,7 +1761,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SuPER-UnION-7d52.SeyEddEX-fbd.woRKErs.DeV",
+                        "serverName": "SUPer-unIon-7d52.SeYEDDEX-fBD.WORKeRs.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1999,7 +1999,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VPn.SeyedDEx.wOrKeRs.dEV",
+                        "serverName": "vPn.sEyEDDex.WoRkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2237,7 +2237,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "loNG-DuSt-93E6.SeyEdhoSeIN.WORKeRS.dEV",
+                        "serverName": "LONg-Dust-93e6.sEyeDHoSEIn.wORKeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2475,7 +2475,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "coOL-shaPE-4720.SeYEDnG.woRkeRS.DEV",
+                        "serverName": "cooL-SHaPe-4720.SEyEdng.wOrkERS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2713,7 +2713,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "spriNG-soUNd-2369.sTEWIeNG.WORKErS.dEV",
+                        "serverName": "spRiNG-Sound-2369.StewienG.WORKeRs.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2951,7 +2951,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "oRanGe-CLOuD-60c4.sEYeDsTEwiEatoMIC.WorkErs.DeV",
+                        "serverName": "ORange-CloUd-60c4.SeYEDsTEWIEaToMIC.wORkerS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3185,7 +3185,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "aU0z-Fgmw39K6vt83X65R2OghFaMf.miLkYrIDeR.WORKeRs.DEV",
+                        "serverName": "au0Z-fgMw39k6VT83x65R2oghfaMF.mIlkYRIder.woRKeRs.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3403,7 +3403,7 @@
                 "settings": {
                     "servers": [
                         {
-                            "address": "2.26.24.46",
+                            "address": "45.144.54.77",
                             "port": 443,
                             "password": "seyed",
                             "flow": "",
@@ -3419,7 +3419,241 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37jeiDlkYhtQJr450ST.MilKYrider1.WORkers.DEv",
+                        "serverName": "37jEiDlkYHtQjR450st.MIlkyRIDER1.WorKerS.dev",
+                        "fingerprint": "chrome",
+                        "alpn": [
+                            "http/1.1"
+                        ]
+                    },
+                    "sockopt": {
+                        "domainStrategy": "UseIP",
+                        "happyEyeballs": {
+                            "tryDelayMs": 250,
+                            "prioritizeIPv6": false,
+                            "interleave": 2,
+                            "maxConcurrentTry": 4
+                        }
+                    }
+                },
+                "tag": "proxy"
+            },
+            {
+                "protocol": "dns",
+                "settings": {
+                    "rules": [
+                        {
+                            "action": "hijack"
+                        }
+                    ]
+                },
+                "tag": "dns-out"
+            },
+            {
+                "protocol": "freedom",
+                "settings": {
+                    "domainStrategy": "UseIP"
+                },
+                "tag": "direct"
+            },
+            {
+                "protocol": "blackhole",
+                "settings": {
+                    "response": {
+                        "type": "http"
+                    }
+                },
+                "tag": "block"
+            }
+        ],
+        "routing": {
+            "domainStrategy": "AsIs",
+            "rules": [
+                {
+                    "inboundTag": [
+                        "mixed-in"
+                    ],
+                    "port": 53,
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "dns-in"
+                    ],
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "remote-dns"
+                    ],
+                    "outboundTag": "proxy",
+                    "type": "field"
+                },
+                {
+                    "inboundTag": [
+                        "dns"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:private"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [
+                        "geoip:private"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "udp",
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:category-ads-all",
+                        "geosite:category-ads-ir"
+                    ],
+                    "outboundTag": "block",
+                    "type": "field"
+                },
+                {
+                    "domain": [
+                        "geosite:category-ir"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "ip": [
+                        "geoip:ir"
+                    ],
+                    "outboundTag": "direct",
+                    "type": "field"
+                },
+                {
+                    "network": "tcp",
+                    "outboundTag": "proxy",
+                    "type": "field"
+                }
+            ]
+        },
+        "policy": {
+            "levels": {
+                "0": {
+                    "connIdle": 300,
+                    "handshake": 4,
+                    "uplinkOnly": 1,
+                    "downlinkOnly": 1
+                }
+            },
+            "system": {
+                "statsOutboundUplink": true,
+                "statsOutboundDownlink": true
+            }
+        },
+        "stats": {}
+    },
+    {
+        "remarks": "🐝🇩🇪",
+        "version": {
+            "min": "26.2.6"
+        },
+        "log": {
+            "loglevel": "none"
+        },
+        "dns": {
+            "hosts": {
+                "geosite:category-ads-all": "#3",
+                "geosite:category-ads-ir": "#3"
+            },
+            "servers": [
+                {
+                    "address": "https://8.8.8.8/dns-query",
+                    "tag": "remote-dns"
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "geosite:category-ir"
+                    ],
+                    "expectIPs": [
+                        "geoip:ir"
+                    ],
+                    "skipFallback": true
+                },
+                {
+                    "address": "8.8.8.8",
+                    "domains": [
+                        "full:o7551vEmQ7mDxRKM48aLd5A1K92.MiLkYRider2.wORKERS.Dev"
+                    ],
+                    "skipFallback": true
+                }
+            ],
+            "queryStrategy": "UseIP",
+            "tag": "dns"
+        },
+        "inbounds": [
+            {
+                "listen": "127.0.0.1",
+                "port": 10808,
+                "protocol": "mixed",
+                "settings": {
+                    "auth": "noauth",
+                    "udp": true
+                },
+                "sniffing": {
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ],
+                    "enabled": true,
+                    "routeOnly": true
+                },
+                "tag": "mixed-in"
+            },
+            {
+                "listen": "127.0.0.1",
+                "port": 10853,
+                "protocol": "dokodemo-door",
+                "settings": {
+                    "address": "1.1.1.1",
+                    "network": "tcp,udp",
+                    "port": 53
+                },
+                "tag": "dns-in"
+            }
+        ],
+        "outbounds": [
+            {
+                "protocol": "trojan",
+                "settings": {
+                    "servers": [
+                        {
+                            "address": "5.187.5.27",
+                            "port": 443,
+                            "password": "seyed",
+                            "flow": "",
+                            "level": 0
+                        }
+                    ]
+                },
+                "streamSettings": {
+                    "network": "ws",
+                    "wsSettings": {
+                        "host": "o7551vEmQ7mDxRKM48aLd5A1K92.MiLkYRider2.wORKERS.Dev",
+                        "path": "/tr/B5TE7q31NGPBUM2nIK4?ed=2560"
+                    },
+                    "security": "tls",
+                    "tlsSettings": {
+                        "serverName": "O7551VeMq7mdXRkm48ald5a1k92.MilKYRIDeR2.workERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
