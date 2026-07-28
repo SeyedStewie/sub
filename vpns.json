@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "mqJC-08DF4-eWk8i1tjAfbqtBC2bRrHO.SEYeDnG1.workeRS.DEV",
+                "server_name": "mqJc-08DF4-eWK8I1TJAFbQTbC2brrho.SEyEDng1.WOrkErS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "pOlished-BlOck-D011.SeyEDdEX-339.WoRKERs.DeV",
+                "server_name": "pOlISHEd-BLoCK-D011.SEyeddex-339.woRKErS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "WiThErED-kING-1433.HANNaHOWO.WoRKERs.dEV",
+                "server_name": "wiThereD-kIng-1433.haNnaHoWO.worKERs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BLacK-Tree-34C2.MIhAniKA69.WoRKers.DEV",
+                "server_name": "BLAcK-tREe-34C2.mihANika69.WorKeRs.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SpriNg-DIsk-81d3.meSEyEdng.WorKeRS.DEV",
+                "server_name": "sPRINg-DISk-81D3.meSEYedNG.WoRKERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SNOwy-WooD-A9fd.Seyedex.WOrKers.Dev",
+                "server_name": "snOWY-WoOd-A9Fd.sEyeDex.wORKeRS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -267,7 +267,7 @@
         {
             "tag": "🦆🇩🇪",
             "type": "vless",
-            "server": "64.188.71.130",
+            "server": "161.35.194.110",
             "server_port": 443,
             "tcp_fast_open": false,
             "uuid": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LIVelY-mATH-A2A1.mILfeTta.wOrkeRs.DeV",
+                "server_name": "LiVeLY-MATh-a2a1.mILfettA.wORkeRs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SUPer-unIon-7d52.SeYEDDEX-fBD.WORKeRs.dev",
+                "server_name": "sUPer-unION-7D52.SEyedDEX-fBD.WorKErs.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vPn.sEyEDDex.WoRkErs.DEV",
+                "server_name": "vPN.seyeDDex.WOrKers.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LONg-Dust-93e6.sEyeDHoSEIn.wORKeRS.DEV",
+                "server_name": "lonG-dUsT-93e6.seYEdhOSEiN.WOrKERs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "cooL-SHaPe-4720.SEyEdng.wOrkERS.DEV",
+                "server_name": "cOOl-sHaPe-4720.SEyedNg.WOrKeRs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "spRiNG-Sound-2369.StewienG.WORKeRs.dev",
+                "server_name": "SPriNG-sOuNd-2369.Stewieng.WoRkERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "ORange-CloUd-60c4.SeYEDsTEWIEaToMIC.wORkerS.dEv",
+                "server_name": "oRANge-cloUD-60C4.seyedStEWieAtOmiC.WORkeRs.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -491,13 +491,13 @@
         {
             "tag": "🐺🇩🇪",
             "type": "trojan",
-            "server": "156.226.174.20",
+            "server": "150.241.95.16",
             "server_port": 443,
             "tcp_fast_open": false,
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "au0Z-fgMw39k6VT83x65R2oghfaMF.mIlkYRIder.woRKeRs.dEV",
+                "server_name": "au0z-fGmW39K6VT83x65R2OGhFAmf.miLkYRIDer.WORkErs.deV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -524,7 +524,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "37jEiDlkYHtQjR450st.MIlkyRIDER1.WorKerS.dev",
+                "server_name": "37jeiDLKyhTQjR450St.milkYRidEr1.WorKerS.DEv",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -545,13 +545,13 @@
         {
             "tag": "🐝🇩🇪",
             "type": "trojan",
-            "server": "5.187.5.27",
+            "server": "91.149.223.242",
             "server_port": 443,
             "tcp_fast_open": false,
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "O7551VeMq7mdXRkm48ald5a1k92.MilKYRIDeR2.workERS.DeV",
+                "server_name": "O7551VEMQ7mDXrkM48alD5A1k92.MilkYriDEr2.workERs.Dev",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
