@@ -57,7 +57,6 @@ function parseVless(link, index) {
             sni: sni,
             fp: fp,
             raw: link,
-            // flow is completely removed for WS
             encryption: params.get('encryption') || 'none'
         };
     } catch (e) {
@@ -210,9 +209,69 @@ function buildSingboxOutbound(parsed) {
     return null;
 }
 
+function buildXrayOutbound(parsed) {
+    if (parsed.protocol === 'vless') {
+        return {
+            protocol: 'vless',
+            settings: {
+                vnext: [{
+                    address: parsed.server,
+                    port: parsed.port,
+                    users: [{ id: parsed.uuid, encryption: parsed.encryption || 'none' }]
+                }]
+            },
+            streamSettings: {
+                network: 'ws',
+                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
+                security: 'tls',
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
+            }
+        };
+    } else if (parsed.protocol === 'trojan') {
+        return {
+            protocol: 'trojan',
+            settings: {
+                servers: [{
+                    address: parsed.server,
+                    port: parsed.port,
+                    password: parsed.password,
+                    level: 0
+                }]
+            },
+            streamSettings: {
+                network: 'ws',
+                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
+                security: 'tls',
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
+            }
+        };
+    } else if (parsed.protocol === 'wireguard') {
+        return {
+            protocol: 'wireguard',
+            settings: {
+                secretKey: parsed.private_key,
+                address: parsed.address,
+                dns: parsed.dns ? [parsed.dns] : [],
+                peers: [{
+                    endpoint: `${parsed.server}:${parsed.port}`,
+                    publicKey: parsed.public_key,
+                    allowedIPs: parsed.allowed_ips
+                }]
+            },
+            streamSettings: { network: 'raw' },
+            sockopt: { domainStrategy: 'UseIP' }
+        };
+    }
+    return null;
+}
+
 function buildXrayConfig(parsed) {
     const tag = parsed.tag;
-    const base = {
+    const outbound = buildXrayOutbound(parsed);
+
+    return {
         remarks: tag,
         version: { min: '26.2.6' },
         log: { loglevel: 'none' },
@@ -246,7 +305,12 @@ function buildXrayConfig(parsed) {
                 tag: 'dns-in'
             }
         ],
-        outbounds: [],
+        outbounds: [
+            { ...outbound, tag: 'proxy' },
+            { protocol: 'dns', settings: { rules: [{ action: 'hijack' }] }, tag: 'dns-out' },
+            { protocol: 'freedom', settings: { domainStrategy: 'UseIP' }, tag: 'direct' },
+            { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
+        ],
         routing: {
             domainStrategy: 'IPIfNonMatch',
             rules: [
@@ -269,76 +333,97 @@ function buildXrayConfig(parsed) {
         },
         stats: {}
     };
+}
 
-    // Build outbound
-    let outbound = {};
-    if (parsed.protocol === 'vless') {
-        outbound = {
-            protocol: 'vless',
-            settings: {
-                vnext: [{
-                    address: parsed.server,
-                    port: parsed.port,
-                    // Flow removed
-                    users: [{ id: parsed.uuid, encryption: parsed.encryption || 'none' }]
-                }]
+function buildBestPingXrayConfig(parsedList) {
+    if (parsedList.length === 0) return null;
+
+    const proxyOutbounds = parsedList.map((parsed, idx) => {
+        const outbound = buildXrayOutbound(parsed);
+        return { ...outbound, tag: `proxy-${idx + 1}` };
+    });
+
+    const dnsDomains = parsedList
+        .map(p => p.host || p.server)
+        .filter(Boolean)
+        .map(domain => `full:${domain}`);
+
+    return {
+        remarks: 'بهترین پینگ',
+        version: { min: '26.2.6' },
+        log: { loglevel: 'none' },
+        dns: {
+            hosts: {
+                'geosite:category-ads-all': '#3',
+                'geosite:category-ads-ir': '#3'
             },
-            streamSettings: {
-                network: 'ws',
-                // early data added to path
-                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
-                security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
-                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
+            servers: [
+                { address: 'https://8.8.8.8/dns-query', tag: 'remote-dns' },
+                { address: '8.8.8.8', domains: ['geosite:category-ir'], expectIPs: ['geoip:ir'], skipFallback: true },
+                { address: '8.8.8.8', domains: dnsDomains, skipFallback: true }
+            ],
+            queryStrategy: 'UseIP',
+            tag: 'dns'
+        },
+        inbounds: [
+            {
+                listen: '127.0.0.1',
+                port: 10808,
+                protocol: 'mixed',
+                settings: { auth: 'noauth', udp: true },
+                sniffing: { destOverride: ['http', 'tls'], enabled: true, routeOnly: true },
+                tag: 'mixed-in'
+            },
+            {
+                listen: '127.0.0.1',
+                port: 10853,
+                protocol: 'dokodemo-door',
+                settings: { address: '1.1.1.1', network: 'tcp,udp', port: 53 },
+                tag: 'dns-in'
             }
-        };
-    } else if (parsed.protocol === 'trojan') {
-        outbound = {
-            protocol: 'trojan',
-            settings: {
-                servers: [{
-                    address: parsed.server,
-                    port: parsed.port,
-                    password: parsed.password,
-                    // Flow removed
-                    level: 0
-                }]
-            },
-            streamSettings: {
-                network: 'ws',
-                // early data added to path
-                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
-                security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
-                sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
-            }
-        };
-    } else if (parsed.protocol === 'wireguard') {
-        outbound = {
-            protocol: 'wireguard',
-            settings: {
-                secretKey: parsed.private_key,
-                address: parsed.address,
-                dns: parsed.dns ? [parsed.dns] : [],
-                peers: [{
-                    endpoint: `${parsed.server}:${parsed.port}`,
-                    publicKey: parsed.public_key,
-                    allowedIPs: parsed.allowed_ips
-                }]
-            },
-            streamSettings: { network: 'raw' },
-            sockopt: { domainStrategy: 'UseIP' }
-        };
-    }
-
-    base.outbounds = [
-        { ...outbound, tag: 'proxy' },
-        { protocol: 'dns', settings: { rules: [{ action: 'hijack' }] }, tag: 'dns-out' },
-        { protocol: 'freedom', settings: { domainStrategy: 'UseIP' }, tag: 'direct' },
-        { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
-    ];
-
-    return base;
+        ],
+        outbounds: [
+            ...proxyOutbounds,
+            { protocol: 'dns', settings: { rules: [{ action: 'hijack' }] }, tag: 'dns-out' },
+            { protocol: 'freedom', settings: { domainStrategy: 'UseIP' }, tag: 'direct' },
+            { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
+        ],
+        routing: {
+            domainStrategy: 'IPIfNonMatch',
+            rules: [
+                { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
+                { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
+                { inboundTag: ['remote-dns'], balancerTag: 'all-proxies', type: 'field' },
+                { inboundTag: ['dns'], outboundTag: 'direct', type: 'field' },
+                { domain: ['geosite:private'], outboundTag: 'direct', type: 'field' },
+                { ip: ['geoip:private'], outboundTag: 'direct', type: 'field' },
+                { network: 'udp', outboundTag: 'block', type: 'field' },
+                { domain: ['geosite:category-ads-all', 'geosite:category-ads-ir'], outboundTag: 'block', type: 'field' },
+                { domain: ['geosite:category-ir'], outboundTag: 'direct', type: 'field' },
+                { ip: ['geoip:ir'], outboundTag: 'direct', type: 'field' },
+                { network: 'tcp', balancerTag: 'all-proxies', type: 'field' }
+            ],
+            balancers: [
+                {
+                    tag: 'all-proxies',
+                    selector: ['proxy'],
+                    strategy: { type: 'leastPing' },
+                    fallbackTag: 'proxy-1'
+                }
+            ]
+        },
+        observatory: {
+            subjectSelector: ['proxy'],
+            probeUrl: 'https://www.gstatic.com/generate_204',
+            probeInterval: '30s',
+            enableConcurrency: true
+        },
+        policy: {
+            levels: { '0': { connIdle: 300, handshake: 4, uplinkOnly: 1, downlinkOnly: 1 } },
+            system: { statsOutboundUplink: true, statsOutboundDownlink: true }
+        },
+        stats: {}
+    };
 }
 
 function buildClashProxy(parsed) {
@@ -402,6 +487,7 @@ async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
     const validLinks = [];
+    const parsedConfigs = [];
     const xrayConfigs = [];
     const clashProxies = [];
 
@@ -422,6 +508,7 @@ async function main() {
 
         if (!parsed) continue;
 
+        parsedConfigs.push(parsed);
         validLinks.push(parsed.raw);
         outboundTags.push(parsed.tag);
 
@@ -443,12 +530,18 @@ async function main() {
         process.exit(1);
     }
 
+    // Append Best Ping entry to Xray configs array (vpn.json)
+    const bestPingConfig = buildBestPingXrayConfig(parsedConfigs);
+    if (bestPingConfig) {
+        xrayConfigs.push(bestPingConfig);
+    }
+
     // 1. vpn64.txt
     const joinedLinks = validLinks.join('\n');
     const base64Encoded = Buffer.from(joinedLinks).toString('base64');
     fs.writeFileSync('vpn64.txt', base64Encoded, 'utf8');
 
-    // 2. vpn.json
+    // 2. vpn.json (Xray with Best Ping included)
     fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
 
     // 3. vpn.yml – Clash

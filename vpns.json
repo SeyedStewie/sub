@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "MQJC-08Df4-Ewk8i1tJafbQTbc2BRrHO.seyEdNG1.WoRKERS.DEV",
+                "server_name": "mqJc-08DF4-eWK8I1TJAFbQTbC2brrho.SEyEDng1.WOrkErS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -105,38 +105,6 @@
             }
         },
         {
-            "tag": "🐉🇺🇸",
-            "type": "vless",
-            "server": "85.239.230.164",
-            "server_port": 443,
-            "tcp_fast_open": false,
-            "uuid": "d7bcd1e1-8ee9-45b1-9e59-63745f3dbfe8",
-            "packet_encoding": "",
-            "network": "tcp",
-            "tls": {
-                "enabled": true,
-                "server_name": "4M4p-Rj2xZA9qp3-oOU3NvRz.MIlKYRiDER4.woRKerS.dEv",
-                "record_fragment": false,
-                "insecure": false,
-                "alpn": [
-                    "http/1.1"
-                ],
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/vl/ecmIntlDmUsKpY27ttvxWm4c2NCRQF",
-                "max_early_data": 2560,
-                "early_data_header_name": "Sec-WebSocket-Protocol",
-                "headers": {
-                    "Host": "4m4p-rj2xza9qp3-oou3nvrz.milkyrider4.workers.dev"
-                }
-            }
-        },
-        {
             "tag": "🦊🇺🇲",
             "type": "vless",
             "server": "144.31.143.6",
@@ -147,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "POlisHeD-bLocK-d011.sEyeDDex-339.WoRKERs.dev",
+                "server_name": "pOlISHEd-BLoCK-D011.SEyeddex-339.woRKErS.DEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -171,7 +139,7 @@
         {
             "tag": "🦅🇺🇲",
             "type": "vless",
-            "server": "157.230.62.207",
+            "server": "91.90.195.68",
             "server_port": 443,
             "tcp_fast_open": false,
             "uuid": "22df3e50-40d6-4003-8623-917ef4385fcb",
@@ -179,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "withEReD-KinG-1433.hANNAHOwO.WorkErS.deV",
+                "server_name": "wiThereD-kIng-1433.haNnaHoWO.worKERs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -203,7 +171,7 @@
         {
             "tag": "🐠🇺🇲",
             "type": "vless",
-            "server": "147.182.172.104",
+            "server": "85.239.230.164",
             "server_port": 443,
             "tcp_fast_open": false,
             "uuid": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
@@ -211,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "BLACk-TReE-34c2.MihANIka69.worKERS.dEV",
+                "server_name": "BLAcK-tREe-34C2.mihANika69.WorKeRs.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -235,7 +203,7 @@
         {
             "tag": "🦔🇺🇲",
             "type": "vless",
-            "server": "162.243.110.13",
+            "server": "91.90.195.68",
             "server_port": 443,
             "tcp_fast_open": false,
             "uuid": "7c778f01-c667-4fba-8580-849b966b18a9",
@@ -243,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SpRiNG-dIsK-81D3.MESeyEdng.wOrKeRS.DeV",
+                "server_name": "sPRINg-DISk-81D3.meSEYedNG.WoRKERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -275,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SNoWy-wOOd-A9fd.SEYEdEX.wOrKeRs.DEv",
+                "server_name": "snOWY-WoOd-A9Fd.sEyeDex.wORKeRS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -307,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "LIVEly-mATh-A2A1.MiLfETTa.woRKErS.DEV",
+                "server_name": "LiVeLY-MATh-a2a1.mILfettA.wORkeRs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -339,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SUper-UNIOn-7D52.SEYEDdex-fBD.WoRKERs.DeV",
+                "server_name": "sUPer-unION-7D52.SEyedDEX-fBD.WorKErs.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -371,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "vpn.SeyeddEX.WoRkERS.DEv",
+                "server_name": "vPN.seyeDDex.WOrKers.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -403,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "lonG-dUST-93E6.SEyEdhoSEIN.worKerS.dEV",
+                "server_name": "lonG-dUsT-93e6.seYEdhOSEiN.WOrKERs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -435,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "cOol-shapE-4720.SEyEDnG.worKERs.dEv",
+                "server_name": "cOOl-sHaPe-4720.SEyedNg.WOrKeRs.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -467,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SPrIng-soUND-2369.stEWienG.worKeRs.DEv",
+                "server_name": "SPriNG-sOuNd-2369.Stewieng.WoRkERS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -499,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "oraNGe-Cloud-60C4.seYeDstEwiEaToMIC.wORKers.DeV",
+                "server_name": "oRANge-cloUD-60C4.seyedStEWieAtOmiC.WORkeRs.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -529,7 +497,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "au0z-Fgmw39k6Vt83X65r2OGhFaMf.MIlKYRIdEr.WOrKERs.deV",
+                "server_name": "au0z-fGmW39K6VT83x65R2OGhFAmf.miLkYRIDer.WORkErs.deV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -556,7 +524,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "37JEiDLkYhTqjr450St.miLKYrIDER1.WorKeRS.Dev",
+                "server_name": "37jeiDLKyhTQjR450St.milkYRidEr1.WorKerS.DEv",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -583,7 +551,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "o7551VemQ7MDXRKM48AlD5a1k92.MILKyRIdER2.worKERs.dev",
+                "server_name": "O7551VEMQ7mDXrkM48alD5A1k92.MilkYriDEr2.workERs.Dev",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -602,39 +570,11 @@
             }
         },
         {
-            "tag": "🦖🇩🇪",
-            "type": "trojan",
-            "server": "109.71.252.4",
-            "server_port": 443,
-            "tcp_fast_open": false,
-            "password": "seyed",
-            "tls": {
-                "enabled": true,
-                "server_name": "nLXE6mXxMxyDq4XbC7C0R89rl3.MIlkyrider3.WoRkeRS.DEv",
-                "insecure": false,
-                "alpn": [
-                    "http/1.1"
-                ],
-                "utls": {
-                    "enabled": true,
-                    "fingerprint": "chrome"
-                }
-            },
-            "transport": {
-                "type": "ws",
-                "path": "/tr/fOfzjnqJJkL09gfK?ed=2560",
-                "headers": {
-                    "Host": "nLXe6mXXMXydq4xbc7c0R89RL3.MILKYRIder3.woRKERs.Dev"
-                }
-            }
-        },
-        {
             "type": "selector",
             "tag": "انتخاب دستی",
             "outbounds": [
                 "بهترین پینگ",
                 "🦋🇨🇦",
-                "🐉🇺🇸",
                 "🦊🇺🇲",
                 "🦅🇺🇲",
                 "🐠🇺🇲",
@@ -649,8 +589,7 @@
                 "🦨🇩🇪",
                 "🐺🇩🇪",
                 "🐶🇩🇪",
-                "🐝🇩🇪",
-                "🦖🇩🇪"
+                "🐝🇩🇪"
             ],
             "interrupt_exist_connections": false
         },
@@ -664,7 +603,6 @@
             "tag": "بهترین پینگ",
             "outbounds": [
                 "🦋🇨🇦",
-                "🐉🇺🇸",
                 "🦊🇺🇲",
                 "🦅🇺🇲",
                 "🐠🇺🇲",
@@ -679,8 +617,7 @@
                 "🦨🇩🇪",
                 "🐺🇩🇪",
                 "🐶🇩🇪",
-                "🐝🇩🇪",
-                "🦖🇩🇪"
+                "🐝🇩🇪"
             ],
             "url": "https://www.gstatic.com/generate_204",
             "interrupt_exist_connections": false,
