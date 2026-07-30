@@ -57,8 +57,7 @@ function parseVless(link, index) {
             sni: sni,
             fp: fp,
             raw: link,
-            // additional
-            flow: params.get('flow') || '',
+            // flow is completely removed for WS
             encryption: params.get('encryption') || 'none'
         };
     } catch (e) {
@@ -107,7 +106,6 @@ function parseTrojan(link, index) {
 }
 
 function parseWireguard(link, index) {
-    // Custom URI format: wireguard://public_key@endpoint:port?private_key=...&address=...&allowed_ips=...&dns=...
     try {
         const parsed = new URL(link);
         const address = parsed.hostname.replace(/\[|\]/g, '');
@@ -250,7 +248,7 @@ function buildXrayConfig(parsed) {
         ],
         outbounds: [],
         routing: {
-            domainStrategy: 'AsIs',  // changed from 'IPIfNonMatch'
+            domainStrategy: 'IPIfNonMatch',
             rules: [
                 { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
                 { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
@@ -281,12 +279,14 @@ function buildXrayConfig(parsed) {
                 vnext: [{
                     address: parsed.server,
                     port: parsed.port,
-                    users: [{ id: parsed.uuid, encryption: parsed.encryption || 'none', flow: parsed.flow || '' }]
+                    // Flow removed
+                    users: [{ id: parsed.uuid, encryption: parsed.encryption || 'none' }]
                 }]
             },
             streamSettings: {
                 network: 'ws',
-                wsSettings: { host: parsed.host, path: parsed.path },
+                // early data added to path
+                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
                 tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
@@ -300,13 +300,14 @@ function buildXrayConfig(parsed) {
                     address: parsed.server,
                     port: parsed.port,
                     password: parsed.password,
-                    flow: '',
+                    // Flow removed
                     level: 0
                 }]
             },
             streamSettings: {
                 network: 'ws',
-                wsSettings: { host: parsed.host, path: parsed.path },
+                // early data added to path
+                wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
                 tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
