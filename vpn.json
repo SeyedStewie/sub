@@ -94,7 +94,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rj2XZa9qP3-Oou3nVRZ.MIlKYridEr4.WorkerS.dEV",
+                        "serverName": "4m4p-rJ2Xza9qP3-OOU3nvRz.MiLkyrIder4.WOrKeRS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -331,7 +331,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "wvA55Ds144J05fLiekiQ7vDRCTwXlr.ff5G-Qa2U541ACUc3OtdNburQ42W401T.worKeRs.dEv",
+                        "serverName": "WVa55ds144J05fliEKIQ7VdrcTwxlr.FF5g-qa2u541Acuc3OTDNBURq42w401t.worKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -568,7 +568,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6NqTF6307xmmWOY7D58G-cG.miLkYRIder5.wOrkERS.DEv",
+                        "serverName": "6NqTf6307xMmWoy7d58g-cg.MilKyRIdER5.wORkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -805,7 +805,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "POLiShed-BLoCK-D011.SEyEddEx-339.WorkeRs.Dev",
+                        "serverName": "poLisheD-bLOCk-d011.SEyedDex-339.wORKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1042,7 +1042,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WithereD-kING-1433.HaNnAHoWo.wOrkerS.deV",
+                        "serverName": "WItheREd-kInG-1433.hannAHoWo.WoRkERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1279,7 +1279,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "BLaCK-tRee-34C2.MihAnika69.wORKers.dev",
+                        "serverName": "BlaCK-TREe-34C2.mihanIkA69.WOrkers.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1516,7 +1516,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPrIng-DiSK-81d3.MEsEyeDng.WorkeRs.Dev",
+                        "serverName": "sPriNg-DisK-81d3.mEsEyedNG.WorkErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1753,7 +1753,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "mQjc-08DF4-EWK8i1TJafbQTBC2brRho.sEYednG1.wOrKErS.Dev",
+                        "serverName": "MQjc-08dF4-EWK8i1tjafBqtbc2brRho.SeYEdnG1.woRKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1990,7 +1990,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOOl-SHApe-4720.sEyednG.WOrKERS.dEV",
+                        "serverName": "Cool-SHAPe-4720.Seyedng.woRKeRs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2227,7 +2227,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SnowY-Wood-A9FD.SeyEdEX.worKErS.DeV",
+                        "serverName": "SNoWY-WooD-A9FD.seyEdEx.WorKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2445,7 +2445,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "161.35.194.110",
+                            "address": "109.71.252.4",
                             "port": 443,
                             "users": [
                                 {
@@ -2464,7 +2464,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LiVeLy-maTH-a2a1.MILfetta.woRkeRS.DEV",
+                        "serverName": "LIveLy-MATh-A2a1.MIlFeTtA.WORkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2701,7 +2701,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SupER-uNiOn-7d52.sEYEdDEX-fbd.WoRkerS.deV",
+                        "serverName": "SUpeR-uniON-7d52.SeyEDdEx-fbD.WORKerS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2938,7 +2938,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VpN.sEyeDDex.WORKErs.deV",
+                        "serverName": "VPN.seYeddEx.WorkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3156,7 +3156,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "167.71.38.235",
+                            "address": "109.71.252.4",
                             "port": 443,
                             "users": [
                                 {
@@ -3175,7 +3175,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LONG-DusT-93e6.seYEdHoSEiN.woRKeRS.deV",
+                        "serverName": "LONG-DusT-93E6.SEyedHoSein.WoRkerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3412,7 +3412,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SPriNG-sOUnD-2369.stEwIenG.WoRkeRS.Dev",
+                        "serverName": "SPrING-soUND-2369.sTEwIenG.worKeRs.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3649,7 +3649,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "orAngE-cloUd-60C4.SEYEdsTEwIeATOmIc.WOrKeRS.deV",
+                        "serverName": "OrANGe-cLouD-60C4.sEyeDSTEWIeaToMic.woRkerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3882,7 +3882,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "aU0Z-fgmw39K6Vt83X65r2oghfaMf.MilKyrIDER.worKERs.DEv",
+                        "serverName": "AU0z-FGmW39k6vT83x65r2oGHfAmf.mIlkYrIDEr.WorkErS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4115,7 +4115,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37jeiDlkYHTqjr450sT.MilKYRIder1.wOrkERs.DEv",
+                        "serverName": "37JeIDLkyhtqJR450st.MIlKYrIdER1.WORkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4348,7 +4348,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vEmQ7MDXrKM48Ald5a1K92.mIlKYrIDer2.wORkErs.deV",
+                        "serverName": "o7551Vemq7mDXRkM48Ald5a1K92.MilkyrIDEr2.WorKErS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4581,7 +4581,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "nLXe6mXXmXydq4xbc7c0R89Rl3.MiLkYriDEr3.WORKeRS.DEv",
+                        "serverName": "nLXE6mxxMXYdq4Xbc7c0R89rL3.MiLkyRiDEr3.WorKerS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4837,7 +4837,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rj2XZa9qP3-Oou3nVRZ.MIlKYridEr4.WorkerS.dEV",
+                        "serverName": "4m4p-rJ2Xza9qP3-OOU3nvRz.MiLkyrIder4.WOrKeRS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4879,7 +4879,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "wvA55Ds144J05fLiekiQ7vDRCTwXlr.ff5G-Qa2U541ACUc3OtdNburQ42W401T.worKeRs.dEv",
+                        "serverName": "WVa55ds144J05fliEKIQ7VdrcTwxlr.FF5g-qa2u541Acuc3OTDNBURq42w401t.worKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4921,7 +4921,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6NqTF6307xmmWOY7D58G-cG.miLkYRIder5.wOrkERS.DEv",
+                        "serverName": "6NqTf6307xMmWoy7d58g-cg.MilKyRIdER5.wORkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4963,7 +4963,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "POLiShed-BLoCK-D011.SEyEddEx-339.WorkeRs.Dev",
+                        "serverName": "poLisheD-bLOCk-d011.SEyedDex-339.wORKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5005,7 +5005,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WithereD-kING-1433.HaNnAHoWo.wOrkerS.deV",
+                        "serverName": "WItheREd-kInG-1433.hannAHoWo.WoRkERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5047,7 +5047,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "BLaCK-tRee-34C2.MihAnika69.wORKers.dev",
+                        "serverName": "BlaCK-TREe-34C2.mihanIkA69.WOrkers.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5089,7 +5089,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPrIng-DiSK-81d3.MEsEyeDng.WorkeRs.Dev",
+                        "serverName": "sPriNg-DisK-81d3.mEsEyedNG.WorkErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5131,7 +5131,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "mQjc-08DF4-EWK8i1TJafbQTBC2brRho.sEYednG1.wOrKErS.Dev",
+                        "serverName": "MQjc-08dF4-EWK8i1tjafBqtbc2brRho.SeYEdnG1.woRKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5173,7 +5173,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOOl-SHApe-4720.sEyednG.WOrKERS.dEV",
+                        "serverName": "Cool-SHAPe-4720.Seyedng.woRKeRs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5215,7 +5215,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SnowY-Wood-A9FD.SeyEdEX.worKErS.DeV",
+                        "serverName": "SNoWY-WooD-A9FD.seyEdEx.WorKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5238,7 +5238,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "161.35.194.110",
+                            "address": "109.71.252.4",
                             "port": 443,
                             "users": [
                                 {
@@ -5257,7 +5257,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LiVeLy-maTH-a2a1.MILfetta.woRkeRS.DEV",
+                        "serverName": "LIveLy-MATh-A2a1.MIlFeTtA.WORkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5299,7 +5299,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SupER-uNiOn-7d52.sEYEdDEX-fbd.WoRkerS.deV",
+                        "serverName": "SUpeR-uniON-7d52.SeyEDdEx-fbD.WORKerS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5341,7 +5341,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VpN.sEyeDDex.WORKErs.deV",
+                        "serverName": "VPN.seYeddEx.WorkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5364,7 +5364,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "167.71.38.235",
+                            "address": "109.71.252.4",
                             "port": 443,
                             "users": [
                                 {
@@ -5383,7 +5383,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LONG-DusT-93e6.seYEdHoSEiN.woRKeRS.deV",
+                        "serverName": "LONG-DusT-93E6.SEyedHoSein.WoRkerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5425,7 +5425,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SPriNG-sOUnD-2369.stEwIenG.WoRkeRS.Dev",
+                        "serverName": "SPrING-soUND-2369.sTEwIenG.worKeRs.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5467,7 +5467,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "orAngE-cloUd-60C4.SEYEdsTEwIeATOmIc.WOrKeRS.deV",
+                        "serverName": "OrANGe-cLouD-60C4.sEyeDSTEWIeaToMic.woRkerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5505,7 +5505,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "aU0Z-fgmw39K6Vt83X65r2oghfaMf.MilKyrIDER.worKERs.DEv",
+                        "serverName": "AU0z-FGmW39k6vT83x65r2oGHfAmf.mIlkYrIDEr.WorkErS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5543,7 +5543,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37jeiDlkYHTqjr450sT.MilKYRIder1.wOrkERs.DEv",
+                        "serverName": "37JeIDLkyhtqJR450st.MIlKYrIdER1.WORkERs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5581,7 +5581,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vEmQ7MDXrKM48Ald5a1K92.mIlKYrIDer2.wORkErs.deV",
+                        "serverName": "o7551Vemq7mDXRkM48Ald5a1K92.MilkyrIDEr2.WorKErS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5619,7 +5619,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "nLXe6mXXmXydq4xbc7c0R89Rl3.MiLkYriDEr3.WORKeRS.DEv",
+                        "serverName": "nLXE6mxxMXYdq4Xbc7c0R89rL3.MiLkyRiDEr3.WorKerS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
