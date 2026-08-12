@@ -312,7 +312,7 @@ function buildXrayConfig(parsed) {
             { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
         ],
         routing: {
-            domainStrategy: 'IPIfNonMatch',
+            domainStrategy: 'AsIs',
             rules: [
                 { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
                 { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
@@ -389,7 +389,7 @@ function buildBestPingXrayConfig(parsedList) {
             { protocol: 'blackhole', settings: { response: { type: 'http' } }, tag: 'block' }
         ],
         routing: {
-            domainStrategy: 'IPIfNonMatch',
+            domainStrategy: 'AsIs',
             rules: [
                 { inboundTag: ['mixed-in'], port: 53, outboundTag: 'dns-out', type: 'field' },
                 { inboundTag: ['dns-in'], outboundTag: 'dns-out', type: 'field' },
