@@ -20,7 +20,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -94,7 +94,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "5Pw2aCr9MiCvh1JUkN.MilKYRideR7.WORkerS.Dev",
+                        "serverName": "5pw2Acr9MIcVH1jUkn.milKyRidEr7.woRKERS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -201,7 +201,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -257,7 +257,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -331,7 +331,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rj2XzA9qP3-ooU3nVRz.MiLkyRIdER4.WOrKErs.dEv",
+                        "serverName": "4M4p-rJ2Xza9qp3-OOU3NVrZ.mIlkyrIder4.woRkerS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -438,7 +438,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -494,7 +494,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -568,7 +568,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "wVA55ds144j05fliEkiQ7vdrCTwXLR.FF5g-Qa2u541acuC3otDNBURq42W401t.wOrkERs.dEv",
+                        "serverName": "wVa55ds144j05FlIEkiQ7vdRcTWXlr.Ff5g-Qa2U541acUC3OtdNBuRq42W401T.WORkERS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -675,7 +675,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -731,7 +731,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -805,7 +805,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6nqtF6307XMmWOy7D58g-cg.MILKyRIDER5.WorkERs.DEv",
+                        "serverName": "6NqTf6307XMMwOY7D58G-cG.MiLkyrIdER5.wORKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -912,7 +912,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -968,7 +968,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -1042,7 +1042,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "36-e06n2a62492yLmvAXe7GTC.sEYeDDeXPROTON.WOrKeRs.deV",
+                        "serverName": "36-e06N2a62492YLMVAXe7GTC.SEYedDExpRoTON.WorkErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1149,7 +1149,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -1205,7 +1205,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -1279,7 +1279,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WIthEred-KiNG-1433.hannaHoWO.WOrkers.DEV",
+                        "serverName": "wIthEREd-KING-1433.HannaHOWO.WOrkERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1386,7 +1386,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -1442,7 +1442,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -1516,7 +1516,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "blAcK-Tree-34c2.MiHaNIKa69.WorKeRs.deV",
+                        "serverName": "black-TrEE-34c2.mIhaNika69.WOrKerS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1623,7 +1623,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -1679,7 +1679,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -1753,7 +1753,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPrinG-dISk-81d3.mesEYeDnG.WoRkERs.deV",
+                        "serverName": "spriNg-dISk-81D3.MeSEYedNG.WoRkeRS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -1860,7 +1860,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -1916,7 +1916,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -1990,7 +1990,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "MQjC-08df4-eWk8I1TJAfBQTbc2BRRHO.SeYedng1.wOrkers.Dev",
+                        "serverName": "mQjC-08DF4-ewk8I1TjaFbQTBc2BRrHO.SeyEdnG1.WoRKErS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2097,7 +2097,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -2153,7 +2153,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -2227,7 +2227,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOol-shAPe-4720.SeyednG.WoRKers.dev",
+                        "serverName": "cOOl-shApE-4720.seYedNG.woRkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2334,7 +2334,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -2390,7 +2390,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -2464,7 +2464,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sNowy-wooD-a9fD.seYedEX.WOrkErs.Dev",
+                        "serverName": "sNowy-Wood-A9FD.SeyEDeX.WOrkeRS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2571,7 +2571,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -2627,7 +2627,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -2701,7 +2701,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lively-mAtH-a2A1.mILfeTTA.wORKERs.dEv",
+                        "serverName": "lIVElY-maTH-a2a1.MIlfetTA.wORKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -2808,7 +2808,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -2864,7 +2864,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -2938,7 +2938,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sUPer-unIOn-7d52.SEYEddex-fBd.worKERs.DEV",
+                        "serverName": "supEr-UnIOn-7d52.sEYeddeX-fBD.WoRkeRS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3045,7 +3045,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -3101,7 +3101,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -3175,7 +3175,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VxJq31G46rx875-4wMDrk.seyeDdeX.WOrkers.DEV",
+                        "serverName": "vXJQ31g46Rx875-4WmDRK.SeyEdDex.wOrKers.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3282,7 +3282,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -3338,7 +3338,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -3412,7 +3412,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lOnG-dust-93E6.SeyEDHoSein.wORKERS.Dev",
+                        "serverName": "LoNG-DuST-93E6.sEYedhoseIn.wORKers.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3519,7 +3519,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -3575,7 +3575,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -3649,7 +3649,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SprINg-SoUNd-2369.sTEwiENg.wORKERS.DEV",
+                        "serverName": "SpRinG-sOUnd-2369.STEWieNg.WoRKeRS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3756,7 +3756,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -3812,7 +3812,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -3886,7 +3886,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "OrAnge-CLouD-60c4.SEyEDstEWieAtoMIC.WOrkERS.DEV",
+                        "serverName": "orANGe-CLouD-60c4.sEYEdSTEWIeaTomIc.wOrkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -3993,7 +3993,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -4049,7 +4049,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -4119,7 +4119,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "AU0z-fGmw39K6vt83X65R2OgHFAMf.milKyRIder.WOrkerS.DEv",
+                        "serverName": "AU0z-fGMw39k6Vt83x65r2oGhfAmf.milkYrIDER.wORkeRs.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4226,7 +4226,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -4282,7 +4282,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -4352,7 +4352,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37JeIdlKyhtqjR450ST.mILkyrideR1.WORKeRS.DeV",
+                        "serverName": "37jeidLKYhtQjR450ST.MilKYrIDEr1.woRkeRs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4459,7 +4459,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -4515,7 +4515,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -4585,7 +4585,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vEMq7mDxRKm48Ald5a1k92.MilKYRIder2.wOrKeRs.dev",
+                        "serverName": "O7551veMQ7mDXRKm48Ald5a1k92.MiLKyRidER2.WOrkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4692,7 +4692,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -4748,7 +4748,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -4818,7 +4818,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "nLXE6mxxmXYdq4XBC7c0r89RL3.miLKyridEr3.workerS.dEV",
+                        "serverName": "nLXe6mXXMxYDQ4XBC7c0r89RL3.MiLkYRider3.worKerS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -4925,7 +4925,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
@@ -4981,7 +4981,7 @@
                 {
                     "address": "8.8.8.8",
                     "domains": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "expectIPs": [
                         "geoip:ir"
@@ -5075,7 +5075,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "5Pw2aCr9MiCvh1JUkN.MilKYRideR7.WORkerS.Dev",
+                        "serverName": "5pw2Acr9MIcVH1jUkn.milKyRidEr7.woRKERS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5117,7 +5117,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rj2XzA9qP3-ooU3nVRz.MiLkyRIdER4.WOrKErs.dEv",
+                        "serverName": "4M4p-rJ2Xza9qp3-OOU3NVrZ.mIlkyrIder4.woRkerS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5159,7 +5159,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "wVA55ds144j05fliEkiQ7vdrCTwXLR.FF5g-Qa2u541acuC3otDNBURq42W401t.wOrkERs.dEv",
+                        "serverName": "wVa55ds144j05FlIEkiQ7vdRcTWXlr.Ff5g-Qa2U541acUC3OtdNBuRq42W401T.WORkERS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5201,7 +5201,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6nqtF6307XMmWOy7D58g-cg.MILKyRIDER5.WorkERs.DEv",
+                        "serverName": "6NqTf6307XMMwOY7D58G-cG.MiLkyrIdER5.wORKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5243,7 +5243,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "36-e06n2a62492yLmvAXe7GTC.sEYeDDeXPROTON.WOrKeRs.deV",
+                        "serverName": "36-e06N2a62492YLMVAXe7GTC.SEYedDExpRoTON.WorkErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5285,7 +5285,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WIthEred-KiNG-1433.hannaHoWO.WOrkers.DEV",
+                        "serverName": "wIthEREd-KING-1433.HannaHOWO.WOrkERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5327,7 +5327,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "blAcK-Tree-34c2.MiHaNIKa69.WorKeRs.deV",
+                        "serverName": "black-TrEE-34c2.mIhaNika69.WOrKerS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5369,7 +5369,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sPrinG-dISk-81d3.mesEYeDnG.WoRkERs.deV",
+                        "serverName": "spriNg-dISk-81D3.MeSEYedNG.WoRkeRS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5411,7 +5411,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "MQjC-08df4-eWk8I1TJAfBQTbc2BRRHO.SeYedng1.wOrkers.Dev",
+                        "serverName": "mQjC-08DF4-ewk8I1TjaFbQTBc2BRrHO.SeyEdnG1.WoRKErS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5453,7 +5453,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOol-shAPe-4720.SeyednG.WoRKers.dev",
+                        "serverName": "cOOl-shApE-4720.seYedNG.woRkErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5495,7 +5495,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sNowy-wooD-a9fD.seYedEX.WOrkErs.Dev",
+                        "serverName": "sNowy-Wood-A9FD.SeyEDeX.WOrkeRS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5537,7 +5537,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lively-mAtH-a2A1.mILfeTTA.wORKERs.dEv",
+                        "serverName": "lIVElY-maTH-a2a1.MIlfetTA.wORKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5579,7 +5579,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "sUPer-unIOn-7d52.SEYEddex-fBd.worKERs.DEV",
+                        "serverName": "supEr-UnIOn-7d52.sEYeddeX-fBD.WoRkeRS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5621,7 +5621,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "VxJq31G46rx875-4wMDrk.seyeDdeX.WOrkers.DEV",
+                        "serverName": "vXJQ31g46Rx875-4WmDRK.SeyEdDex.wOrKers.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5663,7 +5663,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "lOnG-dust-93E6.SeyEDHoSein.wORKERS.Dev",
+                        "serverName": "LoNG-DuST-93E6.sEYedhoseIn.wORKers.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5705,7 +5705,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SprINg-SoUNd-2369.sTEwiENg.wORKERS.DEV",
+                        "serverName": "SpRinG-sOUnd-2369.STEWieNg.WoRKeRS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5747,7 +5747,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "OrAnge-CLouD-60c4.SEyEDstEWieAtoMIC.WOrkERS.DEV",
+                        "serverName": "orANGe-CLouD-60c4.sEYEdSTEWIeaTomIc.wOrkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5785,7 +5785,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "AU0z-fGmw39K6vt83X65R2OgHFAMf.milKyRIder.WOrkerS.DEv",
+                        "serverName": "AU0z-fGMw39k6Vt83x65r2oGhfAmf.milkYrIDER.wORkeRs.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5823,7 +5823,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37JeIdlKyhtqjR450ST.mILkyrideR1.WORKeRS.DeV",
+                        "serverName": "37jeidLKYhtQjR450ST.MilKYrIDEr1.woRkeRs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5861,7 +5861,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vEMq7mDxRKm48Ald5a1k92.MilKYRIder2.wOrKeRs.dev",
+                        "serverName": "O7551veMQ7mDXRKm48Ald5a1k92.MiLKyRidER2.WOrkeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -5899,7 +5899,7 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "nLXE6mxxmXYdq4XBC7c0r89RL3.miLKyridEr3.workerS.dEV",
+                        "serverName": "nLXe6mXXMxYDQ4XBC7c0r89RL3.MiLkYRider3.worKerS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
@@ -6006,7 +6006,7 @@
                 },
                 {
                     "domain": [
-                        "geosite:category-ir"
+                        "domain:ir"
                     ],
                     "outboundTag": "direct",
                     "type": "field"
