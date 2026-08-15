@@ -1,0 +1,5449 @@
+[
+  {
+    "remarks": "🐇🇺🇸",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "193.233.203.106",
+          "encryption": "none",
+          "flow": "",
+          "id": "b5b10962-868f-40e8-95cc-4943e26e672d",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "5Pw2aCr9MiCvh1JUkN.MilKYRideR7.WORkerS.Dev"
+          },
+          "wsSettings": {
+            "host": "5pw2acr9micvh1jukn.milkyrider7.workers.dev",
+            "path": "/vl/UHsOAL0PWzSYbUWrXNjzG?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐉🇺🇸",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "172.86.105.36",
+          "encryption": "none",
+          "flow": "",
+          "id": "d7bcd1e1-8ee9-45b1-9e59-63745f3dbfe8",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "4m4p-rj2XzA9qP3-ooU3nVRz.MiLkyRIdER4.WOrKErs.dEv"
+          },
+          "wsSettings": {
+            "host": "4m4p-rj2xza9qp3-oou3nvrz.milkyrider4.workers.dev",
+            "path": "/vl/nfKA4av2ja506SnHerfBj?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐢🇺🇸",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "20.106.211.232",
+          "encryption": "none",
+          "flow": "",
+          "id": "1fb36ab7-e218-4aaf-98d9-b6265d9dcc3d",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "wVA55ds144j05fliEkiQ7vdrCTwXLR.FF5g-Qa2u541acuC3otDNBURq42W401t.wOrkERs.dEv"
+          },
+          "wsSettings": {
+            "host": "wva55ds144j05fliekiq7vdrctwxlr.ff5g-qa2u541acuc3otdnburq42w401t.workers.dev",
+            "path": "/vl/IVzdVDG1DC8j2LjoPLwr3O6wZ?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦘🇺🇸",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "15.204.173.154",
+          "encryption": "none",
+          "flow": "",
+          "id": "854947df-1c9e-403d-badd-095909be88f2",
+          "level": 8,
+          "port": 8443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "6nqtF6307XMmWOy7D58g-cg.MILKyRIDER5.WorkERs.DEv"
+          },
+          "wsSettings": {
+            "host": "6nqtf6307xmmwoy7d58g-cg.milkyrider5.workers.dev",
+            "path": "/vl/sCunCiHayXPMih98N?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦊🇺🇸",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "143.198.31.221",
+          "encryption": "none",
+          "flow": "",
+          "id": "8be8ee84-6343-45e7-b77c-b7a3d0482e76",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "36-e06n2a62492yLmvAXe7GTC.sEYeDDeXPROTON.WOrKeRs.deV"
+          },
+          "wsSettings": {
+            "host": "36-e06n2a62492ylmvaxe7gtc.seyeddexproton.workers.dev",
+            "path": "/vl/dPcIvimg0f54HLshLLTAi?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦅🇺🇲",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "178.156.216.217",
+          "encryption": "none",
+          "flow": "",
+          "id": "22df3e50-40d6-4003-8623-917ef4385fcb",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "WIthEred-KiNG-1433.hannaHoWO.WOrkers.DEV"
+          },
+          "wsSettings": {
+            "host": "WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV",
+            "path": "/eyJqdW5rIjoieHI1aWUwYzh5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiNDQuMjA5LjUyLjciXX0=?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐠🇺🇲",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "167.99.7.192",
+          "encryption": "none",
+          "flow": "",
+          "id": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "blAcK-Tree-34c2.MiHaNIKa69.WorKeRs.deV"
+          },
+          "wsSettings": {
+            "host": "BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev",
+            "path": "/eyJqdW5rIjoiTFJrZmZWU1BLZmwyNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzUuMTk0LjMxIl19?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦔🇺🇲",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "107.191.39.176",
+          "encryption": "none",
+          "flow": "",
+          "id": "7c778f01-c667-4fba-8580-849b966b18a9",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "sPrinG-dISk-81d3.mesEYeDnG.WoRkERs.deV"
+          },
+          "wsSettings": {
+            "host": "SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv",
+            "path": "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦋🇨🇦",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "23.227.60.0",
+          "encryption": "none",
+          "flow": "",
+          "id": "83addb25-9876-47a3-9f18-0756fb477099",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "MQjC-08df4-eWk8I1TJAfBQTbc2BRRHO.SeYedng1.wOrkers.Dev"
+          },
+          "wsSettings": {
+            "host": "mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv",
+            "path": "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐧🇳🇱",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "95.179.255.86",
+          "encryption": "none",
+          "flow": "",
+          "id": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "cOol-shAPe-4720.SeyednG.WoRKers.dev"
+          },
+          "wsSettings": {
+            "host": "cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv",
+            "path": "/eyJqdW5rIjoiUlBFS2Z1dGJjb3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxNDYuMTAzLjExMy4xNTgiXX0=?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐏🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "194.180.188.241",
+          "encryption": "none",
+          "flow": "",
+          "id": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "sNowy-wooD-a9fD.seYedEX.WOrkErs.Dev"
+          },
+          "wsSettings": {
+            "host": "snowy-wood-a9fd.seyedex.workers.dev",
+            "path": "/eyJqdW5rIjoiSWVTU2E2cTVKaFhPdTdSIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiMy4xMjcuNTUuMTMzIl19?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦆🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "109.71.252.4",
+          "encryption": "none",
+          "flow": "",
+          "id": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "lively-mAtH-a2A1.mILfeTTA.wORKERs.dEv"
+          },
+          "wsSettings": {
+            "host": "livelY-MATH-A2a1.milfEttA.woRKErs.dEV",
+            "path": "/eyJqdW5rIjoibWVKazh4QmowIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiODguOTkuOTIuODQiXX0=?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦩🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "2.26.24.46",
+          "encryption": "none",
+          "flow": "",
+          "id": "f48f054a-20cb-4dfc-821a-42d9655515a9",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "sUPer-unIOn-7d52.SEYEddex-fBd.worKERs.DEV"
+          },
+          "wsSettings": {
+            "host": "Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV",
+            "path": "/eyJqdW5rIjoiM0xyYUxVZm53a3kiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxMTYuMjAyLjEzMi4yMDUiXX0=?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦢🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "2.26.24.46",
+          "encryption": "none",
+          "flow": "",
+          "id": "99509aa0-a2c5-4136-967c-4fd738136e24",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "VxJq31G46rx875-4wMDrk.seyeDdeX.WOrkers.DEV"
+          },
+          "wsSettings": {
+            "host": "vxjq31g46rx875-4wmdrk.seyeddex.workers.dev",
+            "path": "/vl/ApBgPZrKRhH1LJXby1bk6cVV85J?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐈🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "109.71.252.4",
+          "encryption": "none",
+          "flow": "",
+          "id": "726eeafa-e8c2-46e7-81ec-57058d552b45",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "lOnG-dust-93E6.SeyEDHoSein.wORKERS.Dev"
+          },
+          "wsSettings": {
+            "host": "loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv",
+            "path": "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐿️🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "104.21.88.31",
+          "encryption": "none",
+          "flow": "",
+          "id": "c8805c30-a8a5-410f-abed-2ef17574cff1",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "SprINg-SoUNd-2369.sTEwiENg.wORKERS.DEV"
+          },
+          "wsSettings": {
+            "host": "SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV",
+            "path": "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦨🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "89.40.117.130",
+          "encryption": "none",
+          "flow": "",
+          "id": "2ee79869-5abe-4a3a-b654-77b525ec99c7",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "OrAnge-CLouD-60c4.SEyEDstEWieAtoMIC.WOrkERS.DEV"
+          },
+          "wsSettings": {
+            "host": "orange-cloud-60c4.seyedstewieatomic.workers.dev",
+            "path": "/eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐺🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "trojan",
+        "settings": {
+          "servers": [
+            {
+              "address": "156.154.245.83",
+              "port": 443,
+              "password": "seyed",
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "AU0z-fGmw39K6vt83X65R2OgHFAMf.milKyRIder.WOrkerS.DEv"
+          },
+          "wsSettings": {
+            "host": "Au0z-fgmw39k6vT83x65r2OGHfAMF.MIlKYriDeR.wOrKERS.DEv",
+            "path": "/tr/EaQVoH8HHMhYxmW0STUT6vzMsdu9iR2?ed=2560?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐶🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "trojan",
+        "settings": {
+          "servers": [
+            {
+              "address": "111.88.74.167",
+              "port": 443,
+              "password": "seyed",
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "37JeIdlKyhtqjR450ST.mILkyrideR1.WORKeRS.DeV"
+          },
+          "wsSettings": {
+            "host": "37JEiDLkYhtQJr450st.MiLKyrIDER1.workErs.dev",
+            "path": "/tr/C3jEMFVhOAFcndlK7kCUJy5o?ed=2560?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐝🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "trojan",
+        "settings": {
+          "servers": [
+            {
+              "address": "111.88.74.167",
+              "port": 443,
+              "password": "seyed",
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "o7551vEMq7mDxRKm48Ald5a1k92.MilKYRIder2.wOrKeRs.dev"
+          },
+          "wsSettings": {
+            "host": "o7551vEmQ7mDxRKM48aLd5A1K92.MiLkYRider2.wORKERS.Dev",
+            "path": "/tr/B5TE7q31NGPBUM2nIK4?ed=2560?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦖🇩🇪",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "trojan",
+        "settings": {
+          "servers": [
+            {
+              "address": "109.71.252.4",
+              "port": 443,
+              "password": "seyed",
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "nLXE6mxxmXYdq4XBC7c0r89RL3.miLKyridEr3.workerS.dEV"
+          },
+          "wsSettings": {
+            "host": "nLXe6mXXMXydq4xbc7c0R89RL3.MILKYRIder3.woRKERs.Dev",
+            "path": "/tr/fOfzjnqJJkL09gfK?ed=2560?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "geosite:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  }
+]
