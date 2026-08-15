@@ -57,7 +57,8 @@ function parseVless(link, index) {
             sni: sni,
             fp: fp,
             raw: link,
-            encryption: params.get('encryption') || 'none'
+            encryption: params.get('encryption') || 'none',
+            flow: params.get('flow') || ''
         };
     } catch (e) {
         console.error(`خطا در پردازش لینک VLESS شماره ${index + 1}:`, e.message);
@@ -483,6 +484,158 @@ function buildClashProxy(parsed) {
     return null;
 }
 
+// --- Custom Xray (vpnp.json) builder ---
+// Same fragmented-TLS Xray format as vpnp.json sample, plus ad-block + Iran-bypass routing.
+
+function buildVpnpDns() {
+    return {
+        hosts: {
+            "domain:googleapis.cn": "googleapis.com",
+            "dns.alidns.com": ["223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1"],
+            "dns.sse.cisco.com": ["208.67.220.220", "208.67.222.222", "2620:119:35::35", "2620:119:53::53"],
+            "dns.umbrella.com": ["208.67.220.220", "208.67.222.222", "2620:119:35::35", "2620:119:53::53"],
+            "one.one.one.one": ["1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001"],
+            "1dot1dot1dot1.cloudflare-dns.com": ["1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001"],
+            "dns.cloudflare.com": ["162.159.61.8", "172.64.41.8", "2a06:98c1:52::8", "2803:f800:53::8"],
+            "cloudflare-dns.com": ["104.16.248.249", "104.16.249.249", "2606:4700::6810:f8f9", "2606:4700::6810:f9f9"],
+            "engage.cloudflareclient.com": ["162.159.192.1", "2606:4700:d0::a29f:c001"],
+            "doh.pub": ["1.12.12.12", "120.53.53.53"],
+            "dot.pub": ["1.12.12.12", "120.53.53.53"],
+            "dns.google": ["8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844"],
+            "dns.quad9.net": ["9.9.9.9", "149.112.112.112", "2620:fe::fe", "2620:fe::9"],
+            "dns.sb": ["45.11.45.11", "185.222.222.222", "2a09::", "2a11::"],
+            "common.dot.dns.yandex.net": ["77.88.8.8", "77.88.8.1", "2a02:6b8::feed:0ff", "2a02:6b8:0:1::feed:0ff"]
+        },
+        servers: ["https://cloudflare-dns.com/dns-query"],
+        tag: "dns-module"
+    };
+}
+
+function buildVpnpInbounds() {
+    return [
+        {
+            listen: "127.0.0.1",
+            port: 10808,
+            protocol: "socks",
+            settings: { auth: "noauth", udp: true, userLevel: 8 },
+            sniffing: { destOverride: ["http", "tls", "quic"], enabled: true, routeOnly: false },
+            tag: "socks"
+        },
+        {
+            listen: "127.0.0.1",
+            port: 10809,
+            protocol: "http",
+            settings: { userLevel: 8 },
+            sniffing: { destOverride: ["http", "tls", "quic"], enabled: true, routeOnly: false },
+            tag: "http"
+        }
+    ];
+}
+
+function buildVpnpFinalmask() {
+    return {
+        tcp: [
+            {
+                type: "fragment",
+                settings: { packets: "tlshello", lengths: ["5", "94", "1"], delays: ["0"], maxSplit: "0" }
+            },
+            {
+                type: "fragment",
+                settings: { packets: "1-1", lengths: ["109", "1"], delays: ["1"], maxSplit: "355" }
+            }
+        ]
+    };
+}
+
+function buildVpnpOutboundProxy(parsed) {
+    const streamSettings = {
+        finalmask: buildVpnpFinalmask(),
+        network: "ws",
+        security: "tls",
+        sockopt: {
+            domainStrategy: "UseIP",
+            happyEyeballs: { interleave: 2, maxConcurrentTry: 4, prioritizeIPv6: false, tryDelayMs: 250 }
+        },
+        tlsSettings: {
+            allowInsecure: false,
+            alpn: ["http/1.1"],
+            cipherSuites: "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            fingerprint: "unsafe",
+            serverName: parsed.sni
+        },
+        wsSettings: {
+            host: parsed.host,
+            path: parsed.path + "?ed=2560"
+        }
+    };
+
+    if (parsed.protocol === 'vless') {
+        return {
+            mux: { concurrency: -1, enabled: false },
+            protocol: "vless",
+            settings: {
+                address: parsed.server,
+                encryption: parsed.encryption || 'none',
+                flow: parsed.flow || '',
+                id: parsed.uuid,
+                level: 8,
+                port: parsed.port
+            },
+            streamSettings,
+            tag: "proxy"
+        };
+    }
+
+    if (parsed.protocol === 'trojan') {
+        return {
+            mux: { concurrency: -1, enabled: false },
+            protocol: "trojan",
+            settings: {
+                servers: [{ address: parsed.server, port: parsed.port, password: parsed.password, level: 8 }]
+            },
+            streamSettings,
+            tag: "proxy"
+        };
+    }
+
+    // wireguard isn't compatible with this fragmented WS/TLS template
+    return null;
+}
+
+function buildVpnpRoutingRules() {
+    return [
+        { type: "field", domain: ["geosite:category-ads-all", "geosite:category-ads-ir"], outboundTag: "block" },
+        { type: "field", domain: ["geosite:ir"], outboundTag: "direct" },
+        { type: "field", ip: ["geoip:ir"], outboundTag: "direct" },
+        { inboundTag: ["dns-module"], outboundTag: "proxy", type: "field" }
+    ];
+}
+
+function buildVpnpEntry(parsed) {
+    const proxyOutbound = buildVpnpOutboundProxy(parsed);
+    if (!proxyOutbound) return null;
+
+    return {
+        remarks: parsed.tag,
+        dns: buildVpnpDns(),
+        inbounds: buildVpnpInbounds(),
+        log: { loglevel: "warning" },
+        outbounds: [
+            proxyOutbound,
+            {
+                protocol: "freedom",
+                streamSettings: { network: "tcp", sockopt: { domainStrategy: "UseIP" } },
+                tag: "direct"
+            },
+            { protocol: "blackhole", settings: {}, tag: "block" }
+        ],
+        routing: {
+            domainStrategy: "AsIs",
+            rules: buildVpnpRoutingRules()
+        }
+    };
+}
+
 async function main() {
     const singboxOutbounds = [];
     const outboundTags = [];
@@ -490,6 +643,7 @@ async function main() {
     const parsedConfigs = [];
     const xrayConfigs = [];
     const clashProxies = [];
+    const vpnpEntries = [];
 
     for (let index = 0; index < lines.length; index++) {
         const line = lines[index].trim();
@@ -523,6 +677,14 @@ async function main() {
         // Clash proxy
         const clash = buildClashProxy(parsed);
         if (clash) clashProxies.push(clash);
+
+        // Custom Xray (vpnp.json)
+        const vpnpEntry = buildVpnpEntry(parsed);
+        if (vpnpEntry) {
+            vpnpEntries.push(vpnpEntry);
+        } else if (parsed.protocol === 'wireguard') {
+            console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnp.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
+        }
     }
 
     if (validLinks.length === 0) {
@@ -744,7 +906,14 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    console.log('✅ همه ۴ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    // 5. vpnp.json – Custom Xray (fragmented WS/TLS) + ad-block & Iran bypass
+    if (vpnpEntries.length > 0) {
+        fs.writeFileSync('vpnp.json', JSON.stringify(vpnpEntries, null, 2), 'utf8');
+    } else {
+        console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnp.json یافت نشد.');
+    }
+
+    console.log('✅ همه ۵ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnp.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
