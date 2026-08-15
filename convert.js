@@ -283,7 +283,7 @@ function buildXrayConfig(parsed) {
             },
             servers: [
                 { address: 'https://8.8.8.8/dns-query', tag: 'remote-dns' },
-                { address: '8.8.8.8', domains: ['geosite:category-ir'], expectIPs: ['geoip:ir'], skipFallback: true },
+                { address: '8.8.8.8', domains: ['domain:ir'], expectIPs: ['geoip:ir'], skipFallback: true },
                 { address: '8.8.8.8', domains: [`full:${parsed.host || parsed.server}`], skipFallback: true }
             ],
             queryStrategy: 'UseIP',
@@ -323,7 +323,7 @@ function buildXrayConfig(parsed) {
                 { ip: ['geoip:private'], outboundTag: 'direct', type: 'field' },
                 { network: 'udp', outboundTag: 'block', type: 'field' },
                 { domain: ['geosite:category-ads-all', 'geosite:category-ads-ir'], outboundTag: 'block', type: 'field' },
-                { domain: ['geosite:category-ir'], outboundTag: 'direct', type: 'field' },
+                { domain: ['domain:ir'], outboundTag: 'direct', type: 'field' },
                 { ip: ['geoip:ir'], outboundTag: 'direct', type: 'field' },
                 { network: 'tcp', outboundTag: 'proxy', type: 'field' }
             ]
@@ -360,7 +360,7 @@ function buildBestPingXrayConfig(parsedList) {
             },
             servers: [
                 { address: 'https://8.8.8.8/dns-query', tag: 'remote-dns' },
-                { address: '8.8.8.8', domains: ['geosite:category-ir'], expectIPs: ['geoip:ir'], skipFallback: true },
+                { address: '8.8.8.8', domains: ['domain:ir'], expectIPs: ['geoip:ir'], skipFallback: true },
                 { address: '8.8.8.8', domains: dnsDomains, skipFallback: true }
             ],
             queryStrategy: 'UseIP',
@@ -400,7 +400,7 @@ function buildBestPingXrayConfig(parsedList) {
                 { ip: ['geoip:private'], outboundTag: 'direct', type: 'field' },
                 { network: 'udp', outboundTag: 'block', type: 'field' },
                 { domain: ['geosite:category-ads-all', 'geosite:category-ads-ir'], outboundTag: 'block', type: 'field' },
-                { domain: ['geosite:category-ir'], outboundTag: 'direct', type: 'field' },
+                { domain: ['domain:ir'], outboundTag: 'direct', type: 'field' },
                 { ip: ['geoip:ir'], outboundTag: 'direct', type: 'field' },
                 { network: 'tcp', balancerTag: 'all-proxies', type: 'field' }
             ],
@@ -605,7 +605,7 @@ function buildVpnfOutboundProxy(parsed) {
 function buildVpnfRoutingRules() {
     return [
         { type: "field", domain: ["geosite:category-ads-all", "geosite:category-ads-ir"], outboundTag: "block" },
-        { type: "field", domain: ["geosite:ir"], outboundTag: "direct" },
+        { type: "field", domain: ["domain:ir"], outboundTag: "direct" },
         { type: "field", ip: ["geoip:ir"], outboundTag: "direct" },
         { inboundTag: ["dns-module"], outboundTag: "proxy", type: "field" }
     ];
