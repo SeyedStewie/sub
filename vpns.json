@@ -83,7 +83,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "5pw2Acr9micVh1JukN.MIlKYRiDeR7.WorKErS.DEV",
+                "server_name": "5Pw2Acr9MicvH1JuKN.mILkYrIdeR7.WOrkErS.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -115,7 +115,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "4M4p-Rj2xZA9QP3-OOu3NvRz.miLkyriDER4.wORKErS.dEV",
+                "server_name": "4M4p-rj2XZA9Qp3-oOu3nVrZ.MilKYRider4.WORkERs.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -147,7 +147,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "wva55ds144J05FLiEkIq7vdrCtwxLr.fF5g-QA2u541ACUc3OTdNbUrq42W401t.WorkErS.dEV",
+                "server_name": "WVa55DS144j05Fliekiq7VdrcTwXLR.fF5G-QA2u541ACuc3oTDnBUrQ42w401T.woRKeRS.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -179,7 +179,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "6nqtF6307xmMwOY7d58g-Cg.MILkYrIDer5.WoRKeRS.DeV",
+                "server_name": "6nqtf6307xmMWOy7D58g-CG.milKyrider5.WORkers.DeV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -211,7 +211,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "36-e06N2A62492YlMvaxe7GTC.SeYeDDexproTon.WORkeRS.DEV",
+                "server_name": "36-e06n2a62492ylmvAXe7Gtc.SEyEDDExProTOn.WoRKerS.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -243,7 +243,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "WiThERed-kIng-1433.hAnnaHOWO.wORkErs.Dev",
+                "server_name": "wIthErEd-kInG-1433.HANNAhowo.woRkers.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -275,7 +275,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "bLacK-TrEE-34C2.MIhaNIkA69.WORkErs.DeV",
+                "server_name": "bLAck-TReE-34c2.mIHAniKa69.WorKeRs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -307,7 +307,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "spriNG-DiSk-81d3.meSEYedNG.WoRKeRs.DEV",
+                "server_name": "spRing-disK-81D3.mESEYedng.wOrkErs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -339,7 +339,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "MQjC-08Df4-EWK8I1tJafbqTbc2brrHO.seYeDNg1.woRKeRs.dEv",
+                "server_name": "mQjc-08df4-eWK8I1TjaFBqtBc2BRrHO.SEYEdNG1.workers.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -371,7 +371,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "CooL-ShaPE-4720.SeyeDnG.wORKers.DEv",
+                "server_name": "cool-SHApE-4720.sEyEDng.WoRKERs.dEV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -403,7 +403,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "snoWY-wOod-a9Fd.SEYeDEx.WorKErs.DEV",
+                "server_name": "snOWy-Wood-A9fd.SEyEdEX.wORkers.DEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -435,7 +435,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "liVeLY-mATh-a2A1.MIlfEtta.WORKERS.DeV",
+                "server_name": "liVeLy-MatH-A2A1.MiLFeTTa.WoRKERs.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -467,7 +467,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "suPEr-uNIon-7d52.sEyeDdEX-FBD.WorKeRS.DEV",
+                "server_name": "sUper-UNioN-7d52.SEyeDdeX-Fbd.WoRkErS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -499,7 +499,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "Vxjq31g46rX875-4wmdRk.SEyeDdEX.wORkErs.dEV",
+                "server_name": "VxjQ31G46rx875-4WmdrK.SeYeddEX.WorkerS.Dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -531,7 +531,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "long-DuST-93e6.seyEdHOsEin.wOrKeRs.DeV",
+                "server_name": "lOng-DuSt-93e6.SeYEdhosEIn.woRKeRS.dev",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -563,7 +563,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "SPRinG-SoUND-2369.sTEWIenG.WOrkerS.deV",
+                "server_name": "SPrINg-soUnd-2369.sTewiEnG.WORKers.dEv",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -595,7 +595,7 @@
             "network": "tcp",
             "tls": {
                 "enabled": true,
-                "server_name": "ORaNge-CLoUd-60C4.seYEDSTEwIeAtOMIC.WOrkeRs.DEv",
+                "server_name": "orANgE-CLOUd-60C4.sEYEDSTewieATOMIC.wOrkERS.deV",
                 "record_fragment": false,
                 "insecure": false,
                 "alpn": [
@@ -625,7 +625,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "au0z-fgmW39k6VT83X65r2OGhFAMf.milKYRideR.worKERS.DEV",
+                "server_name": "AU0Z-FGMw39k6VT83x65R2oGHFAMF.MilKyrIdeR.wOrKErs.DEV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -652,7 +652,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "37jEiDlkYHtqjR450ST.mILkyRiDeR1.WoRKERS.dEv",
+                "server_name": "37jeIDlkYHtQJR450st.miLkYRidEr1.woRKeRs.DeV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -679,7 +679,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "O7551vEmQ7mdXRkm48ALd5A1k92.mILkyRIder2.WorKERs.dEV",
+                "server_name": "o7551VeMq7Mdxrkm48Ald5a1k92.MilkYRiDeR2.WorkeRS.dEV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
@@ -706,7 +706,7 @@
             "password": "seyed",
             "tls": {
                 "enabled": true,
-                "server_name": "nLxE6mxXMXydq4Xbc7c0r89Rl3.MiLkyRideR3.WOrKERs.DeV",
+                "server_name": "nlxe6MXxMXYDq4XBC7c0r89RL3.mILkyrIder3.woRKers.dEV",
                 "insecure": false,
                 "alpn": [
                     "http/1.1"
