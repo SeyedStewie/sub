@@ -484,10 +484,10 @@ function buildClashProxy(parsed) {
     return null;
 }
 
-// --- Custom Xray (vpnp.json) builder ---
-// Same fragmented-TLS Xray format as vpnp.json sample, plus ad-block + Iran-bypass routing.
+// --- Custom Xray (vpnf.json) builder ---
+// Same fragmented-TLS Xray format as vpnf.json sample, plus ad-block + Iran-bypass routing.
 
-function buildVpnpDns() {
+function buildVpnfDns() {
     return {
         hosts: {
             "domain:googleapis.cn": "googleapis.com",
@@ -511,7 +511,7 @@ function buildVpnpDns() {
     };
 }
 
-function buildVpnpInbounds() {
+function buildVpnfInbounds() {
     return [
         {
             listen: "127.0.0.1",
@@ -532,7 +532,7 @@ function buildVpnpInbounds() {
     ];
 }
 
-function buildVpnpFinalmask() {
+function buildVpnfFinalmask() {
     return {
         tcp: [
             {
@@ -547,9 +547,9 @@ function buildVpnpFinalmask() {
     };
 }
 
-function buildVpnpOutboundProxy(parsed) {
+function buildVpnfOutboundProxy(parsed) {
     const streamSettings = {
-        finalmask: buildVpnpFinalmask(),
+        finalmask: buildVpnfFinalmask(),
         network: "ws",
         security: "tls",
         sockopt: {
@@ -602,7 +602,7 @@ function buildVpnpOutboundProxy(parsed) {
     return null;
 }
 
-function buildVpnpRoutingRules() {
+function buildVpnfRoutingRules() {
     return [
         { type: "field", domain: ["geosite:category-ads-all", "geosite:category-ads-ir"], outboundTag: "block" },
         { type: "field", domain: ["geosite:ir"], outboundTag: "direct" },
@@ -611,14 +611,14 @@ function buildVpnpRoutingRules() {
     ];
 }
 
-function buildVpnpEntry(parsed) {
-    const proxyOutbound = buildVpnpOutboundProxy(parsed);
+function buildVpnfEntry(parsed) {
+    const proxyOutbound = buildVpnfOutboundProxy(parsed);
     if (!proxyOutbound) return null;
 
     return {
         remarks: parsed.tag,
-        dns: buildVpnpDns(),
-        inbounds: buildVpnpInbounds(),
+        dns: buildVpnfDns(),
+        inbounds: buildVpnfInbounds(),
         log: { loglevel: "warning" },
         outbounds: [
             proxyOutbound,
@@ -631,7 +631,7 @@ function buildVpnpEntry(parsed) {
         ],
         routing: {
             domainStrategy: "AsIs",
-            rules: buildVpnpRoutingRules()
+            rules: buildVpnfRoutingRules()
         }
     };
 }
@@ -643,7 +643,7 @@ async function main() {
     const parsedConfigs = [];
     const xrayConfigs = [];
     const clashProxies = [];
-    const vpnpEntries = [];
+    const vpnfEntries = [];
 
     for (let index = 0; index < lines.length; index++) {
         const line = lines[index].trim();
@@ -678,12 +678,12 @@ async function main() {
         const clash = buildClashProxy(parsed);
         if (clash) clashProxies.push(clash);
 
-        // Custom Xray (vpnp.json)
-        const vpnpEntry = buildVpnpEntry(parsed);
-        if (vpnpEntry) {
-            vpnpEntries.push(vpnpEntry);
+        // Custom Xray (vpnf.json)
+        const vpnfEntry = buildVpnfEntry(parsed);
+        if (vpnfEntry) {
+            vpnfEntries.push(vpnfEntry);
         } else if (parsed.protocol === 'wireguard') {
-            console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnp.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
+            console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnf.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
         }
     }
 
@@ -906,14 +906,14 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    // 5. vpnp.json – Custom Xray (fragmented WS/TLS) + ad-block & Iran bypass
-    if (vpnpEntries.length > 0) {
-        fs.writeFileSync('vpnp.json', JSON.stringify(vpnpEntries, null, 2), 'utf8');
+    // 5. vpnf.json – Custom Xray (fragmented WS/TLS) + ad-block & Iran bypass
+    if (vpnfEntries.length > 0) {
+        fs.writeFileSync('vpnf.json', JSON.stringify(vpnfEntries, null, 2), 'utf8');
     } else {
-        console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnp.json یافت نشد.');
+        console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnf.json یافت نشد.');
     }
 
-    console.log('✅ همه ۵ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnp.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    console.log('✅ همه ۵ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
