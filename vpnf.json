@@ -139,7 +139,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "193.233.203.106",
+          "address": "172.86.110.90",
           "encryption": "none",
           "flow": "",
           "id": "b5b10962-868f-40e8-95cc-4943e26e672d",
@@ -198,7 +198,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "5pw2aCr9mIcvh1jukn.mILkYRIdeR7.wOrKErs.Dev"
+            "serverName": "5pw2ACr9micVH1JUKn.MilKYRIdEr7.wORkerS.dEV"
           },
           "wsSettings": {
             "host": "5pw2acr9micvh1jukn.milkyrider7.workers.dev",
@@ -398,7 +398,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "172.86.105.36",
+          "address": "162.217.248.75",
           "encryption": "none",
           "flow": "",
           "id": "d7bcd1e1-8ee9-45b1-9e59-63745f3dbfe8",
@@ -457,7 +457,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "4M4p-rj2XZA9QP3-oOU3NvrZ.MiLKYrIdeR4.woRkErS.DEv"
+            "serverName": "4M4P-rj2xZa9Qp3-OoU3nvRz.MiLKYrIDer4.wORkERS.dEV"
           },
           "wsSettings": {
             "host": "4m4p-rj2xza9qp3-oou3nvrz.milkyrider4.workers.dev",
@@ -657,7 +657,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "20.106.211.232",
+          "address": "188.114.97.7",
           "encryption": "none",
           "flow": "",
           "id": "1fb36ab7-e218-4aaf-98d9-b6265d9dcc3d",
@@ -716,270 +716,11 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "wVA55DS144j05FlIEkIQ7vdrcTwxLR.ff5g-Qa2U541aCUc3OtDNbuRQ42W401t.wOrkerS.DEv"
+            "serverName": "WvA55Ds144J05FLIEkIQ7VdrcTwXLR.ff5g-qa2U541Acuc3OTDNBurq42W401T.WOrkeRs.dEV"
           },
           "wsSettings": {
             "host": "wva55ds144j05fliekiq7vdrctwxlr.ff5g-qa2u541acuc3otdnburq42w401t.workers.dev",
-            "path": "/vl/IVzdVDG1DC8j2LjoPLwr3O6wZ?ed=2560"
-          }
-        },
-        "tag": "proxy"
-      },
-      {
-        "protocol": "freedom",
-        "streamSettings": {
-          "network": "tcp",
-          "sockopt": {
-            "domainStrategy": "UseIP"
-          }
-        },
-        "tag": "direct"
-      },
-      {
-        "protocol": "blackhole",
-        "settings": {},
-        "tag": "block"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "AsIs",
-      "rules": [
-        {
-          "type": "field",
-          "domain": [
-            "geosite:category-ads-all",
-            "geosite:category-ads-ir"
-          ],
-          "outboundTag": "block"
-        },
-        {
-          "type": "field",
-          "domain": [
-            "domain:ir"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "inboundTag": [
-            "dns-module"
-          ],
-          "outboundTag": "proxy",
-          "type": "field"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🦘🇺🇸",
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com",
-        "dns.alidns.com": [
-          "223.5.5.5",
-          "223.6.6.6",
-          "2400:3200::1",
-          "2400:3200:baba::1"
-        ],
-        "dns.sse.cisco.com": [
-          "208.67.220.220",
-          "208.67.222.222",
-          "2620:119:35::35",
-          "2620:119:53::53"
-        ],
-        "dns.umbrella.com": [
-          "208.67.220.220",
-          "208.67.222.222",
-          "2620:119:35::35",
-          "2620:119:53::53"
-        ],
-        "one.one.one.one": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "1dot1dot1dot1.cloudflare-dns.com": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "dns.cloudflare.com": [
-          "162.159.61.8",
-          "172.64.41.8",
-          "2a06:98c1:52::8",
-          "2803:f800:53::8"
-        ],
-        "cloudflare-dns.com": [
-          "104.16.248.249",
-          "104.16.249.249",
-          "2606:4700::6810:f8f9",
-          "2606:4700::6810:f9f9"
-        ],
-        "engage.cloudflareclient.com": [
-          "162.159.192.1",
-          "2606:4700:d0::a29f:c001"
-        ],
-        "doh.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dot.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dns.google": [
-          "8.8.8.8",
-          "8.8.4.4",
-          "2001:4860:4860::8888",
-          "2001:4860:4860::8844"
-        ],
-        "dns.quad9.net": [
-          "9.9.9.9",
-          "149.112.112.112",
-          "2620:fe::fe",
-          "2620:fe::9"
-        ],
-        "dns.sb": [
-          "45.11.45.11",
-          "185.222.222.222",
-          "2a09::",
-          "2a11::"
-        ],
-        "common.dot.dns.yandex.net": [
-          "77.88.8.8",
-          "77.88.8.1",
-          "2a02:6b8::feed:0ff",
-          "2a02:6b8:0:1::feed:0ff"
-        ]
-      },
-      "servers": [
-        "https://cloudflare-dns.com/dns-query"
-      ],
-      "tag": "dns-module"
-    },
-    "inbounds": [
-      {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "socks"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "http"
-      }
-    ],
-    "log": {
-      "loglevel": "warning"
-    },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false
-        },
-        "protocol": "vless",
-        "settings": {
-          "address": "15.204.173.154",
-          "encryption": "none",
-          "flow": "",
-          "id": "854947df-1c9e-403d-badd-095909be88f2",
-          "level": 8,
-          "port": 8443
-        },
-        "streamSettings": {
-          "finalmask": {
-            "tcp": [
-              {
-                "type": "fragment",
-                "settings": {
-                  "packets": "tlshello",
-                  "lengths": [
-                    "5",
-                    "94",
-                    "1"
-                  ],
-                  "delays": [
-                    "0"
-                  ],
-                  "maxSplit": "0"
-                }
-              },
-              {
-                "type": "fragment",
-                "settings": {
-                  "packets": "1-1",
-                  "lengths": [
-                    "109",
-                    "1"
-                  ],
-                  "delays": [
-                    "1"
-                  ],
-                  "maxSplit": "355"
-                }
-              }
-            ]
-          },
-          "network": "ws",
-          "security": "tls",
-          "sockopt": {
-            "domainStrategy": "UseIP",
-            "happyEyeballs": {
-              "interleave": 2,
-              "maxConcurrentTry": 4,
-              "prioritizeIPv6": false,
-              "tryDelayMs": 250
-            }
-          },
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              "http/1.1"
-            ],
-            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
-            "fingerprint": "unsafe",
-            "serverName": "6Nqtf6307XMmWOy7D58g-cg.MilkyriDeR5.woRKers.deV"
-          },
-          "wsSettings": {
-            "host": "6nqtf6307xmmwoy7d58g-cg.milkyrider5.workers.dev",
-            "path": "/vl/sCunCiHayXPMih98N?ed=2560"
+            "path": "/vl/Sm76shqWM8IxdtNAT4JbuMj?ed=2560"
           }
         },
         "tag": "proxy"
@@ -1175,7 +916,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "143.198.31.221",
+          "address": "3.85.99.118",
           "encryption": "none",
           "flow": "",
           "id": "8be8ee84-6343-45e7-b77c-b7a3d0482e76",
@@ -1234,7 +975,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "36-e06N2a62492YLMVAXe7GtC.SeyEDDEXprOTON.WorKERs.dEv"
+            "serverName": "36-e06N2A62492ylMVAxe7GtC.SeyEDDeXprotoN.WorKeRS.dev"
           },
           "wsSettings": {
             "host": "36-e06n2a62492ylmvaxe7gtc.seyeddexproton.workers.dev",
@@ -1434,7 +1175,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "178.156.216.217",
+          "address": "45.91.248.91",
           "encryption": "none",
           "flow": "",
           "id": "22df3e50-40d6-4003-8623-917ef4385fcb",
@@ -1493,7 +1234,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "WItHeREd-KINg-1433.HannAHowO.woRKERS.DEv"
+            "serverName": "witHeRED-KINg-1433.HaNNAhowO.WOrkERs.DEV"
           },
           "wsSettings": {
             "host": "WiTHeReD-KING-1433.HannAHowo.wORkERs.DEV",
@@ -1693,7 +1434,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "167.99.7.192",
+          "address": "20.106.211.232",
           "encryption": "none",
           "flow": "",
           "id": "8e7a9828-3ab4-44f7-ba1c-af611980928a",
@@ -1752,7 +1493,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "bLaCk-tree-34c2.mIHaniKa69.WORKErs.DEV"
+            "serverName": "blACk-trEE-34C2.mihANiKa69.wOrKeRS.dev"
           },
           "wsSettings": {
             "host": "BLAck-TReE-34C2.mIHANIka69.wOrkeRS.dev",
@@ -1813,7 +1554,7 @@
     }
   },
   {
-    "remarks": "🦔🇺🇲",
+    "remarks": "🦔🇪🇸",
     "dns": {
       "hosts": {
         "domain:googleapis.cn": "googleapis.com",
@@ -1952,7 +1693,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "107.191.39.176",
+          "address": "159.60.146.81",
           "encryption": "none",
           "flow": "",
           "id": "7c778f01-c667-4fba-8580-849b966b18a9",
@@ -2011,11 +1752,11 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "SpRINg-dIsK-81d3.MESEyEDNg.WOrkErS.dEv"
+            "serverName": "SpriNg-dISK-81D3.meSeyEDnG.workeRS.dEv"
           },
           "wsSettings": {
-            "host": "SprIng-diSK-81D3.MeSEyedNg.WOrKers.DEv",
-            "path": "/eyJqdW5rIjoicmZTUHhaWnRuMmJGV2pjaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjEwNy4xNzAuNC4xMiJdfQ==?ed=2560"
+            "host": "spring-disk-81d3.meseyedng.workers.dev",
+            "path": "/eyJqdW5rIjoiSjRDRkR4emo0OE5oYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjM0LjE3NS4yMDIuMTk1Il19?ed=2560"
           }
         },
         "tag": "proxy"
@@ -2072,7 +1813,266 @@
     }
   },
   {
-    "remarks": "🦋🇨🇦",
+    "remarks": "🦘🇮🇹",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "188.114.97.26",
+          "encryption": "none",
+          "flow": "",
+          "id": "854947df-1c9e-403d-badd-095909be88f2",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "6nqTf6307XMMWOY7d58G-cg.miLKYRiDEr5.wOrKerS.deV"
+          },
+          "wsSettings": {
+            "host": "6nqtf6307xmmwoy7d58g-cg.milkyrider5.workers.dev",
+            "path": "/vl/kxqKaN6tWXLxb855yc6?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "domain:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🦋🇪🇸",
     "dns": {
       "hosts": {
         "domain:googleapis.cn": "googleapis.com",
@@ -2214,7 +2214,7 @@
           "address": "23.227.60.0",
           "encryption": "none",
           "flow": "",
-          "id": "83addb25-9876-47a3-9f18-0756fb477099",
+          "id": "a9aaf3b9-4972-4c0e-8314-6c3321e93194",
           "level": 8,
           "port": 443
         },
@@ -2270,11 +2270,11 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "mqJC-08dF4-Ewk8i1tJAFBqtBc2BRrHO.sEyedng1.worKers.DEv"
+            "serverName": "jM8GpZCyQDurlznLk6-LL7eStNX4f0.seyEdng1.WorKErS.dEv"
           },
           "wsSettings": {
-            "host": "mQJC-08dF4-Ewk8i1TjaFbQTbc2brrHo.seyeDNG1.WOrKErs.DEv",
-            "path": "/eyJqdW5rIjoiNmZta2pCVDUiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyI0MC4xNzcuNjUuOCJdfQ==?ed=2560"
+            "host": "jm8gpzcyqdurlznlk6-ll7estnx4f0.seyedng1.workers.dev",
+            "path": "/vl/MOZ7LouhhIh38lQtrRNS?ed=2560"
           }
         },
         "tag": "proxy"
@@ -2470,7 +2470,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "95.179.255.86",
+          "address": "188.114.97.70",
           "encryption": "none",
           "flow": "",
           "id": "f442a6ea-77fa-49de-8b0f-a5b1cf733fed",
@@ -2529,7 +2529,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "coOl-SHApe-4720.SEYEDNG.WORkers.DeV"
+            "serverName": "COoL-shape-4720.sEyEDNg.woRKerS.dev"
           },
           "wsSettings": {
             "host": "cOoL-sHApe-4720.SEYedNg.WoRkERs.dEv",
@@ -2729,7 +2729,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "194.180.188.241",
+          "address": "188.114.96.122",
           "encryption": "none",
           "flow": "",
           "id": "ffef1b41-1cef-4345-9013-60fba8b2b90b",
@@ -2788,7 +2788,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "SNoWy-wooD-a9fD.SeyEdex.woRkerS.DeV"
+            "serverName": "SnowY-wOoD-a9Fd.sEYEdEx.WoRKERS.DEV"
           },
           "wsSettings": {
             "host": "snowy-wood-a9fd.seyedex.workers.dev",
@@ -2988,7 +2988,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "109.71.252.4",
+          "address": "188.114.97.193",
           "encryption": "none",
           "flow": "",
           "id": "ac272a6b-6347-43f9-a14f-d4eaf1e65f09",
@@ -3047,7 +3047,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "LIVely-maTH-A2A1.MiLfETta.WORkErS.dEv"
+            "serverName": "lIvely-MATH-A2a1.MilfEtTA.WoRKeRs.DEv"
           },
           "wsSettings": {
             "host": "livelY-MATH-A2a1.milfEttA.woRKErs.dEV",
@@ -3247,7 +3247,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "2.26.24.46",
+          "address": "188.114.97.68",
           "encryption": "none",
           "flow": "",
           "id": "f48f054a-20cb-4dfc-821a-42d9655515a9",
@@ -3306,7 +3306,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "sUPer-uNiOn-7D52.seYEddex-FbD.WorKeRs.DEV"
+            "serverName": "SUPeR-Union-7D52.SeyEDDeX-fbd.WorkeRs.deV"
           },
           "wsSettings": {
             "host": "Super-UnIoN-7D52.SeYEddex-fbD.worKeRS.dEV",
@@ -3506,7 +3506,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "2.26.24.46",
+          "address": "188.114.97.10",
           "encryption": "none",
           "flow": "",
           "id": "99509aa0-a2c5-4136-967c-4fd738136e24",
@@ -3565,7 +3565,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "vxjQ31g46rX875-4WMDrK.SEYedDEx.wOrkErS.DeV"
+            "serverName": "VXjq31g46Rx875-4Wmdrk.SeyEDDEX.WoRkeRs.deV"
           },
           "wsSettings": {
             "host": "vxjq31g46rx875-4wmdrk.seyeddex.workers.dev",
@@ -3765,7 +3765,7 @@
         },
         "protocol": "vless",
         "settings": {
-          "address": "109.71.252.4",
+          "address": "188.114.97.162",
           "encryption": "none",
           "flow": "",
           "id": "726eeafa-e8c2-46e7-81ec-57058d552b45",
@@ -3824,270 +3824,11 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "LoNG-DuST-93E6.SEYEdHOSEIN.woRKErs.dEV"
+            "serverName": "LOng-dust-93E6.SeYedhoSeiN.WoRKeRS.Dev"
           },
           "wsSettings": {
             "host": "loNg-DuSt-93e6.SEYeDHoSEIn.WoRkeRs.dEv",
             "path": "/eyJqdW5rIjoibWhlSjc1RExlRUhFdVIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6WyIxODguMjQ1LjE2MS4xNDEiXX0=?ed=2560"
-          }
-        },
-        "tag": "proxy"
-      },
-      {
-        "protocol": "freedom",
-        "streamSettings": {
-          "network": "tcp",
-          "sockopt": {
-            "domainStrategy": "UseIP"
-          }
-        },
-        "tag": "direct"
-      },
-      {
-        "protocol": "blackhole",
-        "settings": {},
-        "tag": "block"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "AsIs",
-      "rules": [
-        {
-          "type": "field",
-          "domain": [
-            "geosite:category-ads-all",
-            "geosite:category-ads-ir"
-          ],
-          "outboundTag": "block"
-        },
-        {
-          "type": "field",
-          "domain": [
-            "domain:ir"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "ip": [
-            "geoip:ir"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "inboundTag": [
-            "dns-module"
-          ],
-          "outboundTag": "proxy",
-          "type": "field"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🐿️🇩🇪",
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com",
-        "dns.alidns.com": [
-          "223.5.5.5",
-          "223.6.6.6",
-          "2400:3200::1",
-          "2400:3200:baba::1"
-        ],
-        "dns.sse.cisco.com": [
-          "208.67.220.220",
-          "208.67.222.222",
-          "2620:119:35::35",
-          "2620:119:53::53"
-        ],
-        "dns.umbrella.com": [
-          "208.67.220.220",
-          "208.67.222.222",
-          "2620:119:35::35",
-          "2620:119:53::53"
-        ],
-        "one.one.one.one": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "1dot1dot1dot1.cloudflare-dns.com": [
-          "1.1.1.1",
-          "1.0.0.1",
-          "2606:4700:4700::1111",
-          "2606:4700:4700::1001"
-        ],
-        "dns.cloudflare.com": [
-          "162.159.61.8",
-          "172.64.41.8",
-          "2a06:98c1:52::8",
-          "2803:f800:53::8"
-        ],
-        "cloudflare-dns.com": [
-          "104.16.248.249",
-          "104.16.249.249",
-          "2606:4700::6810:f8f9",
-          "2606:4700::6810:f9f9"
-        ],
-        "engage.cloudflareclient.com": [
-          "162.159.192.1",
-          "2606:4700:d0::a29f:c001"
-        ],
-        "doh.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dot.pub": [
-          "1.12.12.12",
-          "120.53.53.53"
-        ],
-        "dns.google": [
-          "8.8.8.8",
-          "8.8.4.4",
-          "2001:4860:4860::8888",
-          "2001:4860:4860::8844"
-        ],
-        "dns.quad9.net": [
-          "9.9.9.9",
-          "149.112.112.112",
-          "2620:fe::fe",
-          "2620:fe::9"
-        ],
-        "dns.sb": [
-          "45.11.45.11",
-          "185.222.222.222",
-          "2a09::",
-          "2a11::"
-        ],
-        "common.dot.dns.yandex.net": [
-          "77.88.8.8",
-          "77.88.8.1",
-          "2a02:6b8::feed:0ff",
-          "2a02:6b8:0:1::feed:0ff"
-        ]
-      },
-      "servers": [
-        "https://cloudflare-dns.com/dns-query"
-      ],
-      "tag": "dns-module"
-    },
-    "inbounds": [
-      {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "socks"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "http"
-      }
-    ],
-    "log": {
-      "loglevel": "warning"
-    },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false
-        },
-        "protocol": "vless",
-        "settings": {
-          "address": "104.21.88.31",
-          "encryption": "none",
-          "flow": "",
-          "id": "c8805c30-a8a5-410f-abed-2ef17574cff1",
-          "level": 8,
-          "port": 443
-        },
-        "streamSettings": {
-          "finalmask": {
-            "tcp": [
-              {
-                "type": "fragment",
-                "settings": {
-                  "packets": "tlshello",
-                  "lengths": [
-                    "5",
-                    "94",
-                    "1"
-                  ],
-                  "delays": [
-                    "0"
-                  ],
-                  "maxSplit": "0"
-                }
-              },
-              {
-                "type": "fragment",
-                "settings": {
-                  "packets": "1-1",
-                  "lengths": [
-                    "109",
-                    "1"
-                  ],
-                  "delays": [
-                    "1"
-                  ],
-                  "maxSplit": "355"
-                }
-              }
-            ]
-          },
-          "network": "ws",
-          "security": "tls",
-          "sockopt": {
-            "domainStrategy": "UseIP",
-            "happyEyeballs": {
-              "interleave": 2,
-              "maxConcurrentTry": 4,
-              "prioritizeIPv6": false,
-              "tryDelayMs": 250
-            }
-          },
-          "tlsSettings": {
-            "allowInsecure": false,
-            "alpn": [
-              "http/1.1"
-            ],
-            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
-            "fingerprint": "unsafe",
-            "serverName": "spRiNg-SOUND-2369.STeWIEnG.WoRkerS.Dev"
-          },
-          "wsSettings": {
-            "host": "SpriNg-sOUND-2369.stEwiEnG.wOrkERs.deV",
-            "path": "/eyJqdW5rIjoiNUtNaTNHb2QyV0RESyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbIjkxLjE5OS4xMTguMTUxIl19?ed=2560"
           }
         },
         "tag": "proxy"
@@ -4342,11 +4083,270 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "oraNge-cLoUD-60C4.seyedstEwieatoMic.WoRKERs.dEv"
+            "serverName": "oRAngE-ClouD-60c4.SEyEdsTEWIeaToMIc.WORKerS.dEv"
           },
           "wsSettings": {
             "host": "orange-cloud-60c4.seyedstewieatomic.workers.dev",
             "path": "/eyJqdW5rIjoiUnJEMGxSMVJzYjZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOlsiOTEuMTA3LjE1OC43NyJdfQ==?ed=2560"
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "streamSettings": {
+          "network": "tcp",
+          "sockopt": {
+            "domainStrategy": "UseIP"
+          }
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "block"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "geosite:category-ads-all",
+            "geosite:category-ads-ir"
+          ],
+          "outboundTag": "block"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "domain:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "ip": [
+            "geoip:ir"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "inboundTag": [
+            "dns-module"
+          ],
+          "outboundTag": "proxy",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🐿️🇬🇧",
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com",
+        "dns.alidns.com": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1"
+        ],
+        "dns.sse.cisco.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "dns.umbrella.com": [
+          "208.67.220.220",
+          "208.67.222.222",
+          "2620:119:35::35",
+          "2620:119:53::53"
+        ],
+        "one.one.one.one": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "1dot1dot1dot1.cloudflare-dns.com": [
+          "1.1.1.1",
+          "1.0.0.1",
+          "2606:4700:4700::1111",
+          "2606:4700:4700::1001"
+        ],
+        "dns.cloudflare.com": [
+          "162.159.61.8",
+          "172.64.41.8",
+          "2a06:98c1:52::8",
+          "2803:f800:53::8"
+        ],
+        "cloudflare-dns.com": [
+          "104.16.248.249",
+          "104.16.249.249",
+          "2606:4700::6810:f8f9",
+          "2606:4700::6810:f9f9"
+        ],
+        "engage.cloudflareclient.com": [
+          "162.159.192.1",
+          "2606:4700:d0::a29f:c001"
+        ],
+        "doh.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dot.pub": [
+          "1.12.12.12",
+          "120.53.53.53"
+        ],
+        "dns.google": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ],
+        "dns.quad9.net": [
+          "9.9.9.9",
+          "149.112.112.112",
+          "2620:fe::fe",
+          "2620:fe::9"
+        ],
+        "dns.sb": [
+          "45.11.45.11",
+          "185.222.222.222",
+          "2a09::",
+          "2a11::"
+        ],
+        "common.dot.dns.yandex.net": [
+          "77.88.8.8",
+          "77.88.8.1",
+          "2a02:6b8::feed:0ff",
+          "2a02:6b8:0:1::feed:0ff"
+        ]
+      },
+      "servers": [
+        "https://cloudflare-dns.com/dns-query"
+      ],
+      "tag": "dns-module"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "address": "172.67.213.71",
+          "encryption": "none",
+          "flow": "",
+          "id": "b40b7f22-fe7b-44c7-bfb1-556a6bd9b4a0",
+          "level": 8,
+          "port": 443
+        },
+        "streamSettings": {
+          "finalmask": {
+            "tcp": [
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "tlshello",
+                  "lengths": [
+                    "5",
+                    "94",
+                    "1"
+                  ],
+                  "delays": [
+                    "0"
+                  ],
+                  "maxSplit": "0"
+                }
+              },
+              {
+                "type": "fragment",
+                "settings": {
+                  "packets": "1-1",
+                  "lengths": [
+                    "109",
+                    "1"
+                  ],
+                  "delays": [
+                    "1"
+                  ],
+                  "maxSplit": "355"
+                }
+              }
+            ]
+          },
+          "network": "ws",
+          "security": "tls",
+          "sockopt": {
+            "domainStrategy": "UseIP",
+            "happyEyeballs": {
+              "interleave": 2,
+              "maxConcurrentTry": 4,
+              "prioritizeIPv6": false,
+              "tryDelayMs": 250
+            }
+          },
+          "tlsSettings": {
+            "allowInsecure": false,
+            "alpn": [
+              "http/1.1"
+            ],
+            "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+            "fingerprint": "unsafe",
+            "serverName": "SL1gFxsPgiFp8oohk.StEwIenGx.WOrkERs.DeV"
+          },
+          "wsSettings": {
+            "host": "sl1gfxspgifp8oohk.stewiengx.workers.dev",
+            "path": "/vl/VHgYYm1OB0A2I1xyzbw8lYBCsbeZhC?ed=2560"
           }
         },
         "tag": "proxy"
@@ -4603,7 +4603,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "AU0Z-fgmw39K6vt83x65R2oGHfamF.mIlkyRiDER.WOrKeRS.DEV"
+            "serverName": "au0z-FGmW39k6VT83X65r2oghfAMf.mILKYrIdeR.WORkErs.dEv"
           },
           "wsSettings": {
             "host": "Au0z-fgmw39k6vT83x65r2OGHfAMF.MIlKYriDeR.wOrKERS.DEv",
@@ -4864,7 +4864,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "37JeIDLkYHTqJR450ST.mIlkYRIDEr1.workerS.deV"
+            "serverName": "37JEidlkyhTqjr450St.mIlKyriDEr1.WOrkERS.deV"
           },
           "wsSettings": {
             "host": "37JEiDLkYhtQJr450st.MiLKyrIDER1.workErs.dev",
@@ -5125,7 +5125,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "o7551vEMQ7MDxRKM48aLD5a1k92.MiLKyrIdEr2.WORkerS.deV"
+            "serverName": "O7551veMq7mdxRkM48alD5A1k92.MIlKYRiDEr2.wOrkeRS.dev"
           },
           "wsSettings": {
             "host": "o7551vEmQ7mDxRKM48aLd5A1K92.MiLkYRider2.wORKERS.Dev",
@@ -5327,7 +5327,7 @@
         "settings": {
           "servers": [
             {
-              "address": "109.71.252.4",
+              "address": "188.114.97.250",
               "port": 443,
               "password": "seyed",
               "level": 8
@@ -5386,7 +5386,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "Nlxe6MxxMxYDQ4Xbc7C0r89rL3.mIlkyrIdeR3.WoRkeRs.dEv"
+            "serverName": "nLXe6MXXMxydQ4xBc7c0r89RL3.MilKYRiDer3.WORKErs.DeV"
           },
           "wsSettings": {
             "host": "nLXe6mXXMXydq4xbc7c0R89RL3.MILKYRIder3.woRKERs.Dev",
@@ -5645,7 +5645,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "hi-k4OSPhY4MV34MWLmGv.isteWIENg.wOrkerS.deV"
+            "serverName": "hI-K4OSPhY4Mv34MwLMgv.ISTeWIENg.WoRKers.DEV"
           },
           "wsSettings": {
             "host": "hi-k4osphy4mv34mwlmgv.istewieng.workers.dev",
@@ -5904,7 +5904,7 @@
             ],
             "cipherSuites": "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
             "fingerprint": "unsafe",
-            "serverName": "DyYThMbC01UPXG8Y.miLkYRider8.WOrKeRS.DEv"
+            "serverName": "DyythmBc01UpxG8Y.MiLkYriDeR8.WORKErs.dEV"
           },
           "wsSettings": {
             "host": "dyythmbc01upxg8y.milkyrider8.workers.dev",
