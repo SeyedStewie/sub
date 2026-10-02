@@ -1,5 +1,31 @@
 const fs = require('fs');
 
+// ============================================================================
+//  تنظیمات قابل‌تغییر خروجی‌های vpnf.txt و vpnf.json
+//  (مقادیر پیش‌فرض دقیقاً مطابق index.html هستن)
+//  فقط همین بخش رو عوض کن؛ هر دو خروجی خودکار از این مقادیر ساخته می‌شن.
+// ============================================================================
+
+// آی‌پی(های) جایگزین آدرس سرور کانفیگ‌ها. اگه چند تا بذاری برای هر کانفیگ یکی به‌صورت رندوم
+// انتخاب می‌شه. اگه آرایه خالی باشه ([])، آدرس اصلی کانفیگ تغییر نمی‌کنه.
+const IP = ['188.114.97.6'];
+
+// فاینال‌ماسک (فرگمنت TLS). توی vpnf.json به‌صورت آبجکت و توی لینک‌های vpnf.txt به‌صورت پارامتر fm میره.
+const FINAL_MASK = {
+    tcp: [
+        { type: 'fragment', settings: { packets: 'tlshello', lengths: ['0', '104', '1'], delays: ['0'], maxSplit: '0' } },
+        { type: 'fragment', settings: { packets: '1-1', lengths: ['114', '1'], delays: ['1'], maxSplit: '11' } }
+    ]
+};
+
+// فینگرپرینت TLS (توی vpnf.json → fingerprint و توی لینک vpnf.txt → fp)
+const FINGERPRINT = 'unsafe';
+
+// cipherSuites (توی vpnf.json → cipherSuites و توی لینک vpnf.txt → cs)
+const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256';
+
+// ============================================================================
+
 if (!fs.existsSync('vpn.txt')) {
     console.error('فایل vpn.txt پیدا نشد!');
     process.exit(1);
@@ -533,18 +559,24 @@ function buildVpnfInbounds() {
 }
 
 function buildVpnfFinalmask() {
-    return {
-        tcp: [
-            {
-                type: "fragment",
-                settings: { packets: "tlshello", lengths: ["5", "94", "1"], delays: ["0"], maxSplit: "0" }
-            },
-            {
-                type: "fragment",
-                settings: { packets: "1-1", lengths: ["109", "1"], delays: ["1"], maxSplit: "355" }
-            }
-        ]
-    };
+    return JSON.parse(JSON.stringify(FINAL_MASK));
+}
+
+// همون FINAL_MASK ولی به‌صورت رشته‌ی JSON با فاصله بعد از ":" و "," (به‌جز بین دو آبجکت آرایه)
+// دقیقاً فرمتی که کلاینت‌های PattN/PattNG توی پارامتر fm لینک انتظار دارن
+function buildVpnfFinalmaskString() {
+    return JSON.stringify(FINAL_MASK).replace(/:/g, ': ').replace(/,(?!\{)/g, ', ');
+}
+
+function pickIp() {
+    const pool = (Array.isArray(IP) ? IP : [IP]).map(s => String(s).trim()).filter(isValidIPv4);
+    if (pool.length === 0) return null;
+    return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function isValidIPv4(ip) {
+    if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) return false;
+    return ip.split('.').every(o => Number(o) >= 0 && Number(o) <= 255);
 }
 
 function buildVpnfOutboundProxy(parsed) {
@@ -559,8 +591,8 @@ function buildVpnfOutboundProxy(parsed) {
         tlsSettings: {
             allowInsecure: false,
             alpn: ["http/1.1"],
-            cipherSuites: "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
-            fingerprint: "unsafe",
+            cipherSuites: CIPHER_SUITES,
+            fingerprint: FINGERPRINT,
             serverName: parsed.sni
         },
         wsSettings: {
@@ -611,6 +643,34 @@ function buildVpnfRoutingRules() {
     ];
 }
 
+// خروجی «عادی» (vpnf.txt): لینک vless/trojan با فرگمنت و فینگرپرینت جاسازی‌شده توی کوئری لینک
+// (سازگار با PattN و PattNG)
+function buildVpnfNormalLink(parsed) {
+    const parts = [
+        ['cs', CIPHER_SUITES],
+        ['path', parsed.path || '/'],
+        ['security', 'tls']
+    ];
+    if (parsed.protocol === 'vless') parts.push(['encryption', parsed.encryption || 'none']);
+    parts.push(['fm', buildVpnfFinalmaskString()]);
+    parts.push(['insecure', '0']);
+    parts.push(['host', parsed.host]);
+    parts.push(['fp', FINGERPRINT]);
+    parts.push(['type', 'ws']);
+    parts.push(['allowInsecure', '0']);
+    parts.push(['sni', parsed.sni]);
+    const qs = parts.map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
+    const remark = encodeURIComponent(parsed.tag || '');
+
+    if (parsed.protocol === 'vless') {
+        return 'vless://' + parsed.uuid + '@' + parsed.server + ':' + parsed.port + '?' + qs + '#' + remark;
+    }
+    if (parsed.protocol === 'trojan') {
+        return 'trojan://' + encodeURIComponent(parsed.password) + '@' + parsed.server + ':' + parsed.port + '?' + qs + '#' + remark;
+    }
+    return null;
+}
+
 function buildVpnfEntry(parsed) {
     const proxyOutbound = buildVpnfOutboundProxy(parsed);
     if (!proxyOutbound) return null;
@@ -644,6 +704,7 @@ async function main() {
     const xrayConfigs = [];
     const clashProxies = [];
     const vpnfEntries = [];
+    const vpnfLinks = [];
 
     for (let index = 0; index < lines.length; index++) {
         const line = lines[index].trim();
@@ -678,12 +739,17 @@ async function main() {
         const clash = buildClashProxy(parsed);
         if (clash) clashProxies.push(clash);
 
-        // Custom Xray (vpnf.json)
-        const vpnfEntry = buildVpnfEntry(parsed);
-        if (vpnfEntry) {
-            vpnfEntries.push(vpnfEntry);
-        } else if (parsed.protocol === 'wireguard') {
-            console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnf.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
+        // vpnf.txt (عادی) + vpnf.json (کاستوم): هر دو با آی‌پی جایگزین (IP) ساخته می‌شن
+        const vpnfParsed = { ...parsed };
+        const newIp = pickIp();
+        if (newIp) vpnfParsed.server = newIp;
+
+        const vpnfLink = buildVpnfNormalLink(vpnfParsed);
+        const vpnfEntry = buildVpnfEntry(vpnfParsed);
+        if (vpnfLink) vpnfLinks.push(vpnfLink);
+        if (vpnfEntry) vpnfEntries.push(vpnfEntry);
+        if (!vpnfLink && !vpnfEntry && parsed.protocol === 'wireguard') {
+            console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnf.txt و vpnf.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
         }
     }
 
@@ -906,14 +972,21 @@ async function main() {
 
     fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
 
-    // 5. vpnf.json – Custom Xray (fragmented WS/TLS) + ad-block & Iran bypass
+    // 5. vpnf.txt – خروجی عادی (لینک‌های vless/trojan با فرگمنت و فینگرپرینت)
+    if (vpnfLinks.length > 0) {
+        fs.writeFileSync('vpnf.txt', vpnfLinks.join('\n'), 'utf8');
+    } else {
+        console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnf.txt یافت نشد.');
+    }
+
+    // 6. vpnf.json – کاستوم Xray (فرگمنت WS/TLS) + مقابله با تبلیغات + بایپس سایت‌های ایرانی
     if (vpnfEntries.length > 0) {
         fs.writeFileSync('vpnf.json', JSON.stringify(vpnfEntries, null, 2), 'utf8');
     } else {
         console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnf.json یافت نشد.');
     }
 
-    console.log('✅ همه ۵ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    console.log('✅ همه ۶ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnf.txt, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
