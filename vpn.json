@@ -94,11 +94,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "5pW2acr9miCVh1JukN.MILKyrIDEr7.WorkERs.dEV",
+                        "serverName": "5Pw2aCR9MiCvH1JuKN.milKyRidER7.worKeRs.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -331,11 +332,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rJ2XzA9qp3-oOu3Nvrz.mILkyrider4.WORKERs.dEV",
+                        "serverName": "4m4P-RJ2xZa9qP3-oOU3NVRZ.miLKyrIDeR4.WorKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -568,11 +570,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WvA55dS144J05fLiekiQ7vdrctwxlR.Ff5g-QA2U541acuc3oTDnbUrQ42W401T.WoRKers.dev",
+                        "serverName": "Wva55ds144J05fLIekIQ7VdrCTWxLr.Ff5g-Qa2u541acuc3OtDnBuRq42W401T.wOrkERs.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -805,11 +808,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "36-E06N2A62492yLmVAxE7GTc.SeYEDdeXProTOn.woRkeRs.Dev",
+                        "serverName": "36-E06N2a62492yLMvAxE7gtC.SeYedDexproTOn.woRKErs.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1042,11 +1046,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "12-CVO6vV-Y4S9Rik3muGZV4fyYwumvJ.haNnaHOwo.workERS.dEV",
+                        "serverName": "12-cVO6VV-y4s9rIK3mUgzV4fyYWUmvj.haNNahOwO.woRKErs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1279,11 +1284,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "bLaCK-tReE-34C2.MiHANIka69.WORKErS.Dev",
+                        "serverName": "blaCk-TRee-34C2.MiHAniKa69.wOrKERS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1516,11 +1522,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6NQtf6307XmmWoy7D58g-cg.mILkyRiDEr5.wOrKers.dEV",
+                        "serverName": "6NQTf6307xmmWoY7d58G-cg.miLkYriDEr5.WORKERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1753,11 +1760,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SpRiNg-diSK-81D3.MEsEyEdNG.woRKers.DEv",
+                        "serverName": "spRinG-DiSK-81D3.MeseYednG.workeRS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1990,11 +1998,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "JM8GPzCyqDuRlznlK6-Ll7EStNx4f0.SeyeDng1.WOrKERS.dEV",
+                        "serverName": "Jm8gPzCyqDURLzNlK6-ll7esTNx4f0.SEyEDNG1.wOrKeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2227,11 +2236,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOOl-SHApe-4720.SEyedNg.wORKErs.DeV",
+                        "serverName": "Cool-shAPE-4720.SeyEDNG.worKERS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2464,11 +2474,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SnOWy-Wood-A9FD.SeyEDeX.woRkeRs.dev",
+                        "serverName": "SnoWy-wOod-A9FD.seYeDex.WoRKers.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2701,11 +2712,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LIvelY-MATh-A2A1.MilfETta.wORkErs.DeV",
+                        "serverName": "LivelY-mAtH-a2A1.milfeTTa.woRKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2919,7 +2931,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "188.114.97.68",
+                            "address": "2a06:98c1:3120::5",
                             "port": 443,
                             "users": [
                                 {
@@ -2938,11 +2950,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SupeR-uNIOn-7D52.SEYeDDEX-fBd.WOrkeRS.Dev",
+                        "serverName": "SuPeR-Union-7D52.sEYeDdex-fbD.WorKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3175,11 +3188,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "Vxjq31g46Rx875-4wmdrK.sEYeDdeX.WoRKErS.deV",
+                        "serverName": "VXjq31g46rx875-4wMdRk.SeYeDDEx.WorKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3412,11 +3426,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LonG-DuST-93E6.seyEdHOSEIn.wOrkERS.DeV",
+                        "serverName": "Long-DuSt-93E6.SeyedhOsEIN.WORKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3649,11 +3664,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "ZldTjVBfzbM1Jw5S5JxJk.sEyeDsTEwIeAtomIc.woRkErs.DeV",
+                        "serverName": "ZLdtjVbFZbm1Jw5S5JXjK.SeyEdSTeWieaToMIc.workErS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3886,11 +3902,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SL1GfXspgiFp8OOhK.sTeWiEnGX.worKERS.deV",
+                        "serverName": "sl1GfXspgiFP8OOhK.StEWIEngX.wOrKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4119,11 +4136,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "AU0Z-fGMw39k6Vt83x65R2oGhFamf.mILkyRiDeR.WorkerS.DEv",
+                        "serverName": "Au0z-fGmw39K6vT83X65r2ogHFAMF.MIlKYRider.wOrKerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4352,11 +4370,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37jeiDLKyhTQJR450St.miLkyRideR1.woRKers.dEV",
+                        "serverName": "37jEIDLkYHTqJR450ST.MILKYriDEr1.workerS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4585,11 +4604,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vemq7MDxRKm48ALD5a1K92.MILkYRIdEr2.woRkErS.Dev",
+                        "serverName": "O7551vemq7MDxrKM48aLD5a1K92.mIlkYrIdER2.wOrKerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4818,11 +4838,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "NLxE6MXxmXYDq4XBc7c0r89RL3.MilkyRIDEr3.WorKErS.DEV",
+                        "serverName": "NlXe6mxxmxyDq4Xbc7C0R89rL3.MIlkYRIDER3.wORKERS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5055,11 +5076,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "hI-k4oSPHY4mv34MwLMgV.istewieNG.woRkErS.dEV",
+                        "serverName": "hI-K4ospHY4mV34mWLmgV.iSTeWIeNG.woRKErS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5292,11 +5314,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "dYYtHMBC01uPxG8Y.milKyridER8.woRKErs.dEv",
+                        "serverName": "DyyThmbc01UPxg8Y.miLKyrIDER8.WORKErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5551,11 +5574,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "5pW2acr9miCVh1JukN.MILKyrIDEr7.WorkERs.dEV",
+                        "serverName": "5Pw2aCR9MiCvH1JuKN.milKyRidER7.worKeRs.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5593,11 +5617,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "4m4p-rJ2XzA9qp3-oOu3Nvrz.mILkyrider4.WORKERs.dEV",
+                        "serverName": "4m4P-RJ2xZa9qP3-oOU3NVRZ.miLKyrIDeR4.WorKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5635,11 +5660,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "WvA55dS144J05fLiekiQ7vdrctwxlR.Ff5g-QA2U541acuc3oTDnbUrQ42W401T.WoRKers.dev",
+                        "serverName": "Wva55ds144J05fLIekIQ7VdrCTWxLr.Ff5g-Qa2u541acuc3OtDnBuRq42W401T.wOrkERs.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5677,11 +5703,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "36-E06N2A62492yLmVAxE7GTc.SeYEDdeXProTOn.woRkeRs.Dev",
+                        "serverName": "36-E06N2a62492yLMvAxE7gtC.SeYedDexproTOn.woRKErs.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5719,11 +5746,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "12-CVO6vV-Y4S9Rik3muGZV4fyYwumvJ.haNnaHOwo.workERS.dEV",
+                        "serverName": "12-cVO6VV-y4s9rIK3mUgzV4fyYWUmvj.haNNahOwO.woRKErs.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5761,11 +5789,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "bLaCK-tReE-34C2.MiHANIka69.WORKErS.Dev",
+                        "serverName": "blaCk-TRee-34C2.MiHAniKa69.wOrKERS.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5803,11 +5832,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "6NQtf6307XmmWoy7D58g-cg.mILkyRiDEr5.wOrKers.dEV",
+                        "serverName": "6NQTf6307xmmWoY7d58G-cg.miLkYriDEr5.WORKERS.DeV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5845,11 +5875,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SpRiNg-diSK-81D3.MEsEyEdNG.woRKers.DEv",
+                        "serverName": "spRinG-DiSK-81D3.MeseYednG.workeRS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5887,11 +5918,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "JM8GPzCyqDuRlznlK6-Ll7EStNx4f0.SeyeDng1.WOrKERS.dEV",
+                        "serverName": "Jm8gPzCyqDURLzNlK6-ll7esTNx4f0.SEyEDNG1.wOrKeRS.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5929,11 +5961,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "cOOl-SHApe-4720.SEyedNg.wORKErs.DeV",
+                        "serverName": "Cool-shAPE-4720.SeyEDNG.worKERS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5971,11 +6004,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SnOWy-Wood-A9FD.SeyEDeX.woRkeRs.dev",
+                        "serverName": "SnoWy-wOod-A9FD.seYeDex.WoRKers.Dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6013,11 +6047,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LIvelY-MATh-A2A1.MilfETta.wORkErs.DeV",
+                        "serverName": "LivelY-mAtH-a2A1.milfeTTa.woRKerS.dEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6036,7 +6071,7 @@
                 "settings": {
                     "vnext": [
                         {
-                            "address": "188.114.97.68",
+                            "address": "2a06:98c1:3120::5",
                             "port": 443,
                             "users": [
                                 {
@@ -6055,11 +6090,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SupeR-uNIOn-7D52.SEYeDDEX-fBd.WOrkeRS.Dev",
+                        "serverName": "SuPeR-Union-7D52.sEYeDdex-fbD.WorKERs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6097,11 +6133,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "Vxjq31g46Rx875-4wmdrK.sEYeDdeX.WoRKErS.deV",
+                        "serverName": "VXjq31g46rx875-4wMdRk.SeYeDDEx.WorKERS.dEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6139,11 +6176,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "LonG-DuST-93E6.seyEdHOSEIn.wOrkERS.DeV",
+                        "serverName": "Long-DuSt-93E6.SeyedhOsEIN.WORKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6181,11 +6219,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "ZldTjVBfzbM1Jw5S5JxJk.sEyeDsTEwIeAtomIc.woRkErs.DeV",
+                        "serverName": "ZLdtjVbFZbm1Jw5S5JXjK.SeyEdSTeWieaToMIc.workErS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6223,11 +6262,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "SL1GfXspgiFp8OOhK.sTeWiEnGX.worKERS.deV",
+                        "serverName": "sl1GfXspgiFP8OOhK.StEWIEngX.wOrKErs.DEV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6261,11 +6301,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "AU0Z-fGMw39k6Vt83x65R2oGhFamf.mILkyRiDeR.WorkerS.DEv",
+                        "serverName": "Au0z-fGmw39K6vT83X65r2ogHFAMF.MIlKYRider.wOrKerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6299,11 +6340,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "37jeiDLKyhTQJR450St.miLkyRideR1.woRKers.dEV",
+                        "serverName": "37jEIDLkYHTqJR450ST.MILKYriDEr1.workerS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6337,11 +6379,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "o7551vemq7MDxRKm48ALD5a1K92.MILkYRIdEr2.woRkErS.Dev",
+                        "serverName": "O7551vemq7MDxrKM48aLD5a1K92.mIlkYrIdER2.wOrKerS.dev",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6375,11 +6418,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "NLxE6MXxmXYDq4XBc7c0r89RL3.MilkyRIDEr3.WorKErS.DEV",
+                        "serverName": "NlXe6mxxmxyDq4Xbc7C0R89rL3.MIlkYRIDER3.wORKERS.deV",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6417,11 +6461,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "hI-k4oSPHY4mv34MwLMgV.istewieNG.woRkErS.dEV",
+                        "serverName": "hI-K4ospHY4mV34mWLmgV.iSTeWIeNG.woRKErS.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6459,11 +6504,12 @@
                     },
                     "security": "tls",
                     "tlsSettings": {
-                        "serverName": "dYYtHMBC01uPxG8Y.milKyridER8.woRKErs.dEv",
+                        "serverName": "DyyThmbc01UPxg8Y.miLKyrIDER8.WORKErs.DEv",
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
