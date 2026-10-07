@@ -24,6 +24,10 @@ const FINGERPRINT = 'unsafe';
 // cipherSuites (توی vpnf.json → cipherSuites و توی لینک vpnf.txt → cs)
 const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256';
 
+// ECH (Encrypted Client Hello) برای vpn.json (کانفیگ‌های Xray و «بهترین پینگ»)
+// توی tlsSettings به‌صورت echConfigList قرار می‌گیره. برای غیرفعال کردن مقدارش رو '' بذار.
+const ECH_CONFIG_LIST = 'udp://8.8.8.8';
+
 // ============================================================================
 
 if (!fs.existsSync('vpn.txt')) {
@@ -251,7 +255,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
@@ -270,7 +274,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'] },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
