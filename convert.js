@@ -28,16 +28,17 @@ const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_A
 //  ECH (Encrypted Client Hello)
 //  خروجی‌های بدون ECH (vpn.json / vpn.yml / vpns.json) همون‌طور که بودن ساخته می‌شن.
 //  نسخه‌ی ECH‌دار هر کدوم توی یه فایل جدا نوشته می‌شه:
-//     vpn.json → vpnh.json   |   vpn.yml → vpnh.yml   |   vpns.json → vpnsh.json
+//     vpn.json → vpnh.json   |   vpn.yml → vpnh.yml   |   vpns.json → vpnsh.json   |   vpnf.json → vpnfh.json
 //  برای نساختن هر فایل ECH‌دار، مقدار مربوطش رو false بذار.
 // ============================================================================
 
-// مقدار echConfigList برای Xray (فقط توی vpnh.json)
+// مقدار echConfigList برای Xray (توی vpnh.json و vpnfh.json)
 const ECH_CONFIG_LIST = 'udp://8.8.8.8';
 
 const ECH_VPNH_JSON = true;   // vpnh.json  (Xray + بهترین پینگ)  → tlsSettings.echConfigList
 const ECH_VPNH_YML = true;    // vpnh.yml   (Clash/mihomo)        → ech-opts
 const ECH_VPNSH_JSON = true;  // vpnsh.json (sing-box)            → tls.ech
+const ECH_VPNFH_JSON = true;  // vpnfh.json (Xray فرگمنت)         → tlsSettings.echConfigList
 // (سینگ‌باکس و میهومو کانفیگ ECH رو خودکار از رکورد HTTPS توی DNS می‌گیرن)
 
 // ============================================================================
@@ -599,7 +600,7 @@ function isValidIPv4(ip) {
     return ip.split('.').every(o => Number(o) >= 0 && Number(o) <= 255);
 }
 
-function buildVpnfOutboundProxy(parsed) {
+function buildVpnfOutboundProxy(parsed, ech = false) {
     const streamSettings = {
         finalmask: buildVpnfFinalmask(),
         network: "ws",
@@ -613,7 +614,8 @@ function buildVpnfOutboundProxy(parsed) {
             alpn: ["http/1.1"],
             cipherSuites: CIPHER_SUITES,
             fingerprint: FINGERPRINT,
-            serverName: parsed.sni
+            serverName: parsed.sni,
+            ...(ech && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {})
         },
         wsSettings: {
             host: parsed.host,
@@ -691,8 +693,8 @@ function buildVpnfNormalLink(parsed) {
     return null;
 }
 
-function buildVpnfEntry(parsed) {
-    const proxyOutbound = buildVpnfOutboundProxy(parsed);
+function buildVpnfEntry(parsed, ech = false) {
+    const proxyOutbound = buildVpnfOutboundProxy(parsed, ech);
     if (!proxyOutbound) return null;
 
     return {
@@ -728,6 +730,7 @@ async function main() {
     const xrayConfigsH = [];
     const clashProxiesH = [];
     const vpnfEntries = [];
+    const vpnfEntriesH = [];
     const vpnfLinks = [];
 
     for (let index = 0; index < lines.length; index++) {
@@ -775,6 +778,7 @@ async function main() {
         const vpnfEntry = buildVpnfEntry(vpnfParsed);
         if (vpnfLink) vpnfLinks.push(vpnfLink);
         if (vpnfEntry) vpnfEntries.push(vpnfEntry);
+        if (ECH_VPNFH_JSON) { const e = buildVpnfEntry(vpnfParsed, true); if (e) vpnfEntriesH.push(e); }
         if (!vpnfLink && !vpnfEntry && parsed.protocol === 'wireguard') {
             console.warn(`کانفیگ "${parsed.tag}": پروتکل wireguard در vpnf.txt و vpnf.json پشتیبانی نمی‌شود - نادیده گرفته شد`);
         }
@@ -1034,7 +1038,12 @@ async function main() {
         console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnf.json یافت نشد.');
     }
 
-    console.log('✅ همه فایل‌های خروجی (vpn.json, vpnh.json, vpn64.txt, vpn.yml, vpnh.yml, vpns.json, vpnsh.json, vpnf.txt, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    // 7. vpnfh.json – همون vpnf.json ولی با ECH
+    if (ECH_VPNFH_JSON && vpnfEntriesH.length > 0) {
+        fs.writeFileSync('vpnfh.json', JSON.stringify(vpnfEntriesH, null, 2), 'utf8');
+    }
+
+    console.log('✅ همه فایل‌های خروجی (vpn.json, vpnh.json, vpn64.txt, vpn.yml, vpnh.yml, vpns.json, vpnsh.json, vpnf.txt, vpnf.json, vpnfh.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
