@@ -33,7 +33,7 @@ const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_A
 const ECH_CONFIG_LIST = 'udp://8.8.8.8';
 
 const ECH_VPN_JSON = true;    // vpn.json  (Xray + بهترین پینگ) → tlsSettings.echConfigList
-const ECH_VPNF_JSON = true;   // vpnf.json (Xray فرگمنت)        → tlsSettings.echConfigList
+const ECH_VPNF_JSON = false;   // vpnf.json (Xray فرگمنت)        → tlsSettings.echConfigList
 const ECH_SINGBOX = true;     // vpns.json (sing-box)           → tls.ech
 const ECH_CLASH = true;       // vpn.yml   (Clash/mihomo)       → ech-opts
 // (سینگ‌باکس و میهومو کانفیگ ECH رو خودکار از رکورد HTTPS توی DNS می‌گیرن)
