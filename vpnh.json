@@ -98,7 +98,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -335,7 +336,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -572,7 +574,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -809,7 +812,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1046,7 +1050,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1283,7 +1288,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1520,7 +1526,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1757,7 +1764,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -1994,7 +2002,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2231,7 +2240,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2468,7 +2478,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2705,7 +2716,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -2942,7 +2954,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3179,7 +3192,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3416,7 +3430,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3653,7 +3668,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -3890,7 +3906,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4123,7 +4140,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4356,7 +4374,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4589,7 +4608,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -4822,7 +4842,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5059,7 +5080,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5296,7 +5318,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5555,7 +5578,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5597,7 +5621,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5639,7 +5664,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5681,7 +5707,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5723,7 +5750,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5765,7 +5793,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5807,7 +5836,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5849,7 +5879,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5891,7 +5922,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5933,7 +5965,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -5975,7 +6008,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6017,7 +6051,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6059,7 +6094,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6101,7 +6137,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6143,7 +6180,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6185,7 +6223,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6227,7 +6266,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6265,7 +6305,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6303,7 +6344,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6341,7 +6383,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6379,7 +6422,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6421,7 +6465,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
@@ -6463,7 +6508,8 @@
                         "fingerprint": "chrome",
                         "alpn": [
                             "http/1.1"
-                        ]
+                        ],
+                        "echConfigList": "udp://8.8.8.8"
                     },
                     "sockopt": {
                         "domainStrategy": "UseIP",
