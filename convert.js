@@ -24,9 +24,19 @@ const FINGERPRINT = 'unsafe';
 // cipherSuites (توی vpnf.json → cipherSuites و توی لینک vpnf.txt → cs)
 const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256';
 
-// ECH (Encrypted Client Hello) برای vpn.json (کانفیگ‌های Xray و «بهترین پینگ»)
-// توی tlsSettings به‌صورت echConfigList قرار می‌گیره. برای غیرفعال کردن مقدارش رو '' بذار.
+// ============================================================================
+//  ECH (Encrypted Client Hello) - روشن/خاموش کردن برای هر خروجی
+//  برای خاموش کردن هر خروجی مقدارش رو false بذار.
+// ============================================================================
+
+// مقدار echConfigList برای Xray (vpn.json و vpnf.json)
 const ECH_CONFIG_LIST = 'udp://8.8.8.8';
+
+const ECH_VPN_JSON = true;    // vpn.json  (Xray + بهترین پینگ) → tlsSettings.echConfigList
+const ECH_VPNF_JSON = true;   // vpnf.json (Xray فرگمنت)        → tlsSettings.echConfigList
+const ECH_SINGBOX = true;     // vpns.json (sing-box)           → tls.ech
+const ECH_CLASH = true;       // vpn.yml   (Clash/mihomo)       → ech-opts
+// (سینگ‌باکس و میهومو کانفیگ ECH رو خودکار از رکورد HTTPS توی DNS می‌گیرن)
 
 // ============================================================================
 
@@ -193,7 +203,8 @@ function buildSingboxOutbound(parsed) {
                 record_fragment: false,
                 insecure: false,
                 alpn: ['http/1.1'],
-                utls: { enabled: true, fingerprint: parsed.fp }
+                utls: { enabled: true, fingerprint: parsed.fp },
+                ...(ECH_SINGBOX ? { ech: { enabled: true } } : {})
             },
             transport: {
                 type: 'ws',
@@ -214,7 +225,8 @@ function buildSingboxOutbound(parsed) {
                 server_name: parsed.sni,
                 insecure: false,
                 alpn: ['http/1.1'],
-                utls: { enabled: true, fingerprint: parsed.fp }
+                utls: { enabled: true, fingerprint: parsed.fp },
+                ...(ECH_SINGBOX ? { ech: { enabled: true } } : {})
             },
             transport: {
                 type: 'ws',
@@ -255,7 +267,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_VPN_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
@@ -274,7 +286,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_VPN_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
@@ -478,6 +490,7 @@ function buildClashProxy(parsed) {
             'client-fingerprint': parsed.fp,
             'skip-cert-verify': false,
             alpn: ['http/1.1'],
+            ...(ECH_CLASH ? { 'ech-opts': { enable: true } } : {}),
             network: 'ws',
             'ws-opts': {
                 path: parsed.path,
@@ -495,6 +508,7 @@ function buildClashProxy(parsed) {
             'client-fingerprint': parsed.fp,
             'skip-cert-verify': false,
             alpn: ['http/1.1'],
+            ...(ECH_CLASH ? { 'ech-opts': { enable: true } } : {}),
             network: 'ws',
             'ws-opts': {
                 path: parsed.path,
@@ -597,7 +611,8 @@ function buildVpnfOutboundProxy(parsed) {
             alpn: ["http/1.1"],
             cipherSuites: CIPHER_SUITES,
             fingerprint: FINGERPRINT,
-            serverName: parsed.sni
+            serverName: parsed.sni,
+            ...(ECH_VPNF_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {})
         },
         wsSettings: {
             host: parsed.host,
