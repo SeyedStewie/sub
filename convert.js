@@ -25,17 +25,19 @@ const FINGERPRINT = 'unsafe';
 const CIPHER_SUITES = 'TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA:TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256:TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256';
 
 // ============================================================================
-//  ECH (Encrypted Client Hello) - روشن/خاموش کردن برای هر خروجی
-//  برای خاموش کردن هر خروجی مقدارش رو false بذار.
+//  ECH (Encrypted Client Hello)
+//  خروجی‌های بدون ECH (vpn.json / vpn.yml / vpns.json) همون‌طور که بودن ساخته می‌شن.
+//  نسخه‌ی ECH‌دار هر کدوم توی یه فایل جدا نوشته می‌شه:
+//     vpn.json → vpnh.json   |   vpn.yml → vpnh.yml   |   vpns.json → vpnsh.json
+//  برای نساختن هر فایل ECH‌دار، مقدار مربوطش رو false بذار.
 // ============================================================================
 
-// مقدار echConfigList برای Xray (vpn.json و vpnf.json)
+// مقدار echConfigList برای Xray (فقط توی vpnh.json)
 const ECH_CONFIG_LIST = 'udp://8.8.8.8';
 
-const ECH_VPN_JSON = true;    // vpn.json  (Xray + بهترین پینگ) → tlsSettings.echConfigList
-const ECH_VPNF_JSON = false;   // vpnf.json (Xray فرگمنت)        → tlsSettings.echConfigList
-const ECH_SINGBOX = true;     // vpns.json (sing-box)           → tls.ech
-const ECH_CLASH = true;       // vpn.yml   (Clash/mihomo)       → ech-opts
+const ECH_VPNH_JSON = true;   // vpnh.json  (Xray + بهترین پینگ)  → tlsSettings.echConfigList
+const ECH_VPNH_YML = true;    // vpnh.yml   (Clash/mihomo)        → ech-opts
+const ECH_VPNSH_JSON = true;  // vpnsh.json (sing-box)            → tls.ech
 // (سینگ‌باکس و میهومو کانفیگ ECH رو خودکار از رکورد HTTPS توی DNS می‌گیرن)
 
 // ============================================================================
@@ -182,7 +184,7 @@ function parseWireguard(link, index) {
 
 // --- Build outbound objects for each protocol ---
 
-function buildSingboxOutbound(parsed) {
+function buildSingboxOutbound(parsed, ech = false) {
     const base = {
         tag: parsed.tag,
         type: parsed.protocol,
@@ -204,7 +206,7 @@ function buildSingboxOutbound(parsed) {
                 insecure: false,
                 alpn: ['http/1.1'],
                 utls: { enabled: true, fingerprint: parsed.fp },
-                ...(ECH_SINGBOX ? { ech: { enabled: true } } : {})
+                ...(ech ? { ech: { enabled: true } } : {})
             },
             transport: {
                 type: 'ws',
@@ -226,7 +228,7 @@ function buildSingboxOutbound(parsed) {
                 insecure: false,
                 alpn: ['http/1.1'],
                 utls: { enabled: true, fingerprint: parsed.fp },
-                ...(ECH_SINGBOX ? { ech: { enabled: true } } : {})
+                ...(ech ? { ech: { enabled: true } } : {})
             },
             transport: {
                 type: 'ws',
@@ -252,7 +254,7 @@ function buildSingboxOutbound(parsed) {
     return null;
 }
 
-function buildXrayOutbound(parsed) {
+function buildXrayOutbound(parsed, ech = false) {
     if (parsed.protocol === 'vless') {
         return {
             protocol: 'vless',
@@ -267,7 +269,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_VPN_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ech && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
@@ -286,7 +288,7 @@ function buildXrayOutbound(parsed) {
                 network: 'ws',
                 wsSettings: { host: parsed.host, path: parsed.path + '?ed=2560' },
                 security: 'tls',
-                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ECH_VPN_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
+                tlsSettings: { serverName: parsed.sni, fingerprint: parsed.fp, alpn: ['http/1.1'], ...(ech && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {}) },
                 sockopt: { domainStrategy: 'UseIP', happyEyeballs: { tryDelayMs: 250, prioritizeIPv6: false, interleave: 2, maxConcurrentTry: 4 } }
             }
         };
@@ -310,9 +312,9 @@ function buildXrayOutbound(parsed) {
     return null;
 }
 
-function buildXrayConfig(parsed) {
+function buildXrayConfig(parsed, ech = false) {
     const tag = parsed.tag;
-    const outbound = buildXrayOutbound(parsed);
+    const outbound = buildXrayOutbound(parsed, ech);
 
     return {
         remarks: tag,
@@ -378,11 +380,11 @@ function buildXrayConfig(parsed) {
     };
 }
 
-function buildBestPingXrayConfig(parsedList) {
+function buildBestPingXrayConfig(parsedList, ech = false) {
     if (parsedList.length === 0) return null;
 
     const proxyOutbounds = parsedList.map((parsed, idx) => {
-        const outbound = buildXrayOutbound(parsed);
+        const outbound = buildXrayOutbound(parsed, ech);
         return { ...outbound, tag: `proxy-${idx + 1}` };
     });
 
@@ -469,7 +471,7 @@ function buildBestPingXrayConfig(parsedList) {
     };
 }
 
-function buildClashProxy(parsed) {
+function buildClashProxy(parsed, ech = false) {
     const proxy = {
         name: parsed.tag,
         type: parsed.protocol,
@@ -490,7 +492,7 @@ function buildClashProxy(parsed) {
             'client-fingerprint': parsed.fp,
             'skip-cert-verify': false,
             alpn: ['http/1.1'],
-            ...(ECH_CLASH ? { 'ech-opts': { enable: true } } : {}),
+            ...(ech ? { 'ech-opts': { enable: true } } : {}),
             network: 'ws',
             'ws-opts': {
                 path: parsed.path,
@@ -508,7 +510,7 @@ function buildClashProxy(parsed) {
             'client-fingerprint': parsed.fp,
             'skip-cert-verify': false,
             alpn: ['http/1.1'],
-            ...(ECH_CLASH ? { 'ech-opts': { enable: true } } : {}),
+            ...(ech ? { 'ech-opts': { enable: true } } : {}),
             network: 'ws',
             'ws-opts': {
                 path: parsed.path,
@@ -611,8 +613,7 @@ function buildVpnfOutboundProxy(parsed) {
             alpn: ["http/1.1"],
             cipherSuites: CIPHER_SUITES,
             fingerprint: FINGERPRINT,
-            serverName: parsed.sni,
-            ...(ECH_VPNF_JSON && ECH_CONFIG_LIST ? { echConfigList: ECH_CONFIG_LIST } : {})
+            serverName: parsed.sni
         },
         wsSettings: {
             host: parsed.host,
@@ -722,6 +723,10 @@ async function main() {
     const parsedConfigs = [];
     const xrayConfigs = [];
     const clashProxies = [];
+    // نسخه‌های ECH‌دار
+    const singboxOutboundsH = [];
+    const xrayConfigsH = [];
+    const clashProxiesH = [];
     const vpnfEntries = [];
     const vpnfLinks = [];
 
@@ -749,14 +754,17 @@ async function main() {
         // Sing-box outbound
         const sbOut = buildSingboxOutbound(parsed);
         if (sbOut) singboxOutbounds.push(sbOut);
+        if (ECH_VPNSH_JSON) { const o = buildSingboxOutbound(parsed, true); if (o) singboxOutboundsH.push(o); }
 
         // Xray config
         const xray = buildXrayConfig(parsed);
         if (xray) xrayConfigs.push(xray);
+        if (ECH_VPNH_JSON) { const x = buildXrayConfig(parsed, true); if (x) xrayConfigsH.push(x); }
 
         // Clash proxy
         const clash = buildClashProxy(parsed);
         if (clash) clashProxies.push(clash);
+        if (ECH_VPNH_YML) { const c = buildClashProxy(parsed, true); if (c) clashProxiesH.push(c); }
 
         // vpnf.txt (عادی) + vpnf.json (کاستوم): هر دو با آی‌پی جایگزین (IP) ساخته می‌شن
         const vpnfParsed = { ...parsed };
@@ -782,6 +790,10 @@ async function main() {
     if (bestPingConfig) {
         xrayConfigs.push(bestPingConfig);
     }
+    if (ECH_VPNH_JSON) {
+        const bestPingConfigH = buildBestPingXrayConfig(parsedConfigs, true);
+        if (bestPingConfigH) xrayConfigsH.push(bestPingConfigH);
+    }
 
     // 1. vpn64.txt
     const joinedLinks = validLinks.join('\n');
@@ -790,8 +802,12 @@ async function main() {
 
     // 2. vpn.json (Xray with Best Ping included)
     fs.writeFileSync('vpn.json', JSON.stringify(xrayConfigs, null, 4), 'utf8');
+    if (ECH_VPNH_JSON) {
+        fs.writeFileSync('vpnh.json', JSON.stringify(xrayConfigsH, null, 4), 'utf8');
+    }
 
     // 3. vpn.yml – Clash
+    function buildClashFullConfig(clashProxies) {
     const proxyNames = clashProxies.map(p => p.name);
     const selectorName = "انتخاب دستی";
     const urlTestName = "بهترین پینگ";
@@ -889,9 +905,16 @@ async function main() {
         "ntp": { "enable": true, "server": "time.cloudflare.com", "port": 123, "interval": 30 }
     };
 
-    fs.writeFileSync('vpn.yml', JSON.stringify(clashConfig, null, 4), 'utf8');
+    return clashConfig;
+    }
+
+    fs.writeFileSync('vpn.yml', JSON.stringify(buildClashFullConfig(clashProxies), null, 4), 'utf8');
+    if (ECH_VPNH_YML) {
+        fs.writeFileSync('vpnh.yml', JSON.stringify(buildClashFullConfig(clashProxiesH), null, 4), 'utf8');
+    }
 
     // 4. vpns.json – Sing-box
+    function buildSingboxFullConfig(singboxOutbounds) {
     const selectorTag = "انتخاب دستی";
     const urlTestTag = "بهترین پینگ";
 
@@ -989,7 +1012,13 @@ async function main() {
         }
     };
 
-    fs.writeFileSync('vpns.json', JSON.stringify(singboxFullConfig, null, 4), 'utf8');
+    return singboxFullConfig;
+    }
+
+    fs.writeFileSync('vpns.json', JSON.stringify(buildSingboxFullConfig(singboxOutbounds), null, 4), 'utf8');
+    if (ECH_VPNSH_JSON) {
+        fs.writeFileSync('vpnsh.json', JSON.stringify(buildSingboxFullConfig(singboxOutboundsH), null, 4), 'utf8');
+    }
 
     // 5. vpnf.txt – خروجی عادی (لینک‌های vless/trojan با فرگمنت و فینگرپرینت)
     if (vpnfLinks.length > 0) {
@@ -1005,7 +1034,7 @@ async function main() {
         console.warn('هیچ کانفیگ vless/trojan برای ساخت vpnf.json یافت نشد.');
     }
 
-    console.log('✅ همه ۶ فایل خروجی (vpn.json, vpn64.txt, vpn.yml, vpns.json, vpnf.txt, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
+    console.log('✅ همه فایل‌های خروجی (vpn.json, vpnh.json, vpn64.txt, vpn.yml, vpnh.yml, vpns.json, vpnsh.json, vpnf.txt, vpnf.json) با موفقیت و به طور کامل به‌روزرسانی شدند!');
 }
 
 main();
